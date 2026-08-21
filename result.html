@@ -3,84 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET UG Scorecard - NTA</title>
+    <title>NEET Exam Scorecard & Analysis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f6f9;
             margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
-        .scorecard {
+        .container {
+            max-width: 800px;
+            margin: auto;
             background: white;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        h2 { color: #003366; margin-bottom: 5px; }
-        .details { text-align: left; margin: 20px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 15px 0; }
-        .details p { margin: 8px 0; font-size: 15px; }
-        .score-highlight {
-            background: #e8f5e9;
-            color: #2e7d32;
+        h1, h2 { color: #003366; text-align: center; margin-top: 0; }
+        .student-info {
+            background: #eef2f7;
             padding: 15px;
             border-radius: 6px;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 20px 0;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .score-box {
+            text-align: center;
+            background: #003366;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+        .score-box h3 { margin: 0; font-size: 32px; }
+        
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .sub-card {
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .sub-card h4 { margin: 0 0 10px 0; color: #003366; }
+        .sub-score { font-size: 18px; font-weight: bold; color: #28a745; }
+
+        .review-section {
+            margin-top: 30px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+        .q-card {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .q-card.correct { border-left: 5px solid #28a745; }
+        .q-card.incorrect { border-left: 5px solid #dc3545; }
+        .q-card.unattempted { border-left: 5px solid #ffc107; }
+        
+        .explanation {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #0c5460;
         }
         .btn-home {
             background-color: #003366;
             color: white;
-            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="scorecard">
-        <h2>National Testing Agency (NTA)</h2>
-        <p>NEET (UG) Mock Test Result</p>
+    <div class="container">
+        <h1>NEET Mock Test - Official Scorecard</h1>
         
-        <div class="details">
-            <p><strong>Candidate Name:</strong> Saurabh Gangwar</p>
-            <p><strong>Exam Mode:</strong> CBT Online</p>
-            <p><strong>Total Questions:</strong> 4</p>
-            <p id="attempted-text"><strong>Attempted:</strong> --</p>
+        <div class="student-info">
+            <div><strong>Candidate Name:</strong> <span id="res-name">Student</span></div>
+            <div><strong>Roll Number:</strong> <span id="res-roll">N/A</span></div>
         </div>
 
-        <div class="score-highlight" id="score-text">
-            Final Score: -- / 16
+        <div class="score-box">
+            <p style="margin:0 0 5px 0; font-size: 14px;">Total Score Achieved</p>
+            <h3 id="total-score">0 / 720</h3>
         </div>
 
-        <a href="index.html" class="btn-home">Back to Home</a>
+        <h2>Subject-Wise Performance</h2>
+        <div class="subject-grid">
+            <div class="sub-card">
+                <h4>Physics</h4>
+                <div class="sub-score" id="score-physics">0 / 180</div>
+            </div>
+            <div class="sub-card">
+                <h4>Chemistry</h4>
+                <div class="sub-score" id="score-chemistry">0 / 180</div>
+            </div>
+            <div class="sub-card">
+                <h4>Botany</h4>
+                <div class="sub-score" id="score-botany">0 / 180</div>
+            </div>
+            <div class="sub-card">
+                <h4>Zoology</h4>
+                <div class="sub-score" id="score-zoology">0 / 180</div>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <h2>Detailed Question Review & Explanations</h2>
+            <div id="review-container"></div>
+        </div>
+
+        <button class="btn-home" onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 
+    <script src="questions.js"></script>
     <script>
-        // Grab score data from URL parameters passed from exam.html
-        const urlParams = new URLSearchParams(window.location.search);
-        const score = urlParams.get('score');
-        const max = urlParams.get('max');
-        const attempted = urlParams.get('attempted');
+        document.getElementById('res-name').textContent = localStorage.getItem('neet_candidate_name') || "Candidate";
+        document.getElementById('res-roll').textContent = localStorage.getItem('neet_candidate_roll') || "N/A";
 
-        if (score !== null) {
-            document.getElementById('score-text').textContent = `Final Score: ${score} / ${max}`;
-            document.getElementById('attempted-text').innerHTML = `<strong>Attempted:</strong> ${attempted} / 4`;
+        const urlParams = new URLSearchParams(window.location.search);
+        const finalScore = urlParams.get('score') || 0;
+        document.getElementById('total-score').textContent = `${finalScore} / 720`;
+
+        const subScores = JSON.parse(localStorage.getItem('neet_sub_scores')) || { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
+        document.getElementById('score-physics').textContent = `${subScores.Physics} / 180`;
+        document.getElementById('score-chemistry').textContent = `${subScores.Chemistry} / 180`;
+        document.getElementById('score-botany').textContent = `${subScores.Botany} / 180`;
+        document.getElementById('score-zoology').textContent = `${subScores.Zoology} / 180`;
+
+        const userAnswers = JSON.parse(localStorage.getItem('neet_user_answers')) || {};
+        const reviewContainer = document.getElementById('review-container');
+        reviewContainer.innerHTML = "";
+
+        if (typeof neetQuestions !== 'undefined') {
+            neetQuestions.forEach((q, idx) => {
+                let userAns = userAnswers[idx];
+                let statusClass = "unattempted";
+                let statusText = "Not Attempted";
+
+                if (userAns !== undefined) {
+                    if (userAns === q.correct) {
+                        statusClass = "correct";
+                        statusText = "Correct (+4)";
+                    } else {
+                        statusClass = "incorrect";
+                        statusText = "Incorrect (-1)";
+                    }
+                }
+
+                let card = document.createElement('div');
+                card.className = `q-card ${statusClass}`;
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px;">
+                        <span>Q${idx + 1} [${q.subject || "General"}]</span>
+                        <span style="color: ${userAns === q.correct ? '#28a745' : (userAns !== undefined ? '#dc3545' : '#ffc107')}">${statusText}</span>
+                    </div>
+                    <p style="margin: 5px 0;">${q.q}</p>
+                    <ul style="margin: 5px 0; padding-left: 20px; font-size: 13px;">
+                        <li>Your Answer: <b>${userAns !== undefined ? q.options[userAns] : "None"}</b></li>
+                        <li>Correct Answer: <b>${q.options[q.correct]}</b></li>
+                    </ul>
+                    <div class="explanation">
+                        <strong>Explanation:</strong> ${q.explanation || "Detailed solution will be updated soon."}
+                    </div>
+                `;
+                reviewContainer.appendChild(card);
+            });
         }
     </script>
-
 </body>
 </html>
