@@ -4,127 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEET CBT - Official NTA Mode</title>
-    <link rel="manifest" href="manifest.json">
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f6f9;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; display: flex; flex-direction: column; height: 100vh; }
+        header { background-color: #003366; color: white; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
         header h2 { font-size: 14px; margin: 0; }
-        .timer-box {
-            background: #fff;
-            color: #333;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 13px;
-        }
-        .main-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-            flex-direction: row;
-        }
-        .question-area {
-            flex: 3;
-            background: white;
-            padding: 20px;
-            overflow-y: auto;
-            border-right: 1px solid #ddd;
-        }
-        .sidebar {
-            flex: 1.5;
-            background: #fff;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-y: auto;
-        }
-        .subject-tag { 
-            background: #e8f0fe; 
-            color: #003366; 
-            padding: 3px 6px; 
-            border-radius: 4px; 
-            font-size: 11px; 
-            font-weight: bold; 
-            margin-bottom: 10px; 
-            display: inline-block;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 15px;
-        }
-        .options-list li {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        .options-list li:hover {
-            background-color: #f0f8ff;
-            border-color: #003366;
-        }
-        .footer-buttons {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        button {
-            padding: 7px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 11px;
-        }
+        .timer-box { background: #fff; color: #333; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        .main-container { display: flex; flex: 1; overflow: hidden; flex-direction: row; }
+        .question-area { flex: 3; background: white; padding: 20px; overflow-y: auto; border-right: 1px solid #ddd; }
+        .sidebar { flex: 1.5; background: #fff; padding: 10px; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+        .subject-tag { background: #e8f0fe; color: #003366; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+        .options-list { list-style: none; padding: 0; margin-top: 15px; }
+        .options-list li { margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; font-size: 13px; }
+        .options-list li:hover { background-color: #f0f8ff; border-color: #003366; }
+        .footer-buttons { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px; }
+        button { padding: 7px 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; }
         .btn-save { background-color: #28a745; color: white; }
         .btn-review-next { background-color: #6f42c1; color: white; }
         .btn-save-review { background-color: #007bff; color: white; }
         .btn-clear { background-color: #e0e0e0; color: #333; }
         .btn-submit { background-color: #dc3545; color: white; width: 100%; margin-top: 15px; padding: 10px; font-size: 13px; }
-
-        .pal-btn {
-            width: 30px;
-            height: 30px;
-            margin-bottom: 5px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            background: #e0e0e0;
-            color: #000;
-            font-size: 11px;
-        }
-
+        .pal-btn { width: 30px; height: 30px; margin-bottom: 5px; border-radius: 4px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; background: #e0e0e0; color: #000; font-size: 11px; }
         .legend-box { font-size: 10px; display: flex; flex-direction: column; gap: 4px; width: 100%; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 8px; }
         .legend-item { display: flex; align-items: center; gap: 6px; }
         .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-
-        @media (max-width: 768px) {
-            .main-container { flex-direction: column; }
-            .question-area { flex: none; height: 60vh; border-right: none; border-bottom: 2px solid #ddd; }
-            .sidebar { flex: none; height: 40vh; align-items: flex-start; }
-            .pal-btn { width: 28px; height: 28px; font-size: 10px; }
-        }
     </style>
 </head>
 <body>
@@ -137,7 +41,7 @@
     <div class="main-container">
         <div class="question-area" id="question-box">
             <span id="subject-tag" class="subject-tag">Subject</span>
-            <h3 id="q-title" style="font-size: 14px; margin-top: 5px;">Question 1 of 180</h3>
+            <h3 id="q-title" style="font-size: 14px; margin-top: 5px;">Question 1</h3>
             <p id="q-text" style="font-size: 13px; line-height: 1.4;"></p>
             
             <ul class="options-list" id="options-container">
@@ -158,11 +62,8 @@
         <div class="sidebar">
             <h4 style="margin: 0 0 3px 0; font-size: 12px;">Question Palette</h4>
             <p style="font-size: 10px; color: #555; margin: 0 0 8px 0;">Candidate: <span id="candidate-display">Student</span></p>
-            
             <div style="display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; max-height: 230px; overflow-y: auto;" id="palette"></div>
-
             <button class="btn-submit" onclick="submitTest()">Submit Test</button>
-
             <div class="legend-box">
                 <div class="legend-item"><span class="dot" style="background: #28a745;"></span> Answered</div>
                 <div class="legend-item"><span class="dot" style="background: #dc3545;"></span> Not Answered</div>
@@ -173,24 +74,17 @@
     </div>
 
     <script>
-        if (localStorage.getItem('neet_submitted') === 'true') {
+        const activeTestId = localStorage.getItem('active_test_id') || 'test1';
+        
+        if (localStorage.getItem(`${activeTestId}_submitted`) === 'true') {
             alert("You have already submitted this test.");
             window.location.href = "result.html";
         }
 
         const storedName = localStorage.getItem('neet_candidate_name');
-        if (storedName) {
-            document.getElementById('candidate-display').textContent = storedName;
-        }
+        if (storedName) document.getElementById('candidate-display').textContent = storedName;
 
-        const questions = (typeof neetQuestions !== 'undefined' && neetQuestions.length > 0) ? neetQuestions : [
-            {
-                subject: "Error",
-                q: "Questions file not loaded or empty. Please check questions.js",
-                options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-                correct: 0
-            }
-        ];
+        const questions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
 
         let currentQ = 0;
         let statuses = Array(questions.length).fill("not-visited");
@@ -215,31 +109,21 @@
                 let btn = document.getElementById(`pal-${idx}`);
                 if (!btn) return;
                 let status = statuses[idx];
-                
-                if (status === "answered") {
-                    btn.style.background = "#28a745"; btn.style.color = "white"; btn.style.border = "1px solid #28a745";
-                } else if (status === "not-answered") {
-                    btn.style.background = "#dc3545"; btn.style.color = "white"; btn.style.border = "1px solid #dc3545";
-                } else if (status === "review") {
-                    btn.style.background = "#6f42c1"; btn.style.color = "white"; btn.style.border = "1px solid #6f42c1";
-                } else {
-                    btn.style.background = "#e0e0e0"; btn.style.color = "black"; btn.style.border = "1px solid #ccc";
-                }
+                if (status === "answered") { btn.style.background = "#28a745"; btn.style.color = "white"; }
+                else if (status === "not-answered") { btn.style.background = "#dc3545"; btn.style.color = "white"; }
+                else if (status === "review") { btn.style.background = "#6f42c1"; btn.style.color = "white"; }
+                else { btn.style.background = "#e0e0e0"; btn.style.color = "black"; }
             });
         }
 
         function loadQuestion(index) {
             currentQ = index;
-            if (statuses[index] === "not-visited") {
-                statuses[index] = "not-answered";
-            }
-            
+            if (statuses[index] === "not-visited") statuses[index] = "not-answered";
             const qData = questions[index];
             document.getElementById('q-title').textContent = `Question ${index + 1} of ${questions.length}`;
             document.getElementById('subject-tag').textContent = qData.subject || "General";
             document.getElementById('q-subject-header').textContent = qData.subject || "NEET";
             document.getElementById('q-text').textContent = qData.q;
-            
             for (let i = 0; i < 4; i++) {
                 document.getElementById(`opt${i}`).textContent = qData.options[i];
                 document.getElementById(`r${i}`).checked = (answers[index] === i);
@@ -253,73 +137,33 @@
         }
 
         function saveAndNext() {
-            if (answers[currentQ] !== undefined) { statuses[currentQ] = "answered"; }
-            else { statuses[currentQ] = "not-answered"; }
+            statuses[currentQ] = (answers[currentQ] !== undefined) ? "answered" : "not-answered";
             moveToNext();
         }
-
-        function markAndNext() {
-            statuses[currentQ] = "review";
-            moveToNext();
-        }
-
-        function saveAndMark() {
-            if (answers[currentQ] !== undefined) { statuses[currentQ] = "review"; }
-            else { statuses[currentQ] = "not-answered"; }
-            moveToNext();
-        }
-
-        function clearResponse() {
-            delete answers[currentQ];
-            for (let i = 0; i < 4; i++) document.getElementById(`r${i}`).checked = false;
-            statuses[currentQ] = "not-answered";
-            updatePaletteColors();
-        }
-
-        function moveToNext() {
-            if (currentQ < questions.length - 1) {
-                loadQuestion(currentQ + 1);
-            } else {
-                updatePaletteColors();
-                alert("This is the last question.");
-            }
-        }
-
-        function jumpTo(index) {
-            loadQuestion(index);
-        }
+        function markAndNext() { statuses[currentQ] = "review"; moveToNext(); }
+        function saveAndMark() { statuses[currentQ] = (answers[currentQ] !== undefined) ? "review" : "not-answered"; moveToNext(); }
+        function clearResponse() { delete answers[currentQ]; for (let i = 0; i < 4; i++) document.getElementById(`r${i}`).checked = false; statuses[currentQ] = "not-answered"; updatePaletteColors(); }
+        function moveToNext() { if (currentQ < questions.length - 1) loadQuestion(currentQ + 1); else alert("Last question."); }
+        function jumpTo(index) { loadQuestion(index); }
 
         function submitTest() {
-            if (confirm("Are you sure you want to submit the test? Once submitted, it cannot be retaken.")) {
+            if (confirm("Submit test? Once submitted, it cannot be retaken.")) {
                 let score = 0;
-                let attempted = 0;
-                let totalCorrect = 0;
-                let totalIncorrect = 0;
-                
                 let subScores = { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
-
                 questions.forEach((q, idx) => {
                     let sub = q.subject || "Physics";
                     if (answers[idx] !== undefined) {
-                        attempted++;
-                        if (answers[idx] === q.correct) {
-                            score += 4;
-                            totalCorrect++;
-                            if(subScores[sub] !== undefined) subScores[sub] += 4;
-                        } else {
-                            score -= 1;
-                            totalIncorrect++;
-                            if(subScores[sub] !== undefined) subScores[sub] -= 1;
-                        }
+                        if (answers[idx] === q.correct) { score += 4; if(subScores[sub] !== undefined) subScores[sub] += 4; }
+                        else { score -= 1; if(subScores[sub] !== undefined) subScores[sub] -= 1; }
                     }
                 });
 
-                localStorage.setItem('neet_submitted', 'true');
-                localStorage.setItem('neet_final_score', score);
-                localStorage.setItem('neet_user_answers', JSON.stringify(answers));
-                localStorage.setItem('neet_sub_scores', JSON.stringify(subScores));
+                localStorage.setItem(`${activeTestId}_submitted`, 'true');
+                localStorage.setItem(`${activeTestId}_final_score`, score);
+                localStorage.setItem(`${activeTestId}_user_answers`, JSON.stringify(answers));
+                localStorage.setItem(`${activeTestId}_sub_scores`, JSON.stringify(subScores));
 
-                window.location.href = `result.html?score=${score}&max=${questions.length * 4}&attempted=${attempted}&correct=${totalCorrect}&incorrect=${totalIncorrect}`;
+                window.location.href = `result.html`;
             }
         }
 
@@ -329,13 +173,10 @@
         let timeRemaining = 12000;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
-            let hours = Math.floor(timeRemaining / 3600);
-            let minutes = Math.floor((timeRemaining % 3600) / 60);
-            let seconds = timeRemaining % 60;
-            timerElement.textContent = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+            let h = Math.floor(timeRemaining / 3600), m = Math.floor((timeRemaining % 3600) / 60), s = timeRemaining % 60;
+            timerElement.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
             if (timeRemaining > 0) timeRemaining--;
         }, 1000);
     </script>
-
 </body>
 </html>
