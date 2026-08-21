@@ -270,4 +270,277 @@ const neetQuestions = [
         options: ["NAND", "XOR", "OR", "XNOR"],
         correct: 3
     }
+];,
+    // ==================== CHEMISTRY (45 Questions) ====================
+    {
+        subject: "Chemistry",
+        q: "Wavelength of different radiations are given below: λ(A)=300 nm, λ(B)=300 pm, λ(C)=3 nm, λ(D)=300Å. The increasing order of their energies is:",
+        options: ["A < B < C < D", "B < D < C < A", "A < C < D < B", "A < D < C < B"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Consider reversible reactions at 298K: (a) N2O4 ⇌ 2NO2, (b) 2SO2 + O2 ⇌ 2SO3, (c) 2HI ⇌ H2 + I2, (d) X + Y ⇌ 4Z. Highest and lowest value of Kc will be shown by respectively:",
+        options: ["d, b", "a, c", "b, a", "b, c"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Following statements regarding water: How many of these are correct? (pH+pOH=14 at all temp; [H+][OH-]=10^-14 at all temp; neutral at all temp, etc.)",
+        options: ["2", "3", "4", "5"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "An organic compound on analysis was found to contain 0.032% of sulphur. If its molecule contains two sulphur atoms, the molecular mass of the compound will be:",
+        options: ["200", "2000", "100000", "200000"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Assertion: Nitrous acid (HNO2) may act as an oxidising agent as well as reducing agent. Reason: Oxidation number of nitrogen remains same in all compounds.",
+        options: ["Both Assertion & Reason are True & Reason is correct explanation", "Both True but Reason is not correct explanation", "Assertion is True but Reason is False", "Both are False"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "When one mole of an ideal gas is compressed to half of its initial volume and simultaneously heated to twice of its initial temperature, the change in entropy (ΔS) is:",
+        options: ["Cp,m ln 2", "Cv,m ln 2", "R ln 2", "(Cv,m - R) ln 2"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Calculate the heat produced (in kJ) when 224 gm of CaO is completely converted to CaCO3 by reaction with CO2 at 27°C in a fixed volume container (ΔHf of CaCO3=-1207, CaO=-635, CO2=-394 kJ/mol):",
+        options: ["702.04 kJ", "821.96 kJ", "1012 kJ", "921 kJ"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "The chemical reagent from which a solution of required concentration can be prepared is:",
+        options: ["Secondary standard", "Dilute solution", "Concentrated solution", "Primary standard"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "0.15gm of a solute dissolved in 15gm of solvent boils higher by 0.216°C than pure solvent. Molecular mass of solute is (Kb = 2.16 K kg mol⁻¹):",
+        options: ["1.01", "10", "10.1", "100"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "1 mole each of (i) NaCl, (ii) K2SO4, (iii) Na3PO4, (iv) glucose are taken in 5 moles water. Relative decrease in vapour pressure will be in order:",
+        options: ["i < ii < iii < iv", "iv < iii < ii < i", "iv < i < ii < iii", "equal in all"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Match List-I (Conversion: 1 mol H2O to O2, MnO4- to Mn2+, etc.) with List-II (Faradays required):",
+        options: ["A-II, B-IV, C-I, D-III", "A-III, B-IV, C-I, D-II", "A-II, B-III, C-I, D-IV", "A-III, B-IV, C-II, D-I"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "If E°(Au+/Au) is 1.69 V and E°(Au³+/Au) is 1.40 V, then E°(Au³+/Au+) will be:",
+        options: ["0.19 V", "2.945 V", "1.255 V", "None of these"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Consider the graph of concentration vs time. Which option does not show instantaneous rate of reaction at 40th second?",
+        options: ["(C5 - C2) / (50 - 30)", "(C3 - C2) / (40 - 30)", "(C3 - C1) / (40 - 20)", "(C4 - C2) / (50 - 30)"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "For phosgene formation mechanism CO + Cl2 → COCl2 with slow step COCl + Cl2 → COCl2 + Cl, the rate expression is:",
+        options: ["r = k5 * (k3/k4) * (k1/k2)^(1/2) * [CO][Cl2]^(3/2)", "r = k5 * (k3/k4) * (k1/k2)^(1/2) * [CO][Cl2]^(1/2)", "r = k5 * (k3/k4)^(1/2) * (k1/k2) * [CO][Cl2]^(3/2)", "None of these"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "What will be molality of ethanol in water if mole fraction of ethanol is 0.4?",
+        options: ["3.70 m", "18 m", "21 m", "37 m"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Which of the following statements would be incorrect?",
+        options: ["Maximum covalency of second period element is 4", "Chemical reactivity best shown by reaction with oxygen & halogen", "Transition metals change in atomic radii is much smaller across period", "For all block elements metallic character increases down group"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Match the elements (Li, Be, C, Cs) with their properties (Most acidic oxide, Most metallic, Similar to Al, Highest IE2):",
+        options: ["(i)D (ii)C (iii)A (iv)B", "(i)D (ii)A (iii)C (iv)B", "(i)A (ii)C (iii)B (iv)D", "(i)C (ii)D (iii)B (iv)A"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "In NO3- ion, the number of bond pairs and lone pairs of electrons on nitrogen is:",
+        options: ["3, 0", "5, 0", "4, 0", "4, 1"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "Statement-I: Bonds formed by hybrid orbitals are stronger than atomic orbitals. Statement-II: In benzene all carbon atoms have sp² hybridisation.",
+        options: ["Both statement-I and II are correct", "Statement-I correct, II incorrect", "Statement-I incorrect, II correct", "Both incorrect"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "Statement-1: Benzene itself is non-polar, but on monosubstitution it becomes polar. Statement-2: Dipole moment of disubstituted benzene is always zero.",
+        options: ["Both incorrect", "Statement-1 correct, Statement-2 incorrect", "Statement-1 incorrect, Statement-2 correct", "Both correct"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "Which option/statement is not for the theory mentioned in bracket?",
+        options: ["Does not explain shape & relative stability (octet theory)", "Multiple bond treated as single super pair (VSEPR)", "Zero overlapping (VBT)", "Bond order can't be fractional (MOT)"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Match coordination compounds [Cr(H2O)6]3+, [Co(CN)4]2-, [Ni(NH3)6]2+, [MnF6]4- with hybridisation and unpaired electrons:",
+        options: ["RPTQ", "SRQP", "RQSP", "SPQR"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Consider statements on [Cr(NH3)6]3+, [Fe(CN)6]3-, [Mn(CN)6]3- regarding CFSE and magnetic moments:",
+        options: ["FTF", "TTF", "TTT", "FFF"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Read statements on geometrical and optical isomerism in square planar and octahedral complexes. The option having incorrect statements is:",
+        options: ["I, III & IV", "I & II", "II only", "I, II, III & IV"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Choose the incorrect statement among carbon isotope, group 14 ionization energy, electronegativity, and complex existence:",
+        options: ["¹⁴C is radioactive used for radiocarbon dating", "Ionization Energy of group-14 elements regularly decrease down the group", "Electronegativity values of H & P are almost same", "[SiF6]²⁻, [GeCl6]²⁻ and [Sn(OH)6]²⁻ exist"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "Based on group 15 elements: Bi2O5 basicity, NF3 covalency, PH3 boiling point, N-N vs P-P bond strength. Correct statements are:",
+        options: ["A, B & C", "Only A & B", "A, B, C & D", "Only C & D"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Which transition element does not have variable oxidation state?",
+        options: ["Zn", "Cu", "V", "Sc"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Which of the following statements is not incorrect regarding Chromyl chloride test, KMnO4 decomposition, d-block metallic structures, and tetrahedral geometry?",
+        options: ["Chromyl chloride test not applicable for KCl, CaCl2, CsCl", "KMnO4 gives Mn2O7 and O2 in thermal decomposition", "Zn, Cd, Hg show one or more typical metallic structures", "MnO4- and CrO42- show tetrahedral geometry and form pπ-dπ bonds"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Identify correct statements for halide salt reactions with conc. H2SO4 (chloride gives reddish brown fumes, iodide gives violet vapours, bromide gives reddish brown fumes in excess):",
+        options: ["(i) and (ii)", "(ii) and (iii)", "(i) and (iii)", "All are correct"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "MgSO4 on reaction with NH4OH and Na2HPO4 forms a white crystalline precipitate of formula:",
+        options: ["Mg3(PO4)2", "MgCl2", "MgSO4", "Mg(NH4)PO4"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Assertion: Synthesis of ethyl phenyl ether may be achieved by Williamson synthesis. Reason: Reaction of bromobenzene with sodium ethoxide yields ethyl phenyl ether.",
+        options: ["Both (A) and (R) correct and R is explanation", "A correct but R not correct", "A not correct but R correct", "Both correct but R not explanation"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "What is the correct acidic strength order of substituted benzoic acid/phenol derivatives?",
+        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "The major product (R) of the reaction sequence: Phenol + CHCl3/KOH → P + HCN → Q + H3O⁺ → R is:",
+        options: ["Salicylic acid derivative 1", "Derivative 2", "Derivative 3", "Derivative 4"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "The product of which of the following reactions does not undergo oxidation with acidified KMnO4?",
+        options: ["Na / liq. NH3 reduction product", "CrO3 / acetic anhydride oxidation product", "Tertiary butyl chloride reaction", "Silver salt reaction"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "Which of the following statements is incorrect regarding nitration/chlorination/alkylation of benzene and carcinogenicity?",
+        options: ["Electrophiles are Cl⁺ and R⁺ respectively", "During nitration, sulfuric acid acts as base and nitric acid acts as acid", "In sigma complex one carbon is sp³ hybrid", "Polynuclear hydrocarbons with more than two rings are nontoxic"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "For reaction sequence starting from phenyl/acyl derivatives leading to product C, what is correct about product (C)?",
+        options: ["C gives silver mirror with Tollen's reagent", "C gives yellow precipitate with I2/NaOH", "C can be prepared by HCHO + methyl magnesium bromide", "Both (2) & (3) are correct"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "In which of the following will 1° amine not be the product?",
+        options: ["CH3CH2CN + H2/Ni", "Amide reduction with LiAlH4", "Isocyanide reduction", "Cyanide reduction with Na/C2H5OH"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "Reaction sequence of benzene/phenol derivatives leading to compound B yields which structure?",
+        options: ["Structure 1", "Structure 2", "Structure 3", "Structure 4"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "In Lassaigne's test for sulphur in organic compound with sodium nitroprusside solution, the violet colour formed is due to:",
+        options: ["Na2[Fe(CN)5NOS]", "Na3[Fe(CN)5S]", "Na4[Fe(CN)5NOS]", "Na3[Fe(CN)6]"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "The IUPAC name of the given compound containing CHO, Bromo, chloro, and methyl groups on a hexenal chain is:",
+        options: ["(2R, 4Z)-4-Bromo-2-chloro-2-methyl-4-hexenal", "(2R, 4E)-4-Bromo-2-chloro-2-methyl-4-hexenal", "(2Z, 5R)-3-Bromo-5-chloro-5-formyl-2-hexene", "(2S, 4E)-4-Bromo-2-chloro-2-methyl-4-hexenal"],
+        correct: 1
+    },
+    {
+        subject: "Chemistry",
+        q: "Which is an incorrect statement regarding stereoisomers, meso-compounds, geometrical isomers, and enantiomers?",
+        options: ["Pair 1", "Pair 2", "Pair 3 are conformations", "Pair 4"],
+        correct: 2
+    },
+    {
+        subject: "Chemistry",
+        q: "Which of the following is benzenoid?",
+        options: ["Thiophene", "Pyrrole", "Tropone", "Naphthalene"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Which is an incorrect statement regarding carbohydrates (Cellulose, Sucrose, anomers, epimers)?",
+        options: ["Cellulose is linear polymer of α-D-glucose", "Sucrose is composed by α-D-glucose and β-D-fructose", "α-D-glucose and β-D-glucose are anomers", "Glucose and mannose are epimers"],
+        correct: 0
+    },
+    {
+        subject: "Chemistry",
+        q: "Match reactions (Gattermann-Koch, Swarts, Sandmayer, Etard) with their names:",
+        options: ["P-B, Q-C, R-A, S-D", "P-B, Q-D, R-C, S-A", "P-C, Q-B, R-D, S-A", "P-B, Q-C, R-D, S-A"],
+        correct: 3
+    },
+    {
+        subject: "Chemistry",
+        q: "Which among the following statements are correct regarding carbenes and carbon radicals (CH3 radical sp² vs sp³ hybrid, singlet vs triplet CH2 stability)?",
+        options: ["Statement 1 only", "Statement 2 only", "Statement 3 only", "Statement 4"],
+        correct: 1
+    }
 ];
+
