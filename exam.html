@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+           <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -88,20 +88,19 @@
         .btn-clear { background-color: #ffc107; color: #333; }
         .btn-review { background-color: #6f42c1; color: white; }
 
-        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             .main-container {
                 flex-direction: column;
             }
             .question-area {
                 flex: none;
-                height: 65vh;
+                height: 62vh;
                 border-right: none;
                 border-bottom: 2px solid #ddd;
             }
             .sidebar {
                 flex: none;
-                height: 35vh;
+                height: 38vh;
                 align-items: flex-start;
             }
         }
@@ -116,55 +115,111 @@
 
     <div class="main-container">
         <div class="question-area">
-            <h3 style="font-size: 15px; margin-top: 0;">Question 1 of 45 (Physics)</h3>
-            <p style="font-size: 14px; line-height: 1.5;">What is the dimensional formula of the universal gravitational constant?</p>
+            <h3 id="q-title" style="font-size: 15px; margin-top: 0;">Question 1 of 4 (Physics)</h3>
+            <p id="q-text" style="font-size: 14px; line-height: 1.5;">What is the dimensional formula of the universal gravitational constant?</p>
             
-            <ul class="options-list">
-                <li><input type="radio" name="opt"> M⁻¹ L³ T⁻²</li>
-                <li><input type="radio" name="opt"> M L² T⁻²</li>
-                <li><input type="radio" name="opt"> M⁻¹ L² T⁻²</li>
-                <li><input type="radio" name="opt"> M L³ T⁻²</li>
+            <ul class="options-list" id="options-container">
+                <li onclick="selectOpt(0)"><input type="radio" name="opt" id="r0"> <span id="opt0">M⁻¹ L³ T⁻²</span></li>
+                <li onclick="selectOpt(1)"><input type="radio" name="opt" id="r1"> <span id="opt1">M L² T⁻²</span></li>
+                <li onclick="selectOpt(2)"><input type="radio" name="opt" id="r2"> <span id="opt2">M⁻¹ L² T⁻²</span></li>
+                <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3">M L³ T⁻²</span></li>
             </ul>
 
             <div class="footer-buttons">
-                <button class="btn-save">Save & Next</button>
-                <button class="btn-clear">Clear</button>
-                <button class="btn-review">Mark for Review</button>
+                <button class="btn-save" onclick="saveAndNext()">Save & Next</button>
+                <button class="btn-clear" onclick="clearResponse()">Clear</button>
             </div>
         </div>
 
         <div class="sidebar">
             <h4 style="margin: 0 0 5px 0; font-size: 14px;">Question Palette</h4>
             <p style="font-size: 12px; color: #555; margin: 0 0 10px 0;">Candidate: Saurabh Gangwar</p>
-            <div style="display: grid; grid-template-columns: repeat(4, 35px); gap: 6px;">
-                <button style="background: #28a745; color: white; height: 35px;">1</button>
-                <button style="background: #e0e0e0; height: 35px;">2</button>
-                <button style="background: #e0e0e0; height: 35px;">3</button>
-                <button style="background: #e0e0e0; height: 35px;">4</button>
+            <div style="display: grid; grid-template-columns: repeat(4, 35px); gap: 6px;" id="palette">
+                <button id="pal-0" onclick="jumpTo(0)" style="background: #28a745; color: white; height: 35px;">1</button>
+                <button id="pal-1" onclick="jumpTo(1)" style="background: #e0e0e0; height: 35px;">2</button>
+                <button id="pal-2" onclick="jumpTo(2)" style="background: #e0e0e0; height: 35px;">3</button>
+                <button id="pal-3" onclick="jumpTo(3)" style="background: #e0e0e0; height: 35px;">4</button>
             </div>
         </div>
     </div>
 
     <script>
+        // Question Bank Data
+        const questions = [
+            {
+                q: "What is the dimensional formula of the universal gravitational constant?",
+                options: ["M⁻¹ L³ T⁻²", "M L² T⁻²", "M⁻¹ L² T⁻²", "M L³ T⁻²"]
+            },
+            {
+                q: "Which of the following units is fundamentally used to measure luminous intensity?",
+                options: ["Mole", "Candela", "Kelvin", "Ampere"]
+            },
+            {
+                q: "The escape velocity of a body from the earth's surface depends on:",
+                options: ["Mass of the body", "Angle of projection", "Mass and radius of the earth", "Mass of the body only"]
+            },
+            {
+                q: "Which law states that the total magnetic flux linked with a closed surface is zero?",
+                options: ["Gauss's Law for Magnetism", "Faraday's Law", "Ampere's Circuital Law", "Coulomb's Law"]
+            }
+        ];
+
+        let currentQ = 0;
+        let answers = {}; // Stores selected answers
+
+        function loadQuestion(index) {
+            currentQ = index;
+            document.getElementById('q-title').textContent = `Question ${index + 1} of 4 (Physics)`;
+            document.getElementById('q-text').textContent = questions[index].q;
+            
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`opt${i}`).textContent = questions[index].options[i];
+                document.getElementById(`r${i}`).checked = (answers[index] === i);
+            }
+        }
+
+        function selectOpt(optIndex) {
+            document.getElementById(`r${optIndex}`).checked = true;
+            answers[currentQ] = optIndex;
+        }
+
+        function saveAndNext() {
+            if (answers[currentQ] !== undefined) {
+                document.getElementById(`pal-${currentQ}`).style.background = "#28a745"; // Green for answered
+                document.getElementById(`pal-${currentQ}`).style.color = "white";
+            }
+            if (currentQ < questions.length - 1) {
+                loadQuestion(currentQ + 1);
+            } else {
+                alert("You have reached the last question!");
+            }
+        }
+
+        function clearResponse() {
+            delete answers[currentQ];
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`r${i}`).checked = false;
+            }
+            document.getElementById(`pal-${currentQ}`).style.background = "#e0e0e0";
+            document.getElementById(`pal-${currentQ}`).style.color = "black";
+        }
+
+        function jumpTo(index) {
+            loadQuestion(index);
+        }
+
+        // Timer
         let timeRemaining = 10800;
         const timerElement = document.getElementById('timer');
-
         setInterval(() => {
             let hours = Math.floor(timeRemaining / 3600);
             let minutes = Math.floor((timeRemaining % 3600) / 60);
             let seconds = timeRemaining % 60;
-
-            timerElement.textContent = 
-                String(hours).padStart(2, '0') + ':' + 
-                String(minutes).padStart(2, '0') + ':' + 
-                String(seconds).padStart(2, '0');
-
-            if (timeRemaining > 0) {
-                timeRemaining--;
-            }
+            timerElement.textContent = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+            if (timeRemaining > 0) timeRemaining--;
         }, 1000);
     </script>
 
 </body>
 </html>
-     
+    
