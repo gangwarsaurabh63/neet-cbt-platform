@@ -1,22 +1,37 @@
 const neetQuestions = [
-    // --- PHYSICS (Q1 - Q50) ---
+    // ==================== PHYSICS (45 Questions) ====================
     {
         subject: "Physics",
         q: "A proton accelerated through a potential V has de-Broglie wavelength λ. Then the de-Broglie wavelength of an α-particle, when accelerated through the same potential V, is:",
         options: ["λ / 2", "λ / √2", "λ / (2√2)", "λ / 8"],
         correct: 2
     },
+    // Add rest of Physics questions up to 45 here...
+
+    // ==================== CHEMISTRY (45 Questions) ====================
     {
-        subject: "Physics",
-        q: "Five identical cells are connected as shown in figure. Calculate effective e.m.f. between A and B:",
-        options: ["E", "3E", "3E / 5", "zero"],
-        correct: 1
+        subject: "Chemistry",
+        q: "Wavelength of different radiations are given below...",
+        options: ["A < B < C < D", "B < D < C < A", "A < C < D < B", "A < D < C < B"],
+        correct: 3
     },
+    // Add rest of Chemistry questions (Q46 to Q90) here...
+
+    // ==================== BOTANY (45 Questions) ====================
     {
-        subject: "Physics",
-        q: "A cassegrain telescope uses two mirrors built with mirrors 20 mm apart. If radius of curvature of larger mirror is 220 mm and small mirror is 140 mm, where will final image of an object at infinity be from secondary mirror?",
-        options: ["315 mm", "415 mm", "215 mm", "115 cm"],
+        subject: "Botany",
+        q: "Consider the following statements (A to D)...",
+        options: ["One", "Two", "Three", "Zero"],
+        correct: 3
+    },
+    // Add rest of Botany questions (Q91 to Q135) here...
+
+    // ==================== ZOOLOGY (45 Questions) ====================
+    {
+        subject: "Zoology",
+        q: "Match the following organisms with their respective characteristics...",
+        options: ["(iii), (ii), (iv), (i)", "(iii), (ii), (i), (iv)", "(iii), (iv), (ii), (i)", "(ii), (iv), (iii), (i)"],
         correct: 0
-    },
-    // (You can continue adding up to Q180 following this exact layout for Physics, Chemistry, and Biology)
+    }
+    // Add rest of Zoology questions (Q136 to Q180) here...
 ];
