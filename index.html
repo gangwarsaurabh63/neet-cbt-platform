@@ -3,57 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET CBT - AI-Based Test Platform</title>
+    <title>NEET CBT - Official NTA Mock Portal</title>
+    <link rel="manifest" href="manifest.json">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f4f6f9;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-        .card {
+        .login-card {
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             width: 100%;
+            max-width: 450px;
         }
-        h1 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
+        h2 {
+            color: #003366;
+            margin-top: 0;
+            text-align: center;
+            font-size: 20px;
         }
-        p {
-            color: #666;
-            margin-bottom: 30px;
+        .form-group {
+            margin-bottom: 15px;
         }
-        .btn {
-            background-color: #0056b3;
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .instructions {
+            background: #eef2f7;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .instructions ul {
+            padding-left: 15px;
+            margin: 5px 0 0 0;
+        }
+        .btn-start {
+            background-color: #28a745;
             color: white;
-            padding: 12px 30px;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
         }
-        .btn:hover {
-            background-color: #004085;
+        .btn-start:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>NEET CBT</h1>
-        <p>Welcome to India's AI-Based Test Platform</p>
-        <a href="exam.html" class="btn">Start Exam</a>
+    <div class="login-card">
+        <h2>NTA NEET-UG Mock Examination</h2>
+        
+        <div class="instructions">
+            <strong>General Instructions:</strong>
+            <ul>
+                <li>Total Duration: 3 Hours 20 Minutes.</li>
+                <li>The clock will be set at the server.</li>
+                <li>Each question carries 4 marks. 1 mark will be deducted for every incorrect answer.</li>
+                <li>Enter your details below to begin the test.</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="candidateName">Candidate Name:</label>
+            <input type="text" id="candidateName" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rollNumber">Roll Number / Application ID:</label>
+            <input type="text" id="rollNumber" placeholder="e.g., 2026NEET01" required>
+        </div>
+
+        <button class="btn-start" onclick="startExam()">Proceed to Test</button>
     </div>
 
+    <script>
+        function startExam() {
+            const name = document.getElementById('candidateName').value.trim();
+            const roll = document.getElementById('rollNumber').value.trim();
+
+            if (!name || !roll) {
+                alert("Please enter both your name and roll number to proceed.");
+                return;
+            }
+
+            // Save candidate details securely in browser storage
+            localStorage.setItem('neet_candidate_name', name);
+            localStorage.setItem('neet_candidate_roll', roll);
+
+            // Redirect to exam page
+            window.location.href = "exam.html";
+        }
+    </script>
 </body>
 </html>
