@@ -173,9 +173,8 @@
     </div>
 
     <script>
-        // Prevent re-attempting if already submitted
         if (localStorage.getItem('neet_submitted') === 'true') {
-            alert("You have already submitted this test. Redirecting to scorecard.");
+            alert("You have already submitted this test.");
             window.location.href = "result.html";
         }
 
@@ -315,7 +314,6 @@
                     }
                 });
 
-                // Lock test and save data permanently
                 localStorage.setItem('neet_submitted', 'true');
                 localStorage.setItem('neet_final_score', score);
                 localStorage.setItem('neet_user_answers', JSON.stringify(answers));
