@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET Exam Scorecard & Analysis</title>
+    <title>NEET Exam Scorecard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: auto;
             background: white;
             padding: 30px;
@@ -54,52 +54,31 @@
         .sub-card h4 { margin: 0 0 10px 0; color: #003366; }
         .sub-score { font-size: 18px; font-weight: bold; color: #28a745; }
 
-        .review-section {
-            margin-top: 30px;
-            border-top: 2px solid #ddd;
-            padding-top: 20px;
+        .btn-group {
+            display: flex;
+            gap: 10px;
         }
-        .q-card {
-            background: #fafafa;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-        }
-        .q-card.correct { border-left: 5px solid #28a745; }
-        .q-card.incorrect { border-left: 5px solid #dc3545; }
-        .q-card.unattempted { border-left: 5px solid #ffc107; }
-        
-        .explanation {
-            background: #e8f4fd;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #0c5460;
-        }
-        .btn-home {
-            background-color: #003366;
-            color: white;
-            border: none;
-            width: 100%;
+        button {
+            flex: 1;
             padding: 12px;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            border: none;
         }
+        .btn-review { background-color: #6f42c1; color: white; }
+        .btn-home { background-color: #003366; color: white; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>NEET Mock Test - Official Scorecard</h1>
+        <h1>NEET Mock Test - Scorecard</h1>
         
         <div class="student-info">
-            <div><strong>Candidate Name:</strong> <span id="res-name">Student</span></div>
-            <div><strong>Roll Number:</strong> <span id="res-roll">N/A</span></div>
+            <div><strong>Candidate:</strong> <span id="res-name">Student</span></div>
+            <div><strong>Roll No:</strong> <span id="res-roll">N/A</span></div>
         </div>
 
         <div class="score-box">
@@ -127,15 +106,12 @@
             </div>
         </div>
 
-        <div class="review-section">
-            <h2>Detailed Question Review & Explanations</h2>
-            <div id="review-container"></div>
+        <div class="btn-group">
+            <button class="btn-review" onclick="window.location.href='review.html'">View Detailed Solutions</button>
+            <button class="btn-home" onclick="window.location.href='index.html'">Back to Home</button>
         </div>
-
-        <button class="btn-home" onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 
-    <script src="questions.js"></script>
     <script>
         document.getElementById('res-name').textContent = localStorage.getItem('neet_candidate_name') || "Candidate";
         document.getElementById('res-roll').textContent = localStorage.getItem('neet_candidate_roll') || "N/A";
@@ -149,46 +125,6 @@
         document.getElementById('score-chemistry').textContent = `${subScores.Chemistry} / 180`;
         document.getElementById('score-botany').textContent = `${subScores.Botany} / 180`;
         document.getElementById('score-zoology').textContent = `${subScores.Zoology} / 180`;
-
-        const userAnswers = JSON.parse(localStorage.getItem('neet_user_answers')) || {};
-        const reviewContainer = document.getElementById('review-container');
-        reviewContainer.innerHTML = "";
-
-        if (typeof neetQuestions !== 'undefined') {
-            neetQuestions.forEach((q, idx) => {
-                let userAns = userAnswers[idx];
-                let statusClass = "unattempted";
-                let statusText = "Not Attempted";
-
-                if (userAns !== undefined) {
-                    if (userAns === q.correct) {
-                        statusClass = "correct";
-                        statusText = "Correct (+4)";
-                    } else {
-                        statusClass = "incorrect";
-                        statusText = "Incorrect (-1)";
-                    }
-                }
-
-                let card = document.createElement('div');
-                card.className = `q-card ${statusClass}`;
-                card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px;">
-                        <span>Q${idx + 1} [${q.subject || "General"}]</span>
-                        <span style="color: ${userAns === q.correct ? '#28a745' : (userAns !== undefined ? '#dc3545' : '#ffc107')}">${statusText}</span>
-                    </div>
-                    <p style="margin: 5px 0;">${q.q}</p>
-                    <ul style="margin: 5px 0; padding-left: 20px; font-size: 13px;">
-                        <li>Your Answer: <b>${userAns !== undefined ? q.options[userAns] : "None"}</b></li>
-                        <li>Correct Answer: <b>${q.options[q.correct]}</b></li>
-                    </ul>
-                    <div class="explanation">
-                        <strong>Explanation:</strong> ${q.explanation || "Detailed solution will be updated soon."}
-                    </div>
-                `;
-                reviewContainer.appendChild(card);
-            });
-        }
     </script>
 </body>
 </html>
