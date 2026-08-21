@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEET CBT - Official NTA Mode</title>
     <link rel="manifest" href="manifest.json">
-    <!-- CRITICAL: Loads your full 180 question bank -->
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
@@ -174,13 +173,11 @@
     </div>
 
     <script>
-        // Load candidate name from localStorage
         const storedName = localStorage.getItem('neet_candidate_name');
         if (storedName) {
             document.getElementById('candidate-display').textContent = storedName;
         }
 
-        // Safety check to ensure questions.js loaded correctly
         const questions = (typeof neetQuestions !== 'undefined' && neetQuestions.length > 0) ? neetQuestions : [
             {
                 subject: "Error",
@@ -294,28 +291,34 @@
                 let totalCorrect = 0;
                 let totalIncorrect = 0;
                 
+                let subScores = { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
+
                 questions.forEach((q, idx) => {
+                    let sub = q.subject || "Physics";
                     if (answers[idx] !== undefined) {
                         attempted++;
                         if (answers[idx] === q.correct) {
                             score += 4;
                             totalCorrect++;
+                            if(subScores[sub] !== undefined) subScores[sub] += 4;
                         } else {
                             score -= 1;
                             totalIncorrect++;
+                            if(subScores[sub] !== undefined) subScores[sub] -= 1;
                         }
                     }
                 });
+
+                localStorage.setItem('neet_user_answers', JSON.stringify(answers));
+                localStorage.setItem('neet_sub_scores', JSON.stringify(subScores));
 
                 window.location.href = `result.html?score=${score}&max=${questions.length * 4}&attempted=${attempted}&correct=${totalCorrect}&incorrect=${totalIncorrect}`;
             }
         }
 
-        // Initialize application on load
         initPalette();
         loadQuestion(0);
 
-        // Timer (3 Hours 20 Minutes = 12000 seconds)
         let timeRemaining = 12000;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
