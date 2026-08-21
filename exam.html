@@ -106,7 +106,7 @@
         .options-list li:hover { background-color: #f8fafc; }
         .options-list input[type="radio"] { accent-color: #0088ff; transform: scale(1.2); }
 
-        /* Exact Neetprep Color-Coded Action Stack */
+        /* Color-Coded Action Stack */
         .action-stack {
             display: flex;
             flex-direction: column;
@@ -163,7 +163,7 @@
 </head>
 <body>
 
-    <!-- Top Candidate Header Box -->
+    <!-- Top Candidate Profile Card Header -->
     <div class="candidate-header">
         <div class="avatar-box">
             <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
@@ -172,7 +172,7 @@
             Candidate Name : <span id="cand-name">Saurabh</span><br>
             Exam Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span>NEET</span><br>
             Test Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="color: #e67e22;">Target NEET CBT Test</span><br>
-            Remaining Time : <span class="timer-badge" id="timer">02:45:30</span>
+            Remaining Time : <span class="timer-badge" id="timer">03:15:00</span>
         </div>
     </div>
 
@@ -222,14 +222,17 @@
         const questions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
         let currentQ = 0;
         let answers = {};
+        let subjectTime = { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
+        let activeSubject = "Physics";
 
         function loadQuestion(index) {
             currentQ = index;
             const qData = questions[index];
             if (!qData) return;
 
+            activeSubject = qData.subject || "Physics";
             document.getElementById('q-title').textContent = `Question ${index + 1}:`;
-            document.getElementById('subject-tag').textContent = qData.subject || "Physics";
+            document.getElementById('subject-tag').textContent = activeSubject;
             document.getElementById('q-text').textContent = qData.q;
             
             for (let i = 0; i < 4; i++) {
@@ -269,6 +272,7 @@
                 localStorage.setItem(`${activeTestId}_final_score`, score);
                 localStorage.setItem(`${activeTestId}_user_answers`, JSON.stringify(answers));
                 localStorage.setItem(`${activeTestId}_sub_scores`, JSON.stringify(subScores));
+                localStorage.setItem(`${activeTestId}_subject_time`, JSON.stringify(subjectTime));
 
                 window.location.href = `result.html`;
             }
@@ -276,9 +280,11 @@
 
         loadQuestion(0);
 
-        let timeRemaining = 9946; // Matches ~02:45:30
+        // Official NTA Duration: 3 Hours 15 Minutes = 11,700 seconds
+        let timeRemaining = 11700;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
+            if (subjectTime[activeSubject] !== undefined) subjectTime[activeSubject]++;
             let h = Math.floor(timeRemaining / 3600), m = Math.floor((timeRemaining % 3600) / 60), s = timeRemaining % 60;
             timerElement.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
             if (timeRemaining > 0) timeRemaining--;
