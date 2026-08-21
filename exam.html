@@ -3,277 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET CBT Mode Interface</title>
+    <title>NEET CBT - Test Portal</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f4f7fa;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            background-color: #f4f6f9;
             color: #333;
-        }
-
-        /* Top Bar & Subject Navigation Tabs */
-        header {
-            background-color: #ffffff;
-            border-bottom: 2px solid #e1e8ed;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .subject-tabs {
-            display: flex;
-            gap: 10px;
-        }
-        .tab-btn {
-            background: #f0f4f8;
-            border: 1px solid #cbd5e1;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #475569;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .tab-btn.active {
-            background: #e2e8f0;
-            border-color: #94a3b8;
-            color: #0f172a;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .timer-box {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e293b;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: #f8fafc;
-            padding: 6px 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-        }
-
-        /* Main Workspace Split */
-        .main-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-            padding: 15px;
-            gap: 15px;
-        }
-
-        /* Left Question Area */
-        .question-area {
-            flex: 2.5;
-            background: white;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 25px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            min-height: 100vh;
         }
 
-        .q-header-text {
-            font-size: 15px;
-            font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 12px;
-        }
-        .q-body-text {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #334155;
-            margin-bottom: 20px;
-        }
-
-        /* Options List */
-        .options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-        }
-        .options-list li {
-            margin-bottom: 12px;
+        /* Top Candidate Profile Card Header */
+        .candidate-header {
+            background: white;
+            border-bottom: 1px solid #ddd;
             padding: 12px 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            background: #f8fafc;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.2s;
+            gap: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .options-list li:hover {
-            background-color: #f1f5f9;
-            border-color: #94a3b8;
-        }
-        .options-list input[type="radio"] {
-            accent-color: #0284c7;
-            transform: scale(1.1);
-        }
-
-        /* Bottom Action Buttons inside Question Area */
-        .footer-buttons {
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
-        }
-        .action-btn {
-            padding: 9px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-        .btn-prev { background: #f1f5f9; border-color: #cbd5e1; color: #334155; }
-        .btn-save-next { background: #2563eb; color: white; }
-        .btn-review-next { background: #7c3aed; color: white; }
-        .btn-clear { background: #e2e8f0; color: #334155; }
-
-        /* Right Sidebar & OMR Palette */
-        .sidebar {
-            flex: 1.2;
-            background: white;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .palette-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #0f172a;
-            margin: 0 0 10px 0;
-        }
-
-        .omr-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            max-height: 320px;
-            overflow-y: auto;
-            padding: 5px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 15px;
-            margin-bottom: 10px;
-        }
-        .pal-btn {
-            height: 35px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            border: 1px solid #cbd5e1;
+        .avatar-box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #666;
             background: #e2e8f0;
-            color: #1e293b;
-            font-size: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 4px;
+        }
+        .avatar-box svg { width: 32px; height: 32px; fill: #555; }
+        .candidate-details {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .candidate-details span { font-weight: bold; }
+        .timer-badge {
+            background: #0088ff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 13px;
+            display: inline-block;
         }
 
-        /* Legend box matching the reference image layout */
-        .legend-box {
-            font-size: 11px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid #e2e8f0;
+        /* Main Workspace */
+        .main-container {
+            flex: 1;
+            padding: 15px;
+            max-width: 800px;
+            margin: auto;
+            width: 100%;
         }
-        .legend-item {
+
+        .question-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .q-header {
+            font-size: 16px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .q-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        /* Options */
+        .options-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
+        .options-list li {
+            margin-bottom: 10px;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            background: #fff;
             display: flex;
             align-items: center;
-            gap: 6px;
-            color: #475569;
-            font-weight: 500;
+            gap: 10px;
         }
-        .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+        .options-list li:hover { background-color: #f8fafc; }
+        .options-list input[type="radio"] { accent-color: #0088ff; transform: scale(1.2); }
 
-        .btn-submit {
-            background-color: #dc2626;
+        /* Exact Neetprep Color-Coded Action Stack */
+        .action-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-action {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .btn-save-next { background-color: #82c974; color: white; }
+        .btn-clear { background-color: #ffffff; color: #333; border: 1px solid #ccc; }
+        .btn-save-review { background-color: #f6bd60; color: white; }
+        .btn-review-next { background-color: #3b82f6; color: white; }
+
+        /* Bottom Footer Navigation Bar */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #ddd;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-nav {
+            padding: 10px 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            background: #f8fafc;
+            color: #333;
+        }
+        .btn-submit-green {
+            background-color: #51cf66;
             color: white;
             border: none;
-            width: 100%;
-            padding: 11px;
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 4px;
             font-weight: bold;
+            font-size: 13px;
             cursor: pointer;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="subject-tabs">
-            <button class="tab-btn" id="tab-Physics" onclick="switchSubject('Physics')">⚛️ Physics</button>
-            <button class="tab-btn" id="tab-Chemistry" onclick="switchSubject('Chemistry')">⚗️ Chemistry</button>
-            <button class="tab-btn" id="tab-Botany" onclick="switchSubject('Botany')">🌱 Botany</button>
-            <button class="tab-btn" id="tab-Zoology" onclick="switchSubject('Zoology')">🧬 Zoology</button>
+    <!-- Top Candidate Header Box -->
+    <div class="candidate-header">
+        <div class="avatar-box">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
-        <div class="timer-box">
-            ⏱️ Countdown Timer: <span id="timer">03:20:00</span>
+        <div class="candidate-details" style="flex: 1;">
+            Candidate Name : <span id="cand-name">Saurabh</span><br>
+            Exam Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span>NEET</span><br>
+            Test Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="color: #e67e22;">Target NEET CBT Test</span><br>
+            Remaining Time : <span class="timer-badge" id="timer">02:45:30</span>
         </div>
-    </header>
+    </div>
 
+    <!-- Main Question Box -->
     <div class="main-container">
-        <!-- Question Panel -->
-        <div class="question-area">
-            <div>
-                <div class="q-header-text" id="q-title">Question 1: Loading...</div>
-                <div class="q-body-text" id="q-text">Please wait while questions load...</div>
-                
-                <ul class="options-list" id="options-container">
-                    <li onclick="selectOpt(0)"><input type="radio" name="opt" id="r0"> <span id="opt0">Option A</span></li>
-                    <li onclick="selectOpt(1)"><input type="radio" name="opt" id="r1"> <span id="opt1">Option B</span></li>
-                    <li onclick="selectOpt(2)"><input type="radio" name="opt" id="r2"> <span id="opt2">Option C</span></li>
-                    <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3">Option D</span></li>
-                </ul>
+        <div class="question-card">
+            <div class="q-header">
+                <span id="q-title">Question 1:</span>
+                <span id="subject-tag" style="font-size: 12px; background: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 4px;">Physics</span>
             </div>
+            
+            <div class="q-text" id="q-text">Loading question...</div>
+            
+            <ul class="options-list">
+                <li onclick="selectOpt(0)"><input type="radio" name="opt" id="r0"> <span id="opt0"></span></li>
+                <li onclick="selectOpt(1)"><input type="radio" name="opt" id="r1"> <span id="opt1"></span></li>
+                <li onclick="selectOpt(2)"><input type="radio" name="opt" id="r2"> <span id="opt2"></span></li>
+                <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3"></span></li>
+            </ul>
 
-            <div class="footer-buttons">
-                <button class="action-btn btn-prev" onclick="prevQuestion()">◄ Previous</button>
-                <button class="action-btn btn-save-next" onclick="saveAndNext()">Save & Next</button>
-                <button class="action-btn btn-review-next" onclick="markAndNext()">Mark for Review & Next</button>
-                <button class="action-btn btn-clear" onclick="clearResponse()">Clear</button>
+            <!-- Stacked Action Buttons -->
+            <div class="action-stack">
+                <button class="btn-action btn-save-next" onclick="saveAndNext()">SAVE & NEXT</button>
+                <button class="btn-action btn-clear" onclick="clearResponse()">CLEAR</button>
+                <button class="btn-action btn-save-review" onclick="saveAndMark()">SAVE & MARK FOR REVIEW</button>
+                <button class="btn-action btn-review-next" onclick="markAndNext()">MARK FOR REVIEW & NEXT</button>
             </div>
         </div>
+    </div>
 
-        <!-- OMR Palette Sidebar -->
-        <div class="sidebar">
-            <h4 class="palette-title">Question Palette</h4>
-            <div class="omr-grid" id="palette"></div>
-
-            <div class="legend-box">
-                <div class="legend-item"><span class="dot" style="background: #ffffff; border: 1px solid #cbd5e1;"></span> Not Visited</div>
-                <div class="legend-item"><span class="dot" style="background: #dc2626;"></span> Not Answered</div>
-                <div class="legend-item"><span class="dot" style="background: #16a34a;"></span> Answered</div>
-                <div class="legend-item"><span class="dot" style="background: #7c3aed;"></span> Marked for Review</div>
-            </div>
-
-            <button class="btn-submit" onclick="submitTest()">Submit Test</button>
-        </div>
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <button class="btn-nav" onclick="prevQuestion()">&lt;&lt; BACK</button>
+        <button class="btn-nav" onclick="nextQuestion()">NEXT &gt;&gt;</button>
+        <button class="btn-submit-green" onclick="submitTest()">SUBMIT</button>
     </div>
 
     <script>
@@ -282,72 +216,26 @@
             window.location.href = "result.html";
         }
 
+        const candidateName = localStorage.getItem('neet_candidate_name') || "Saurabh";
+        document.getElementById('cand-name').textContent = candidateName;
+
         const questions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
         let currentQ = 0;
-        let statuses = Array(questions.length).fill("not-visited");
         let answers = {};
-        let subjectTime = { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
-        let activeSubject = "Physics";
-
-        function initPalette() {
-            const paletteDiv = document.getElementById('palette');
-            paletteDiv.innerHTML = "";
-            questions.forEach((_, idx) => {
-                let btn = document.createElement('button');
-                btn.className = "pal-btn";
-                btn.id = `pal-${idx}`;
-                btn.textContent = idx + 1;
-                btn.onclick = () => jumpTo(idx);
-                paletteDiv.appendChild(btn);
-            });
-            updatePaletteColors();
-        }
-
-        function updatePaletteColors() {
-            questions.forEach((_, idx) => {
-                let btn = document.getElementById(`pal-${idx}`);
-                if (!btn) return;
-                let status = statuses[idx];
-                
-                // Matches exact reference image color schemes
-                if (status === "answered") {
-                    btn.style.background = "#16a34a"; btn.style.color = "white"; btn.style.borderColor = "#15803d";
-                } else if (status === "not-answered") {
-                    btn.style.background = "#dc2626"; btn.style.color = "white"; btn.style.borderColor = "#b91c1c";
-                } else if (status === "review") {
-                    btn.style.background = "#7c3aed"; btn.style.color = "white"; btn.style.borderColor = "#6d28d9";
-                } else {
-                    btn.style.background = "#ffffff"; btn.style.color = "#1e293b"; btn.style.borderColor = "#cbd5e1";
-                }
-            });
-        }
 
         function loadQuestion(index) {
             currentQ = index;
-            if (statuses[index] === "not-visited") statuses[index] = "not-answered";
-            
             const qData = questions[index];
-            activeSubject = qData.subject || "Physics";
+            if (!qData) return;
 
             document.getElementById('q-title').textContent = `Question ${index + 1}:`;
+            document.getElementById('subject-tag').textContent = qData.subject || "Physics";
             document.getElementById('q-text').textContent = qData.q;
             
             for (let i = 0; i < 4; i++) {
                 document.getElementById(`opt${i}`).textContent = qData.options[i];
                 document.getElementById(`r${i}`).checked = (answers[index] === i);
             }
-
-            // Update active state of top subject tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            let activeTab = document.getElementById(`tab-${activeSubject}`);
-            if (activeTab) activeTab.classList.add('active');
-
-            updatePaletteColors();
-        }
-
-        function switchSubject(subjectName) {
-            let foundIdx = questions.findIndex(q => (q.subject || "Physics") === subjectName);
-            if (foundIdx !== -1) loadQuestion(foundIdx);
         }
 
         function selectOpt(optIndex) {
@@ -356,23 +244,14 @@
         }
 
         function prevQuestion() { if (currentQ > 0) loadQuestion(currentQ - 1); }
-        function saveAndNext() {
-            statuses[currentQ] = (answers[currentQ] !== undefined) ? "answered" : "not-answered";
-            if (currentQ < questions.length - 1) loadQuestion(currentQ + 1);
-            else updatePaletteColors();
-        }
-        function markAndNext() {
-            statuses[currentQ] = "review";
-            if (currentQ < questions.length - 1) loadQuestion(currentQ + 1);
-            else updatePaletteColors();
-        }
+        function nextQuestion() { if (currentQ < questions.length - 1) loadQuestion(currentQ + 1); }
+        function saveAndNext() { nextQuestion(); }
+        function markAndNext() { nextQuestion(); }
+        function saveAndMark() { nextQuestion(); }
         function clearResponse() {
             delete answers[currentQ];
             for (let i = 0; i < 4; i++) document.getElementById(`r${i}`).checked = false;
-            statuses[currentQ] = "not-answered";
-            updatePaletteColors();
         }
-        function jumpTo(index) { loadQuestion(index); }
 
         function submitTest() {
             if (confirm("Are you sure you want to submit the test?")) {
@@ -390,19 +269,16 @@
                 localStorage.setItem(`${activeTestId}_final_score`, score);
                 localStorage.setItem(`${activeTestId}_user_answers`, JSON.stringify(answers));
                 localStorage.setItem(`${activeTestId}_sub_scores`, JSON.stringify(subScores));
-                localStorage.setItem(`${activeTestId}_subject_time`, JSON.stringify(subjectTime));
 
                 window.location.href = `result.html`;
             }
         }
 
-        initPalette();
         loadQuestion(0);
 
-        let timeRemaining = 12000;
+        let timeRemaining = 9946; // Matches ~02:45:30
         const timerElement = document.getElementById('timer');
         setInterval(() => {
-            if (subjectTime[activeSubject] !== undefined) subjectTime[activeSubject]++;
             let h = Math.floor(timeRemaining / 3600), m = Math.floor((timeRemaining % 3600) / 60), s = timeRemaining % 60;
             timerElement.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
             if (timeRemaining > 0) timeRemaining--;
