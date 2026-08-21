@@ -242,7 +242,7 @@ const neetQuestions = [
     },
     {
         subject: "Physics",
-    q: "Dimensional formula of [β] in equation (α/t²) = FV + (β/x²) where T=time, F=force, V=velocity, X=distance is:",
+        q: "Dimensional formula of [β] in equation (α/t²) = FV + (β/x²) where T=time, F=force, V=velocity, X=distance is:",
         options: ["[M¹L⁴T⁻³]", "[M²L⁴T⁻²]", "[M²L³T⁻³]", "[M²L³T⁻²]"],
         correct: 0
     },
@@ -269,8 +269,8 @@ const neetQuestions = [
         q: "The given logic gate configuration combining OR and NAND gates is equivalent to:",
         options: ["NAND", "XOR", "OR", "XNOR"],
         correct: 3
-    }
-];,
+    },
+
     // ==================== CHEMISTRY (45 Questions) ====================
     {
         subject: "Chemistry",
@@ -541,6 +541,549 @@ const neetQuestions = [
         q: "Which among the following statements are correct regarding carbenes and carbon radicals (CH3 radical sp² vs sp³ hybrid, singlet vs triplet CH2 stability)?",
         options: ["Statement 1 only", "Statement 2 only", "Statement 3 only", "Statement 4"],
         correct: 1
+    },
+
+    // ==================== BOTANY (45 Questions) ====================
+    {
+        subject: "Botany",
+        q: "Consider the following statements (A to D): Numerical taxonomy, Cytotaxonomy, Phylogenetic classification systems, Artificial classifications. How many statements are not correct?",
+        options: ["One", "Two", "Three", "Zero"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "In Mangifera indica, Solanum tuberosum, and Panthera leo, all the three names indica, tuberosum and leo represent the:",
+        options: ["Names of family", "Names of specific epithets", "Names of genus", "Names of generic epithet"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Pyriform biflagellated male gametes, oogamous sexual reproduction, and diplontic life cycle pattern are related to:",
+        options: ["Chara", "Fucus", "Cladophora", "Polysiphonia"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Animals, mammals, and dogs represent:",
+        options: ["Taxa at same levels", "Taxa / Taxon at different levels", "Taxa which have same morphological characters", "Taxa at division level"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Chemosynthetic bacteria obtain energy:",
+        options: ["from sunlight", "from UV rays", "from Water", "By the oxidation of organic or inorganic substances"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Assertion: In gymnosperm male and female gametophyte remain within sporangia. Reason: They do not have an independent free living existence.",
+        options: ["Both True & Reason is correct explanation", "Both True but Reason is not correct explanation", "Assertion is True but Reason is False", "Both False"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "The side of a flower facing the mother axis is called:",
+        options: ["Anterior side", "Posterior side", "Dorsal side", "Ventral side"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "In dicot leaves, size of vascular bundles are dependent on the:",
+        options: ["Size of the leaves", "Size of the mesophyll cells", "Size of the veins", "Size of the bundle sheath cells"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "The transverse section of stem of dicotyledonous plant shows which anatomical feature?",
+        options: ["Phloem parenchyma absent", "Water containing cavities within vascular tissue", "Hypodermis made up of sclerenchyma", "Vascular bundles are conjoint, collateral and open arranged in a ring"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Assertion: Endomembrane system include ER, golgi complex, lysosome and vacuole. Reason: Their functions are coordinated to each other.",
+        options: ["Both True & correct explanation", "Both True but not explanation", "Assertion True, Reason False", "Both False"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Plant cells differ from animal cells in having:",
+        options: ["large vacuole, plastids and cell wall", "cell wall, plastids and centrioles", "cell wall, plastids and mitochondria", "cell membrane, plastids and cell wall"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Which of the following statements with respect to endoplasmic reticulum is incorrect?",
+        options: ["Part of endomembrane system", "Steroidal hormones synthesised in SER", "RER bears ribosomes on surface", "SER is continuous with inner membrane of nucleus"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Arrange the events of interphase in correct sequence: (i) RNA & DNA polymerase synthesis, (ii) DNA replication & histone synthesis, (iii) Tubulin synthesis, (iv) Karyokinesis & cytokinesis",
+        options: ["(i) -> (ii) -> (iii) -> (iv)", "(ii) -> (i) -> (iii) -> (iv)", "(iv) -> (iii) -> (ii) -> (i)", "(iii) -> (iv) -> (ii) -> (i)"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "In cells of higher plants, during S-phase:",
+        options: ["DNA replication in nucleus and centrioles duplicate in cytoplasm", "DNA replication occurs in nucleus", "Centrioles duplicates in cytoplasm", "Centrioles duplicate in nucleus and DNA replication in cytoplasm"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "How many chromosomes will onion root tip cell have at G1-phase, after S-phase and after M-phase if it has 16 chromosomes in mesophyll cell?",
+        options: ["16, 32, 32", "16, 32, 16", "8, 16, 16", "16, 16, 16"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "The acid insoluble fraction of the tissue has:",
+        options: ["Amino acids, Proteins and nucleic acids", "Monosaccharides and polysaccharides", "Nucleic acids, nucleotides and nitrogen base", "Proteins, nucleic acids, polysaccharides and lipids"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Statement A: Steroids do not contain fatty acids, but are included in lipids. Statement B: Cholesterol is the most abundant steroid in animal tissues.",
+        options: ["Both statements are correct", "Statement A correct, B incorrect", "Statement A incorrect, B correct", "Both incorrect"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Statement-I: Enzyme substrate complex is short lived and dissociated into product and enzyme. Statement-II: Most enzymes classified based on essentiality of ES complex.",
+        options: ["Both statement-I and II are correct", "Both incorrect", "Only statement-I is correct", "Only statement-II is correct"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Which among the following is not a post-fertilization event in flowering plants?",
+        options: ["Endosperm and embryo development", "Maturation of ovule into seed", "Ovary into fruit conversion", "Formation of megaspores from megaspore mother cell"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Statement-1: If female parent produces unisexual flowers, no need for emasculation. Statement-2: Pollination transfers pollen grains from anther to stigma.",
+        options: ["Both statements are correct", "Statement-1 correct, 2 incorrect", "Statement-1 incorrect, 2 correct", "Both incorrect"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Statement-1: Megaspore mother cell divides meiotically and one megaspore forms embryo sac. Statement-2: Mature embryo sac is 7 nucleated and 8 celled.",
+        options: ["Statement-1 correct, Statement-2 incorrect", "Statement-2 correct, Statement-1 incorrect", "Both statements are correct", "Both statements are incorrect"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Match List-I (Splitting of water, Radioactive carbon use, ATP synthesis, Malic acid synthesis) with List-II (Calvin pathway, Cyclic photophosphorylation, Z-scheme, Hatch & Slack):",
+        options: ["A-I, B-II, C-III, D-IV", "A-IV, B-III, C-II, D-I", "A-III, B-I, C-II, D-IV", "A-IV, B-I, C-II, D-III"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Which statement(s) is/are true regarding temperature sensitivity of dark and light reactions?",
+        options: ["Dark reaction is more temperature sensitive than light reaction", "Light reaction is more temperature sensitive than dark reaction", "Both are not sensitive to temperature", "Dark reaction sensitive, light reaction not sensitive to light"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Statement-I: Ubiquinol is oxidised with transfer of electrons to cytochrome c via bc1 complex. Statement-II: Cytochrome c oxidase complex contains cytochromes a, a3 and two copper centres.",
+        options: ["Both incorrect", "Statement I correct, II incorrect", "Statement I incorrect, II correct", "Both Statement I and II are correct"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Cytochrome c is a small protein attached to the:",
+        options: ["Outer surface of inner mitochondrial membrane", "Inner surface of outer mitochondrial membrane", "Inner surface of inner mitochondrial membrane", "Outer surface of outer mitochondrial membrane"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "What would be correct regarding growth figures (a and b showing leaf growth area)?",
+        options: ["Relative growth rate is equal in both", "Figure (a) shows more absolute growth rate", "Absolute growth rate is equal in both", "Relative growth rate is more in figure (b)"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Oxygen acts as final hydrogen acceptor in ETS. How many molecules of oxygen are required to oxidise 6 molecules of pyruvic acid?",
+        options: ["20 oxygen", "15 oxygen", "30 oxygen", "60 oxygen"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Which of the following hormone promotes internode/petiole elongation in deep water rice?",
+        options: ["Kinetin", "Ethylene", "2-4-D", "GA3"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Match Column-I (Multiple alleles, Polygenic inheritance, Pleiotropy) with Column-II definitions:",
+        options: ["A-ii, B-iii, C-i", "A-iii, B-ii, C-i", "A-i, B-ii, C-iii", "A-ii, B-i, C-iii"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Which of the following statement is not true for two genes showing 50% recombination frequency?",
+        options: ["May be on different chromosomes", "Tightly linked", "Show independent assortment", "Undergo more than one crossover if on same chromosome"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Location of few genes of Drosophila studied by T.H. Morgan:",
+        options: ["y, w, m on Y chromosome", "y+, w+, m+ on Y chromosome", "y, y+, w, w+, m, m+ on X-chromosome", "Present on autosomes"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Of a normal couple, half the sons are haemophilic while half the daughters are carriers. The gene is located on:",
+        options: ["X-chromosome of father", "Y-chromosome of father", "One X-chromosome of mother", "Both X-chromosomes of mother"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "A man with blood group B marries female with blood group A and first child has blood group B. What is genotype of child?",
+        options: ["IAIB", "IAIO", "IBIO", "IBIB"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Match transcription factors in prokaryotes (Sigma factor, Template strand, Coding strand, RNA Polymerase):",
+        options: ["1-a, 2-b, 3-c, 4-d", "1-d, 2-b, 3-c, 4-a", "1-c, 2-d, 3-a, 4-b", "1-b, 2-d, 3-a, 4-c"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Find out correct statements for lac-operon (structural genes regulated by common promoter, i refers to inducer, lactose is substrate, y-gene codes for permease, z-gene codes for beta-galactosidase):",
+        options: ["a and c only", "a, b and e only", "a, c and e only", "a, c, d and e"],
+        correct: 3
+    },
+    {
+        subject: "Botany",
+        q: "Sequence of binding of amino acyl-t-RNA complexes during translation for mRNA transcribed by 3'ATACGCATTGCG5':",
+        options: ["a, b, c, d", "d, a, b, c", "a, c, d, b", "b, a, c, d"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "The repressor of the operon is synthesized:",
+        options: ["All the time", "Certain time", "Non constitutively", "None of them"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "Identify incorrect match: Ribozyme (Nucleic acid), Spliceosome (Bacteria), Genetic code (Triplet), Replication (DNA Polymerase):",
+        options: ["Ribozyme - Nucleic acid", "Spliceosome - Bacteria", "Genetic code - Triplet", "Replication - DNA Polymerase"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "During replication of DNA, Okazaki fragments are formed in the direction of:",
+        options: ["3' -> 5'", "5' -> 3'", "5' -> 5'", "3' -> 3'"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Match ecological interactions (Commensalism, Parasitism, Mutualism, Predation) with examples and effects (+/-, +/+, etc.):",
+        options: ["A-1-i-α; B-2-ii-β; C-3-iii-γ; D-4-iv-δ", "A-2-ii-β; B-1-iii-γ; C-3-i-α; D-4-iv-δ", "A-3-iii-γ; B-4-iv-α; C-2-ii-β; D-1-i-δ", "A-1-ii-γ; B-3-i-α; C-2-iii-β; D-4-iv-δ"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "They reduce survival, growth and reproduction of host and render them vulnerable to predation. They are:",
+        options: ["Predator", "Parasite", "Amensal", "Commensal"],
+        correct: 1
+    },
+    {
+        subject: "Botany",
+        q: "Statement I: Primary source of energy in ecosystem is solar energy. Statement II: Rate of production of organic matter during photosynthesis is net primary productivity (NPP).",
+        options: ["Both statement I and II are correct", "Both incorrect", "Statement I correct, II incorrect", "Statement I incorrect, II correct"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Assertion (A): Pyramid of biomass in sea is generally inverted. Reason (R): Paradoxically biomass of phytoplankton exceeds that of fishes.",
+        options: ["Both incorrect", "Both correct and R explains A", "A correct, R incorrect", "A correct, R correct but not explanation"],
+        correct: 2
+    },
+    {
+        subject: "Botany",
+        q: "Which of the following is not included in 'Evil Quartet' responsible for biodiversity loss?",
+        options: ["Co evolution", "Overexploitation", "Alien species invasion and co extinction", "Habitat loss and fragmentation"],
+        correct: 0
+    },
+    {
+        subject: "Botany",
+        q: "The Earth Summit was held in:",
+        options: ["2002 in Johannesburg", "1992 in Rio de Janeiro", "1992 in Johannesburg", "2002 in Rio de Janeiro"],
+        correct: 1
+    },
+
+    // ==================== ZOOLOGY (45 Questions) ====================
+    {
+        subject: "Zoology",
+        q: "Match organisms Pila, Bombyx, Pleurobrachia, Taenia with characteristics (Flame cells, Comb plates, Radula, Malpighian tubules):",
+        options: ["(iii), (ii), (iv), (i)", "(iii), (ii), (i), (iv)", "(iii), (iv), (ii), (i)", "(ii), (iv), (iii), (i)"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "First phylum to have complete digestive tract can be represented by:",
+        options: ["Hydra", "Taenia", "Ancylostoma", "Pheretima"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Identify incorrect match: Porifera, Coelenterata, Ctenophora, Platyhelminthes:",
+        options: ["Porifera - ostia, choanocytes, indirect development, sycon", "Coelenterata - Cnidoblasts, Gastrovascular cavity, Triploblastic, Adamsia", "Ctenophora - Combplates, Diploblastic, indirect development, Ctenoplana", "Platyhelminthes - Flame cells, Parasite, Monocious, Tapeworm"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Read statements regarding matrix of connective tissue (cells secrete matrix, matrix accumulates between cells and fibres, matrix acts as ground substance):",
+        options: ["a only", "b and c", "a and c", "a, b and c"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "During metamorphosis, moulting occurs how many times in cockroach?",
+        options: ["3-5", "15-20", "13", "1-2"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following is an unpaired structure in Rana tigrina?",
+        options: ["Optic lobes in midbrain", "Lungs", "Diencephalon in forebrain", "Kidneys"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "With reference to frog: Statement I: Ability to change color to hide from enemy. Statement II: Undergo summer sleep (aestivation) and winter sleep (hibernation).",
+        options: ["Both incorrect", "Statement I incorrect, II correct", "Both Statement I and II are correct", "Statement I correct, II incorrect"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Which type of animals pump out mixed blood present in ventricles to organs?",
+        options: ["Fishes and Amphibians", "Birds and mammals", "Amphibians and mammals", "Amphibians and reptiles"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Match ECG waves (P-wave, T-wave, QRS complex, End of T-wave) with heart activities:",
+        options: ["A-III, B-I, C-IV, D-II", "A-III, B-I, C-II, D-IV", "A-IV, B-I, C-III, D-II", "A-IV, B-I, C-II, D-IV"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Tidal volume and inspiratory reserve volume are 500 ml and 2500 ml. Vital capacity if expiratory reserve volume is 1000 ml:",
+        options: ["2000 ml", "1500 ml", "3500 ml", "4000 ml"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Arrange steps of expiration: Relaxation of diaphragm, Reduction of pulmonary volume, Expulsion of air, Increase in intra-pulmonary pressure:",
+        options: ["I -> II -> III -> IV", "I -> II -> IV -> III", "IV -> III -> II -> I", "IV -> II -> III -> I"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Observe alveoli figure and identify label 'A' and nature of tissue associated:",
+        options: ["Basement membrane - Non-cellular layer", "Blood capillary - Mesothelium", "Alveolar wall - One-celled thick squamous epithelium", "Alveoli compound endothelium"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "During micturition, urinary bladder and urethral sphincter respectively:",
+        options: ["Contracts, Contracts", "Contracts, Relaxes", "Relaxes, Contracts", "Relaxes, Relaxes"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Which condition will not activate JG cells?",
+        options: ["Decrease in blood volume", "Fall in Na+ ion concentration", "Rise in GFR", "Fall in blood pressure"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Diagram representing nerve impulse in myelinated neuron. Label parts correctly:",
+        options: ["1", "2", "3", "4"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Statement-I: Brain is protected by three cranial meninges. Statement-II: Pia mater is the outermost menix.",
+        options: ["Both true", "Both false", "Statement-I true, II false", "Statement-I false, II true"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Match hormones (Insulin, Thyroxin, Corticoids, Growth Hormone) with respective diseases:",
+        options: ["(iv), (i), (ii), (iii)", "(i), (iv), (v), (iii)", "(ii), (i), (v), (iii)", "(i), (iii), (iv), (ii)"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Assertion (A): cAMP serves as second messenger for protein hormones. Reason (R): Insulin is a protein hormone.",
+        options: ["Both correct, R not explanation", "A correct, R not correct", "A not correct, R correct", "Both correct and R is explanation"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Select correct match for animal movements (Locomotion, Cilia in cytopharynx, Tentacles in hydra, Streaming of protoplasm):",
+        options: ["A-i, B-iii, C-ii, D-iv", "A-iv, B-vi, C-iii, D-v", "A-i, B-v, C-vi, D-i", "A-iii, B-iii, C-ii, D-iv"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Choose correct statement about muscular tissue:",
+        options: ["Skeletal muscles uninucleated", "Intercalated discs allow cardiac muscle cells to contract as a unit", "Walls of blood vessels made of columnar epithelium", "Smooth muscles multinucleated and involuntary"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Dislocated shoulder joint where head of humerus is no longer in contact. Which structure is most directly involved?",
+        options: ["Acetabulum", "Acromion", "Glenoid cavity", "Pubic symphysis"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Flowchart of forebrain parts (Cerebrum, Hypothalamus, Association area, Neuro-secretory cells):",
+        options: ["A Cerebrum, B Thalamus, C Motor area, D Neuro-secretory cells", "A Cerebellum, B Medulla, C Sensory area, D Neuro-sensory cells", "A Cerebellar hemisphere, B Hypothalamus, C Association area, D Neuro-sensory cells", "A Cerebrum, B Hypothalamus, C Association area, D Neuro-secretory cells"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following are examples of homologous organs?",
+        options: ["Forelimb of mammals, sweet potato and potato", "All vertebrate heart, wings of butterfly and birds", "All vertebrate brain, flippers of dolphin and whale", "Thorn of Bougainvillea and tendril of cucurbita"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Which gas was not present in free form at the time life originated on earth?",
+        options: ["Ammonia", "Oxygen", "Hydrogen", "Methane"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Founder effect is related to:",
+        options: ["Mutation", "Natural selection", "Genetic drift", "Gene flow"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "In a population at Hardy-Weinberg equilibrium, if frequency of allele A is 0.6, expected frequency of heterozygotes is:",
+        options: ["0.36", "0.48", "0.24", "0.16"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Coelacanth caught in South Africa (lobefins) evolved into the first:",
+        options: ["Amphibians", "Jawless fish", "Reptiles", "Birds"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Sportspersons abused drugs by snorting/ingesting affecting cardiovascular system. What kind of drugs?",
+        options: ["Heroin", "Cocaine", "Cannabinoids", "Barbiturates"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Match barriers of innate immunity (Physical, Physiological, Cellular, Cytokine) with examples:",
+        options: ["a-(i)(ii), b-(vi)(v), c-(iii), d-(iv)", "a-(i)(vi), b-(ii)(v), c-(iii), d-(iv)", "a-(i)(vi), b-(ii)(v), c-(iv), d-(iii)", "a-(ii)(vi), b-(i)(v), c-(iii), d-(iv)"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following are bacterial diseases?",
+        options: ["Pneumonia, Malaria", "Typhoid, Common cold", "Dysentery, Plague", "Ascariasis, Diphtheria"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Find incorrect statement among plague, morphine, memory cells, and barbiturates:",
+        options: ["Plague is bacterial disease", "Morphine is painkiller", "Memory cells formed in acquired immunity", "Barbiturates are stimulant drugs"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Cell-mediated immunity mainly depends on the action of:",
+        options: ["T lymphocytes", "B lymphocytes", "Mast cells", "Neutrophils"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Property regarding drug obtained from given plant (Opium poppy properties):",
+        options: ["Pain killer", "CNS Stimulant", "Hallucinogen", "Hypnotic"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following is the most fatal non-infectious disease?",
+        options: ["AIDS", "Diabetes", "Cancer", "Hepatitis"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Who disapproved good humor theory?",
+        options: ["William Harvey", "Starling", "Hippocrates", "Indian Ayurveda"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Which set of example is related with secondary lymphoid organ?",
+        options: ["Heart, Liver, Spleen", "Thymus, MALT, Bone marrow", "Spleen, appendix, tonsils", "Lymph node, bone marrow, skin"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Spermatogenesis flowchart sequence (Spermatogonia -> Primary spermatocyte -> A -> B -> Spermatozoa). Statement regarding B:",
+        options: ["Produced by first meiotic division", "Diploids structure", "Produced by mitosis division", "Has 23 chromosomes"],
+        correct: 3
+    },
+    {
+        subject: "Zoology",
+        q: "Statement-I: Tail part of sperm possesses numerous mitochondria. Statement-II: Secondary follicle is surrounded by thecal layer.",
+        options: ["Both correct", "Both incorrect", "Only Statement I correct", "Only Statement II correct"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Which hormone induces rupture of graafian follicle and release of ovum?",
+        options: ["LH", "Relaxin", "Progesterone", "Inhibin"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Mammary duct connects:",
+        options: ["Mammary tubule to mammary ampulla", "Mammary alveoli to mammary tubule", "Mammary tubule to lactiferous duct", "Lactiferous duct to nipple"],
+        correct: 0
+    },
+    {
+        subject: "Zoology",
+        q: "Highly coiled tubules in testis where sperms are produced are called:",
+        options: ["Epididymis", "Vas deferens", "Seminiferous tubules", "Rete testis"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Match List-I (Placenta, Corpus luteum, Acrosome, Colostrum) with List-II descriptions:",
+        options: ["i-d; ii-c; iii-a; iv-b", "i-c; ii-d; iii-b; iv-a", "i-d; ii-c; iii-b; iv-a", "i-c; ii-d; iii-a; iv-b"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "How many of the following are sexually transmitted infections? (Syphilis, ringworm, hepatitis-B, typhoid, genital herpes, common cold)",
+        options: ["One", "Two", "Three", "Four"],
+        correct: 1
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following is not a barrier method of contraception?",
+        options: ["Condoms", "Cervical caps", "Lactational amenorrhea", "Both 1 and 2"],
+        correct: 2
+    },
+    {
+        subject: "Zoology",
+        q: "Which of the following contraceptives does not use hormones?",
+        options: ["Oral contraceptive pills", "LNG-20", "Multiload 375", "Hormonal implants"],
+        correct: 2
     }
 ];
-
