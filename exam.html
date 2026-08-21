@@ -21,15 +21,20 @@
         .candidate-header {
             background: white;
             border-bottom: 1px solid #ddd;
-            padding: 12px 15px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         .avatar-box {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border: 2px solid #666;
             background: #e2e8f0;
             display: flex;
@@ -37,10 +42,10 @@
             justify-content: center;
             border-radius: 4px;
         }
-        .avatar-box svg { width: 32px; height: 32px; fill: #555; }
+        .avatar-box svg { width: 28px; height: 28px; fill: #555; }
         .candidate-details {
-            font-size: 13px;
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.4;
             color: #333;
         }
         .candidate-details span { font-weight: bold; }
@@ -129,6 +134,40 @@
         .btn-save-review { background-color: #f6bd60; color: white; }
         .btn-review-next { background-color: #3b82f6; color: white; }
 
+        /* Question Palette Section Built Directly on Screen */
+        .palette-section {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .palette-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #003366;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+            max-height: 180px;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+        .pal-num-btn {
+            height: 32px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: #e2e8f0;
+            font-size: 12px;
+        }
+
         /* Bottom Footer Navigation Bar */
         .bottom-nav {
             background: white;
@@ -159,25 +198,31 @@
             font-size: 13px;
             cursor: pointer;
         }
+
+        @media (max-width: 600px) {
+            .palette-grid { grid-template-columns: repeat(6, 1fr); }
+        }
     </style>
 </head>
 <body>
 
     <!-- Top Candidate Profile Card Header -->
     <div class="candidate-header">
-        <div class="avatar-box">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <div class="candidate-details" style="flex: 1;">
-            Candidate Name : <span id="cand-name">Saurabh</span><br>
-            Exam Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span>NEET</span><br>
-            Test Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="color: #e67e22;">Target NEET CBT Test</span><br>
-            Remaining Time : <span class="timer-badge" id="timer">03:15:00</span>
+        <div class="header-left">
+            <div class="avatar-box">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <div class="candidate-details">
+                Candidate Name : <span id="cand-name">Saurabh</span><br>
+                Test Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="color: #e67e22;">Target NEET CBT Test</span><br>
+                Remaining Time : <span class="timer-badge" id="timer">03:15:00</span>
+            </div>
         </div>
     </div>
 
-    <!-- Main Question Box -->
+    <!-- Main Workspace -->
     <div class="main-container">
+        <!-- Question Card -->
         <div class="question-card">
             <div class="q-header">
                 <span id="q-title">Question 1:</span>
@@ -201,6 +246,12 @@
                 <button class="btn-action btn-review-next" onclick="markAndNext()">MARK FOR REVIEW & NEXT</button>
             </div>
         </div>
+
+        <!-- Question Palette Section directly on screen -->
+        <div class="palette-section">
+            <div class="palette-title">Question Palette (Click any number to jump)</div>
+            <div class="palette-grid" id="paletteGrid"></div>
+        </div>
     </div>
 
     <!-- Bottom Navigation Bar -->
@@ -221,12 +272,41 @@
 
         const questions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
         let currentQ = 0;
+        let statuses = Array(questions.length).fill("not-visited");
         let answers = {};
         let subjectTime = { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
         let activeSubject = "Physics";
 
+        function initPalette() {
+            const grid = document.getElementById('paletteGrid');
+            grid.innerHTML = "";
+            questions.forEach((_, idx) => {
+                let btn = document.createElement('button');
+                btn.className = "pal-num-btn";
+                btn.id = `pal-${idx}`;
+                btn.textContent = idx + 1;
+                btn.onclick = () => loadQuestion(idx);
+                grid.appendChild(btn);
+            });
+            updatePaletteColors();
+        }
+
+        function updatePaletteColors() {
+            questions.forEach((_, idx) => {
+                let btn = document.getElementById(`pal-${idx}`);
+                if (!btn) return;
+                let status = statuses[idx];
+                if (status === "answered") { btn.style.background = "#51cf66"; btn.style.color = "white"; }
+                else if (status === "review") { btn.style.background = "#7c3aed"; btn.style.color = "white"; }
+                else if (status === "not-answered") { btn.style.background = "#ff6b6b"; btn.style.color = "white"; }
+                else { btn.style.background = "#e2e8f0"; btn.style.color = "#333"; }
+            });
+        }
+
         function loadQuestion(index) {
             currentQ = index;
+            if (statuses[index] === "not-visited") statuses[index] = "not-answered";
+
             const qData = questions[index];
             if (!qData) return;
 
@@ -239,6 +319,7 @@
                 document.getElementById(`opt${i}`).textContent = qData.options[i];
                 document.getElementById(`r${i}`).checked = (answers[index] === i);
             }
+            updatePaletteColors();
         }
 
         function selectOpt(optIndex) {
@@ -248,12 +329,17 @@
 
         function prevQuestion() { if (currentQ > 0) loadQuestion(currentQ - 1); }
         function nextQuestion() { if (currentQ < questions.length - 1) loadQuestion(currentQ + 1); }
-        function saveAndNext() { nextQuestion(); }
-        function markAndNext() { nextQuestion(); }
-        function saveAndMark() { nextQuestion(); }
+        function saveAndNext() {
+            statuses[currentQ] = (answers[currentQ] !== undefined) ? "answered" : "not-answered";
+            nextQuestion();
+        }
+        function markAndNext() { statuses[currentQ] = "review"; nextQuestion(); }
+        function saveAndMark() { statuses[currentQ] = (answers[currentQ] !== undefined) ? "review" : "not-answered"; nextQuestion(); }
         function clearResponse() {
             delete answers[currentQ];
             for (let i = 0; i < 4; i++) document.getElementById(`r${i}`).checked = false;
+            statuses[currentQ] = "not-answered";
+            updatePaletteColors();
         }
 
         function submitTest() {
@@ -278,9 +364,9 @@
             }
         }
 
+        initPalette();
         loadQuestion(0);
 
-        // Official NTA Duration: 3 Hours 15 Minutes = 11,700 seconds
         let timeRemaining = 11700;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
