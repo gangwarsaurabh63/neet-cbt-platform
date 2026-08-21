@@ -297,15 +297,11 @@
                     }
                 });
 
-                document.getElementById('question-box').innerHTML = `
-                    <div style="text-align: center; padding: 30px;">
-                        <h2>Test Submitted Successfully!</h2>
-                        <h3>Candidate: Saurabh Gangwar</h3>
-                        <p>Total Questions: ${questions.length}</p>
-                        <p>Attempted: ${attempted}</p>
-                        <h1 style="color: #003366;">Final Score: ${score} / ${questions.length * 4}</h1>
-                        <a href="index.html" style="display:inline-block; margin-top:20px; background:#003366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Back to Home</a>
-                    </div>
+                // Add this line to redirect to your scorecard page:
+                window.location.href = `result.html?score=${score}&max=${questions.length * 4}&attempted=${attempted}`;
+            }
+        }
+
                 `;
             }
         }
