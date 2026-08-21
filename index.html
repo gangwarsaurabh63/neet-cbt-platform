@@ -74,37 +74,72 @@
         .btn-start:hover {
             background-color: #218838;
         }
+        .submitted-box {
+            text-align: center;
+        }
+        .submitted-box p {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .btn-rev {
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
+    <div class="login-card" id="card-container">
         <h2>NTA NEET-UG Mock Examination</h2>
         
-        <div class="instructions">
-            <strong>General Instructions:</strong>
-            <ul>
-                <li>Total Duration: 3 Hours 20 Minutes.</li>
-                <li>The clock will be set at the server.</li>
-                <li>Each question carries 4 marks. 1 mark will be deducted for every incorrect answer.</li>
-                <li>Enter your details below to begin the test.</li>
-            </ul>
+        <div id="form-section">
+            <div class="instructions">
+                <strong>General Instructions:</strong>
+                <ul>
+                    <li>Total Duration: 3 Hours 20 Minutes.</li>
+                    <li>Each question carries 4 marks. 1 mark negative marking for incorrect answers.</li>
+                    <li><strong>Note:</strong> The test can only be attempted <strong>once</strong>. After submission, your answers are saved for revision.</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="candidateName">Candidate Name:</label>
+                <input type="text" id="candidateName" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rollNumber">Roll Number / Application ID:</label>
+                <input type="text" id="rollNumber" placeholder="e.g., 2026NEET01" required>
+            </div>
+
+            <button class="btn-start" onclick="startExam()">Proceed to Test</button>
         </div>
 
-        <div class="form-group">
-            <label for="candidateName">Candidate Name:</label>
-            <input type="text" id="candidateName" placeholder="Enter your full name" required>
+        <div id="submitted-section" style="display: none;" class="submitted-box">
+            <p>You have already submitted this test!</p>
+            <p style="color: #333; font-size: 13px;">Your submission is locked, but you can view your scorecard or revise questions anytime.</p>
+            <button class="btn-rev" onclick="window.location.href='result.html'">View Scorecard</button>
+            <button class="btn-rev" style="background-color: #003366;" onclick="window.location.href='review.html'">Revise Questions & Explanations</button>
         </div>
-
-        <div class="form-group">
-            <label for="rollNumber">Roll Number / Application ID:</label>
-            <input type="text" id="rollNumber" placeholder="e.g., 2026NEET01" required>
-        </div>
-
-        <button class="btn-start" onclick="startExam()">Proceed to Test</button>
     </div>
 
     <script>
+        window.onload = function() {
+            if (localStorage.getItem('neet_submitted') === 'true') {
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('submitted-section').style.display = 'block';
+            }
+        };
+
         function startExam() {
             const name = document.getElementById('candidateName').value.trim();
             const roll = document.getElementById('rollNumber').value.trim();
@@ -122,3 +157,4 @@
     </script>
 </body>
 </html>
+            
