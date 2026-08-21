@@ -1,9 +1,9 @@
-           <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET CBT - Online Exam Interface</title>
+    <title>NEET CBT - Official NTA Mode</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -15,7 +15,7 @@
             height: 100vh;
         }
         header {
-            background-color: #0056b3;
+            background-color: #003366;
             color: white;
             padding: 12px 15px;
             display: flex;
@@ -45,7 +45,7 @@
             border-right: 1px solid #ddd;
         }
         .sidebar {
-            flex: 1.2;
+            flex: 1.3;
             background: #fff;
             padding: 15px;
             display: flex;
@@ -68,7 +68,7 @@
         }
         .options-list li:hover {
             background-color: #f0f8ff;
-            border-color: #0056b3;
+            border-color: #003366;
         }
         .footer-buttons {
             margin-top: 20px;
@@ -77,105 +77,163 @@
             gap: 8px;
         }
         button {
-            padding: 8px 14px;
+            padding: 8px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 12px;
         }
         .btn-save { background-color: #28a745; color: white; }
-        .btn-clear { background-color: #ffc107; color: #333; }
-        .btn-review { background-color: #6f42c1; color: white; }
+        .btn-review-next { background-color: #6f42c1; color: white; }
+        .btn-save-review { background-color: #007bff; color: white; }
+        .btn-clear { background-color: #e0e0e0; color: #333; }
+        .btn-submit { background-color: #dc3545; color: white; width: 100%; margin-top: 20px; padding: 12px; font-size: 14px; }
+
+        /* NTA Palette Button Shapes & Colors */
+        .pal-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: #e0e0e0;
+            color: #000;
+        }
+
+        /* Status legend */
+        .legend-box { font-size: 11px; display: flex; flex-direction: column; gap: 5px; width: 100%; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 
         @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .question-area {
-                flex: none;
-                height: 62vh;
-                border-right: none;
-                border-bottom: 2px solid #ddd;
-            }
-            .sidebar {
-                flex: none;
-                height: 38vh;
-                align-items: flex-start;
-            }
+            .main-container { flex-direction: column; }
+            .question-area { flex: none; height: 58vh; border-right: none; border-bottom: 2px solid #ddd; }
+            .sidebar { flex: none; height: 42vh; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h2>NEET Mock Test</h2>
-        <div class="timer-box">Time: <span id="timer">03:00:00</span></div>
+        <h2>NEET Mock Test (NTA CBT Mode)</h2>
+        <div class="timer-box">Time Left: <span id="timer">03:00:00</span></div>
     </header>
 
     <div class="main-container">
-        <div class="question-area">
-            <h3 id="q-title" style="font-size: 15px; margin-top: 0;">Question 1 of 4 (Physics)</h3>
-            <p id="q-text" style="font-size: 14px; line-height: 1.5;">What is the dimensional formula of the universal gravitational constant?</p>
+        <div class="question-area" id="question-box">
+            <h3 id="q-title" style="font-size: 15px; margin-top: 0;">Question 1 of 4</h3>
+            <p id="q-text" style="font-size: 14px; line-height: 1.5;"></p>
             
             <ul class="options-list" id="options-container">
-                <li onclick="selectOpt(0)"><input type="radio" name="opt" id="r0"> <span id="opt0">M⁻¹ L³ T⁻²</span></li>
-                <li onclick="selectOpt(1)"><input type="radio" name="opt" id="r1"> <span id="opt1">M L² T⁻²</span></li>
-                <li onclick="selectOpt(2)"><input type="radio" name="opt" id="r2"> <span id="opt2">M⁻¹ L² T⁻²</span></li>
-                <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3">M L³ T⁻²</span></li>
+                <li onclick="selectOpt(0)"><input type="radio" name="opt" id="r0"> <span id="opt0"></span></li>
+                <li onclick="selectOpt(1)"><input type="radio" name="opt" id="r1"> <span id="opt1"></span></li>
+                <li onclick="selectOpt(2)"><input type="radio" name="opt" id="r2"> <span id="opt2"></span></li>
+                <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3"></span></li>
             </ul>
 
             <div class="footer-buttons">
                 <button class="btn-save" onclick="saveAndNext()">Save & Next</button>
+                <button class="btn-review-next" onclick="markAndNext()">Mark for Review & Next</button>
+                <button class="btn-save-review" onclick="saveAndMark()">Save & Mark for Review</button>
                 <button class="btn-clear" onclick="clearResponse()">Clear</button>
             </div>
         </div>
 
         <div class="sidebar">
-            <h4 style="margin: 0 0 5px 0; font-size: 14px;">Question Palette</h4>
-            <p style="font-size: 12px; color: #555; margin: 0 0 10px 0;">Candidate: Saurabh Gangwar</p>
-            <div style="display: grid; grid-template-columns: repeat(4, 35px); gap: 6px;" id="palette">
-                <button id="pal-0" onclick="jumpTo(0)" style="background: #28a745; color: white; height: 35px;">1</button>
-                <button id="pal-1" onclick="jumpTo(1)" style="background: #e0e0e0; height: 35px;">2</button>
-                <button id="pal-2" onclick="jumpTo(2)" style="background: #e0e0e0; height: 35px;">3</button>
-                <button id="pal-3" onclick="jumpTo(3)" style="background: #e0e0e0; height: 35px;">4</button>
+            <h4 style="margin: 0 0 3px 0; font-size: 13px;">Question Palette</h4>
+            <p style="font-size: 11px; color: #555; margin: 0 0 10px 0;">Candidate: Saurabh Gangwar</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(4, 38px); gap: 6px;" id="palette">
+                <!-- Dynamically generated palette buttons -->
+            </div>
+
+            <button class="btn-submit" onclick="submitTest()">Submit Test</button>
+
+            <div class="legend-box">
+                <div class="legend-item"><span class="dot" style="background: #28a745;"></span> Answered</div>
+                <div class="legend-item"><span class="dot" style="background: #dc3545;"></span> Not Answered</div>
+                <div class="legend-item"><span class="dot" style="background: #6f42c1;"></span> Marked for Review</div>
+                <div class="legend-item"><span class="dot" style="background: #e0e0e0;"></span> Not Visited</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Question Bank Data
         const questions = [
             {
                 q: "What is the dimensional formula of the universal gravitational constant?",
-                options: ["M⁻¹ L³ T⁻²", "M L² T⁻²", "M⁻¹ L² T⁻²", "M L³ T⁻²"]
+                options: ["M⁻¹ L³ T⁻²", "M L² T⁻²", "M⁻¹ L² T⁻²", "M L³ T⁻²"],
+                correct: 0
             },
             {
                 q: "Which of the following units is fundamentally used to measure luminous intensity?",
-                options: ["Mole", "Candela", "Kelvin", "Ampere"]
+                options: ["Mole", "Candela", "Kelvin", "Ampere"],
+                correct: 1
             },
             {
                 q: "The escape velocity of a body from the earth's surface depends on:",
-                options: ["Mass of the body", "Angle of projection", "Mass and radius of the earth", "Mass of the body only"]
+                options: ["Mass of the body", "Angle of projection", "Mass and radius of the earth", "Mass of the body only"],
+                correct: 2
             },
             {
                 q: "Which law states that the total magnetic flux linked with a closed surface is zero?",
-                options: ["Gauss's Law for Magnetism", "Faraday's Law", "Ampere's Circuital Law", "Coulomb's Law"]
+                options: ["Gauss's Law for Magnetism", "Faraday's Law", "Ampere's Circuital Law", "Coulomb's Law"],
+                correct: 0
             }
         ];
 
         let currentQ = 0;
-        let answers = {}; // Stores selected answers
+        let statuses = Array(questions.length).fill("not-visited"); // not-visited, answered, not-answered, review
+        let answers = {};
+
+        function initPalette() {
+            const paletteDiv = document.getElementById('palette');
+            paletteDiv.innerHTML = "";
+            questions.forEach((_, idx) => {
+                let btn = document.createElement('button');
+                btn.className = "pal-btn";
+                btn.id = `pal-${idx}`;
+                btn.textContent = idx + 1;
+                btn.onclick = () => jumpTo(idx);
+                paletteDiv.appendChild(btn);
+            });
+            updatePaletteColors();
+        }
+
+        function updatePaletteColors() {
+            questions.forEach((_, idx) => {
+                let btn = document.getElementById(`pal-${idx}`);
+                let status = statuses[idx];
+                
+                // NTA Color Mapping
+                if (status === "answered") {
+                    btn.style.background = "#28a745"; btn.style.color = "white";
+                } else if (status === "not-answered") {
+                    btn.style.background = "#dc3545"; btn.style.color = "white";
+                } else if (status === "review") {
+                    btn.style.background = "#6f42c1"; btn.style.color = "white";
+                } else {
+                    btn.style.background = "#e0e0e0"; btn.style.color = "black";
+                }
+            });
+        }
 
         function loadQuestion(index) {
             currentQ = index;
-            document.getElementById('q-title').textContent = `Question ${index + 1} of 4 (Physics)`;
+            if (statuses[index] === "not-visited") {
+                statuses[index] = "not-answered";
+            }
+            
+            document.getElementById('q-title').textContent = `Question ${index + 1} of ${questions.length}`;
             document.getElementById('q-text').textContent = questions[index].q;
             
             for (let i = 0; i < 4; i++) {
                 document.getElementById(`opt${i}`).textContent = questions[index].options[i];
                 document.getElementById(`r${i}`).checked = (answers[index] === i);
             }
+            updatePaletteColors();
         }
 
         function selectOpt(optIndex) {
@@ -185,28 +243,76 @@
 
         function saveAndNext() {
             if (answers[currentQ] !== undefined) {
-                document.getElementById(`pal-${currentQ}`).style.background = "#28a745"; // Green for answered
-                document.getElementById(`pal-${currentQ}`).style.color = "white";
-            }
-            if (currentQ < questions.length - 1) {
-                loadQuestion(currentQ + 1);
+                statuses[currentQ] = "answered";
             } else {
-                alert("You have reached the last question!");
+                statuses[currentQ] = "not-answered";
             }
+            moveToNext();
+        }
+
+        function markAndNext() {
+            statuses[currentQ] = "review";
+            moveToNext();
+        }
+
+        function saveAndMark() {
+            if (answers[currentQ] !== undefined) {
+                statuses[currentQ] = "review"; // Saved & marked for review
+            } else {
+                statuses[currentQ] = "not-answered";
+            }
+            moveToNext();
         }
 
         function clearResponse() {
             delete answers[currentQ];
-            for (let i = 0; i < 4; i++) {
-                document.getElementById(`r${i}`).checked = false;
+            for (let i = 0; i < 4; i++) document.getElementById(`r${i}`).checked = false;
+            statuses[currentQ] = "not-answered";
+            updatePaletteColors();
+        }
+
+        function moveToNext() {
+            if (currentQ < questions.length - 1) {
+                loadQuestion(currentQ + 1);
+            } else {
+                updatePaletteColors();
+                alert("This is the last question.");
             }
-            document.getElementById(`pal-${currentQ}`).style.background = "#e0e0e0";
-            document.getElementById(`pal-${currentQ}`).style.color = "black";
         }
 
         function jumpTo(index) {
             loadQuestion(index);
         }
+
+        function submitTest() {
+            if (confirm("Are you sure you want to submit the test?")) {
+                let score = 0;
+                let attempted = 0;
+                
+                questions.forEach((q, idx) => {
+                    if (answers[idx] !== undefined) {
+                        attempted++;
+                        if (answers[idx] === q.correct) score += 4;
+                        else score -= 1; // NEET Negative Marking
+                    }
+                });
+
+                document.getElementById('question-box').innerHTML = `
+                    <div style="text-align: center; padding: 30px;">
+                        <h2>Test Submitted Successfully!</h2>
+                        <h3>Candidate: Saurabh Gangwar</h3>
+                        <p>Total Questions: ${questions.length}</p>
+                        <p>Attempted: ${attempted}</p>
+                        <h1 style="color: #003366;">Final Score: ${score} / ${questions.length * 4}</h1>
+                        <a href="index.html" style="display:inline-block; margin-top:20px; background:#003366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Back to Home</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize on load
+        initPalette();
+        loadQuestion(0);
 
         // Timer
         let timeRemaining = 10800;
@@ -222,4 +328,5 @@
 
 </body>
 </html>
+
     
