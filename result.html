@@ -117,7 +117,7 @@
         document.getElementById('res-roll').textContent = localStorage.getItem('neet_candidate_roll') || "N/A";
 
         const urlParams = new URLSearchParams(window.location.search);
-        const finalScore = urlParams.get('score') || 0;
+        const finalScore = urlParams.get('score') || localStorage.getItem('neet_final_score') || 0;
         document.getElementById('total-score').textContent = `${finalScore} / 720`;
 
         const subScores = JSON.parse(localStorage.getItem('neet_sub_scores')) || { Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
