@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEET CBT - Mock Test Portal</title>
-    <link rel="manifest" href="manifest.json">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,14 +21,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
         }
-        h2 {
-            color: #003366;
-            margin-top: 0;
-            text-align: center;
-            font-size: 20px;
-        }
+        h2 { color: #003366; text-align: center; margin-top: 0; font-size: 20px; }
         .test-card {
             background: #eef2f7;
             border: 1px solid #ccd6e0;
@@ -42,7 +36,6 @@
         }
         .test-info h4 { margin: 0 0 5px 0; color: #003366; font-size: 15px; }
         .test-info p { margin: 0; font-size: 12px; color: #555; }
-        
         .btn {
             padding: 8px 12px;
             border: none;
@@ -54,7 +47,6 @@
         .btn-start { background-color: #28a745; color: white; }
         .btn-rev { background-color: #6f42c1; color: white; }
         .btn-reattempt { background-color: #dc3545; color: white; margin-top: 5px; }
-        
         .section-title {
             font-size: 14px;
             font-weight: bold;
@@ -70,84 +62,81 @@
     <div class="container">
         <h2>NEET-UG CBT Portal</h2>
         
-        <div class="section-title">Attempted Test (Completed)</div>
-        <div id="attempted-container">
-            <!-- Dynamically filled if test is attempted -->
-            <p style="font-size: 13px; color: #777; text-align: center;">No tests attempted yet.</p>
-        </div>
-
-        <div class="section-title">Other Available Test Papers</div>
-        <div id="other-tests-container">
-            <div class="test-card">
-                <div class="test-info">
-                    <h4>NEET Full Length Major Test 01 (PCBZ)</h4>
-                    <p>180 Questions | 720 Marks | 3 Hours 20 Mins</p>
-                </div>
-                <button class="btn btn-start" id="main-test-btn" onclick="openInstructions('Test 1')">Take Test</button>
-            </div>
-            <div class="test-card">
-                <div class="test-info">
-                    <h4>NEET Biology High-Yield Practice Paper</h4>
-                    <p>90 Questions | 360 Marks | 1 Hour 20 Mins</p>
-                </div>
-                <button class="btn btn-start" onclick="alert('Coming soon!')">Coming Soon</button>
-            </div>
-        </div>
+        <div class="section-title">Available Test Papers</div>
+        <div id="tests-list-container"></div>
     </div>
 
-    <!-- Instructions & Login Modal / Redirect Handling -->
     <script>
         window.onload = function() {
-            checkTestStatus();
+            renderTests();
         };
 
-        function checkTestStatus() {
-            const isSubmitted = localStorage.getItem('neet_submitted') === 'true';
-            const attemptedContainer = document.getElementById('attempted-container');
-            const mainBtn = document.getElementById('main-test-btn');
+        function renderTests() {
+            const container = document.getElementById('tests-list-container');
+            container.innerHTML = "";
 
-            if (isSubmitted) {
-                let score = localStorage.getItem('neet_final_score') || 0;
-                attemptedContainer.innerHTML = `
-                    <div class="test-card" style="border-left: 5px solid #28a745;">
-                        <div class="test-info">
-                            <h4>NEET Full Length Major Test 01</h4>
-                            <p>Status: <b>Submitted</b> | Score: <b>${score} / 720</b></p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <button class="btn btn-rev" onclick="window.location.href='result.html'">Scorecard</button>
-                            <button class="btn btn-rev" style="background-color: #003366;" onclick="window.location.href='review.html'">Solutions</button>
-                            <button class="btn btn-reattempt" onclick="reAttemptTest()">Re-Attempt</button>
-                        </div>
+            const tests = [
+                { id: "test1", name: "NEET Full Length Major Test 01" },
+                { id: "test2", name: "NEET Full Length Major Test 02" }
+            ];
+
+            tests.forEach(test => {
+                const isSubmitted = localStorage.getItem(`${test.id}_submitted`) === 'true';
+                const score = localStorage.getItem(`${test.id}_final_score`) || 0;
+
+                let card = document.createElement('div');
+                card.className = "test-card";
+                if(isSubmitted) card.style.borderLeft = "5px solid #28a745";
+
+                card.innerHTML = `
+                    <div class="test-info">
+                        <h4>${test.name}</h4>
+                        <p>${isSubmitted ? `Status: <b>Submitted</b> | Score: <b>${score} / 720</b>` : `180 Questions | 720 Marks | 3h 20m`}</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        ${isSubmitted ? `
+                            <button class="btn btn-rev" onclick="openResult('${test.id}')">Scorecard</button>
+                            <button class="btn btn-rev" style="background-color: #003366;" onclick="openReview('${test.id}')">Solutions</button>
+                            <button class="btn btn-reattempt" onclick="reAttempt('${test.id}')">Re-Attempt</button>
+                        ` : `
+                            <button class="btn btn-start" onclick="startTest('${test.id}')">Take Test</button>
+                        `}
                     </div>
                 `;
-                mainBtn.textContent = "Completed";
-                mainBtn.style.backgroundColor = "#6c757d";
-                mainBtn.onclick = () => alert("You have already completed this test. Use 'Re-Attempt' if you want to clear your score and take it again.");
-            }
+                container.appendChild(card);
+            });
         }
 
-        function openInstructions(testName) {
-            let name = prompt("Enter your Full Name to begin:", localStorage.getItem('neet_candidate_name') || "");
+        function startTest(testId) {
+            let name = prompt("Enter your Full Name:", localStorage.getItem('neet_candidate_name') || "");
             if (!name) return;
             let roll = prompt("Enter your Roll Number / Application ID:", localStorage.getItem('neet_candidate_roll') || "");
             if (!roll) return;
 
             localStorage.setItem('neet_candidate_name', name.trim());
             localStorage.setItem('neet_candidate_roll', roll.trim());
+            localStorage.setItem('active_test_id', testId);
+
             window.location.href = "exam.html";
         }
 
-        function reAttemptTest() {
-            if (confirm("Are you sure you want to clear your previous score and re-attempt Test 1?")) {
-                localStorage.removeItem('neet_submitted');
-                localStorage.removeItem('neet_final_score');
-                localStorage.removeItem('neet_user_answers');
-                localStorage.removeItem('neet_sub_scores');
-                localStorage.removeItem('neet_candidate_name');
-                localStorage.removeItem('neet_candidate_roll');
-                alert("Previous submission cleared!");
-                location.reload();
+        function openResult(testId) {
+            localStorage.setItem('active_test_id', testId);
+            window.location.href = "result.html";
+        }
+
+        function openReview(testId) {
+            localStorage.setItem('active_test_id', testId);
+            window.location.href = "review.html";
+        }
+
+        function reAttempt(testId) {
+            if (confirm(`Clear history and re-attempt ${testId.toUpperCase()}?`)) {
+                localStorage.removeItem(`${testId}_submitted`);
+                localStorage.removeItem(`${testId}_final_score`);
+                localStorage.removeItem(`${testId}_user_answers`);
+                localStorage.removeItem(`${testId}_sub_scores`);
+                renderTests();
             }
         }
     </script>
