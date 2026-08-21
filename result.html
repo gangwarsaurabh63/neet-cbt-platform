@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET UG Scorecard - NTA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .scorecard {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 { color: #003366; margin-bottom: 5px; }
+        .details { text-align: left; margin: 20px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 15px 0; }
+        .details p { margin: 8px 0; font-size: 15px; }
+        .score-highlight {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .btn-home {
+            background-color: #003366;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scorecard">
+        <h2>National Testing Agency (NTA)</h2>
+        <p>NEET (UG) Mock Test Result</p>
+        
+        <div class="details">
+            <p><strong>Candidate Name:</strong> Saurabh Gangwar</p>
+            <p><strong>Exam Mode:</strong> CBT Online</p>
+            <p><strong>Total Questions:</strong> 4</p>
+            <p id="attempted-text"><strong>Attempted:</strong> --</p>
+        </div>
+
+        <div class="score-highlight" id="score-text">
+            Final Score: -- / 16
+        </div>
+
+        <a href="index.html" class="btn-home">Back to Home</a>
+    </div>
+
+    <script>
+        // Grab score data from URL parameters passed from exam.html
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score');
+        const max = urlParams.get('max');
+        const attempted = urlParams.get('attempted');
+
+        if (score !== null) {
+            document.getElementById('score-text').textContent = `Final Score: ${score} / ${max}`;
+            document.getElementById('attempted-text').innerHTML = `<strong>Attempted:</strong> ${attempted} / 4`;
+        }
+    </script>
+
+</body>
+</html>
