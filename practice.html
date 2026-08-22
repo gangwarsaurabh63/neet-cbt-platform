@@ -40,7 +40,6 @@
         .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; gap: 10px; }
         .btn-nav { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
 
-        /* Responsive Breakpoint for Mobile Devices */
         @media(max-width: 768px) {
             .layout { flex-direction: column; padding: 0 10px; margin: 10px auto; }
             .btn-toggle-chap { display: inline-block; }
@@ -68,7 +67,7 @@
     </header>
 
     <div class="layout">
-        <!-- Sidebar Chapters -->
+        <!-- Sidebar Chapters (Populated based on selected subject) -->
         <div class="sidebar" id="sidebarElement">
             <h3>
                 Select Chapter 
@@ -77,7 +76,7 @@
             <div id="chapterListContainer"></div>
         </div>
 
-        <!-- Question Content -->
+        <!-- Question Content Area -->
         <div class="content">
             <div>
                 <div class="q-header">
@@ -107,11 +106,15 @@
     </div>
 
     <script>
+        // Read the subject selected on the home page
         const selectedSubject = localStorage.getItem('active_practice_subject') || 'Physics';
         document.getElementById('active-sub-label').textContent = selectedSubject;
 
+        // Fetch chapters corresponding *only* to this subject from questions.js
         let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
-        let currentChapter = Object.keys(chaptersData)[0] || "";
+        let chapterNames = Object.keys(chaptersData);
+        
+        let currentChapter = chapterNames[0] || "";
         let currentQuestions = currentChapter ? chaptersData[currentChapter] : [];
         let currentIndex = 0;
         let answeredState = false;
@@ -124,13 +127,18 @@
                 document.getElementById('closeSidebar').style.display = 'inline';
             }
 
-            Object.keys(chaptersData).forEach(chapName => {
+            if (chapterNames.length === 0) {
+                container.innerHTML = "<p style='font-size:12px; color:#64748b;'>No chapters found for this subject.</p>";
+                return;
+            }
+
+            chapterNames.forEach(chapName => {
                 let btn = document.createElement('button');
                 btn.className = `chapter-btn ${chapName === currentChapter ? 'active' : ''}`;
-                btn.textContent = `${chapName} (${chaptersData[chapName].length})`;
+                btn.textContent = `${chapName} (${chaptersData[chapName].length} Qs)`;
                 btn.onclick = () => {
                     selectChapter(chapName, btn);
-                    if(window.innerWidth <= 768) toggleMobileSidebar(); // Auto-close on mobile after selecting
+                    if(window.innerWidth <= 768) toggleMobileSidebar(); // Auto-close on mobile after picking
                 };
                 container.appendChild(btn);
             });
