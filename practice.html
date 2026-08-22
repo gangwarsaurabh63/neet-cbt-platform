@@ -3,98 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEETPrep Style Practice Hub</title>
+    <title>Chapter-wise Practice Hub</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Neetprep Top Navbar */
-        header { background-color: #ffffff; color: #0f172a; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-        .logo-area { font-size: 18px; font-weight: bold; color: #2563eb; display: flex; align-items: center; gap: 8px; }
-        .header-right { display: flex; gap: 15px; align-items: center; }
-        .btn-home { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; color: #475569; }
+        header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 16px; font-weight: bold; color: #16a34a; }
+        .btn-home { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
 
-        /* Main Workspace Layout */
-        .main-layout { display: flex; flex: 1; max-width: 1200px; margin: 20px auto; width: 100%; gap: 20px; padding: 0 15px; }
+        .layout { display: flex; flex: 1; max-width: 1100px; margin: 20px auto; width: 100%; gap: 20px; padding: 0 15px; }
 
-        /* Left Sidebar (Subject & Stats Filter) */
-        .sidebar { width: 280px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; height: fit-content; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-        .sidebar h3 { font-size: 15px; color: #0f172a; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
-        .subject-btn { width: 100%; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; font-weight: 600; font-size: 13px; cursor: pointer; color: #334155; transition: all 0.2s; }
-        .subject-btn:hover, .subject-btn.active { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+        .sidebar { width: 280px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; height: fit-content; }
+        .sidebar h3 { font-size: 14px; margin-top: 0; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .chapter-btn { width: 100%; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: #334155; }
+        .chapter-btn:hover, .chapter-btn.active { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
 
-        .stats-box { margin-top: 20px; background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 12px; color: #64748b; line-height: 1.5; }
-
-        /* Right Question Content Area */
-        .content-area { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
+        .content { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         
-        .q-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
-        .q-badge { background: #eff6ff; color: #2563eb; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .btn-bookmark { background: transparent; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: #475569; }
-
-        .q-text { font-size: 15px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; }
+        .q-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .q-text { font-size: 14px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; }
 
         .options-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
-        .options-list li { margin-bottom: 10px; padding: 12px 15px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; font-size: 14px; background: #fff; transition: background 0.2s, border-color 0.2s; }
-        .options-list li:hover { background-color: #f8fafc; border-color: #cbd5e1; }
-        .options-list li.correct-ans { background-color: #f0fdf4 !important; border-color: #22c55e; color: #166534; font-weight: 600; }
-        .options-list li.wrong-ans { background-color: #fef2f2 !important; border-color: #ef4444; color: #991b1b; }
+        .options-list li { margin-bottom: 8px; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; font-size: 13px; background: #fff; transition: background 0.2s; }
+        .options-list li:hover { background: #f8fafc; }
+        .options-list li.correct-ans { background: #f0fdf4 !important; border-color: #22c55e; color: #166534; font-weight: bold; }
+        .options-list li.wrong-ans { background: #fef2f2 !important; border-color: #ef4444; color: #991b1b; }
 
-        .solution-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #166534; display: none; line-height: 1.5; }
+        .solution-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #166534; display: none; line-height: 1.5; }
         
-        .nav-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-        .btn-nav { background: #2563eb; color: white; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
-        .btn-nav:hover { background: #1d4ed8; }
-
-        @media(max-width: 768px) {
-            .main-layout { flex-direction: column; }
-            .sidebar { width: 100%; }
-        }
+        .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .btn-nav { background: #16a34a; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
-            🎯 NEETPrep Hub
-        </div>
-        <div class="header-right">
-            <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
-        </div>
+        <div class="logo">📖 Chapter-wise Practice Hub (<span id="active-sub-label">Physics</span>)</div>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
     </header>
 
-    <div class="main-layout">
-        <!-- Sidebar Filters -->
+    <div class="layout">
         <div class="sidebar">
-            <h3>Subject Filter</h3>
-            <button class="subject-btn active" onclick="setSubject('All', this)">📚 All Questions</button>
-            <button class="subject-btn" onclick="setSubject('Physics', this)">⚡ Physics</button>
-            <button class="subject-btn" onclick="setSubject('Chemistry', this)">🧪 Chemistry</button>
-            <button class="subject-btn" onclick="setSubject('Botany', this)">🌱 Botany</button>
-            <button class="subject-btn" onclick="setSubject('Zoology', this)">🧬 Zoology</button>
-            
-            <div style="margin-top: 20px;">
-                <button class="subject-btn" onclick="toggleBookmarks(this)" id="bmSidebarBtn">⭐ Bookmarked Questions</button>
-            </div>
-
-            <div class="stats-box">
-                <strong>Session Stats:</strong><br>
-                Attempted: <span id="stat-attempted">0</span><br>
-                Correct: <span id="stat-correct" style="color: #166534;">0</span>
-            </div>
+            <h3>Chapters</h3>
+            <div id="chapterListContainer"></div>
         </div>
 
-        <!-- Question Content Card -->
-        <div class="content-area">
+        <div class="content">
             <div>
-                <div class="q-top-bar">
-                    <span class="q-badge" id="q-subject">Physics</span>
-                    <span style="font-size: 13px; color: #64748b; font-weight: 600;" id="q-counter">Question 1 of 180</span>
-                    <button class="btn-bookmark" onclick="bookmarkCurrent()" id="bookmarkBtn">☆ Bookmark</button>
+                <div class="q-header">
+                    <span id="q-chapter-title">Chapter: -</span>
+                    <span id="q-counter">Question 0 of 0</span>
                 </div>
 
-                <div class="q-text" id="q-text">Loading question...</div>
+                <div class="q-text" id="q-text">Select a chapter from the sidebar to start practicing.</div>
 
                 <ul class="options-list" id="options-container">
                     <li id="opt0"></li>
@@ -104,79 +67,64 @@
                 </ul>
 
                 <div class="solution-box" id="solutionBox">
-                    <strong>Solution / Explanation:</strong><br>
-                    <span id="q-explanation"></span>
+                    <strong>Explanation:</strong><br><span id="q-explanation"></span>
                 </div>
             </div>
 
-            <div class="nav-footer">
+            <div class="footer-nav">
                 <button class="btn-nav" style="background:#64748b;" onclick="prevQ()">◄ Previous</button>
-                <button class="btn-nav" onclick="nextQ()">Save & Next ►</button>
+                <button class="btn-nav" onclick="nextQ()">Next ►</button>
             </div>
         </div>
     </div>
 
     <script>
-        const activeTestId = localStorage.getItem('active_test_id') || 'test1';
-        let allQuestions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
-        let filteredQuestions = [...allQuestions];
-        
+        const selectedSubject = localStorage.getItem('active_practice_subject') || 'Physics';
+        document.getElementById('active-sub-label').textContent = selectedSubject;
+
+        let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
+        let currentChapter = Object.keys(chaptersData)[0] || "";
+        let currentQuestions = currentChapter ? chaptersData[currentChapter] : [];
         let currentIndex = 0;
-        let currentSubject = 'All';
-        let showBookmarksOnly = false;
         let answeredState = false;
 
-        let statAttempted = 0;
-        let statCorrect = 0;
+        function loadSidebar() {
+            let container = document.getElementById('chapterListContainer');
+            container.innerHTML = "";
+            Object.keys(chaptersData).forEach(chapName => {
+                let btn = document.createElement('button');
+                btn.className = `chapter-btn ${chapName === currentChapter ? 'active' : ''}`;
+                btn.textContent = `${chapName} (${chaptersData[chapName].length})`;
+                btn.onclick = () => selectChapter(chapName, btn);
+                container.appendChild(btn);
+            });
+        }
 
-        function setSubject(sub, btnElement) {
-            document.querySelectorAll('.sidebar .subject-btn').forEach(b => b.classList.remove('active'));
+        function selectChapter(chapName, btnElement) {
+            document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
-            
-            currentSubject = sub;
-            applyFilters();
-        }
-
-        function toggleBookmarks(btnElement) {
-            showBookmarksOnly = !showBookmarksOnly;
-            if(showBookmarksOnly) btnElement.classList.add('active');
-            else btnElement.classList.remove('active');
-            applyFilters();
-        }
-
-        function applyFilters() {
-            if (currentSubject === 'All') {
-                filteredQuestions = [...allQuestions];
-            } else {
-                filteredQuestions = allQuestions.filter(q => (q.subject || "Physics") === currentSubject);
-            }
-
-            if (showBookmarksOnly) {
-                let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
-                filteredQuestions = filteredQuestions.filter((_, idx) => bms.includes(allQuestions.indexOf(filteredQuestions[idx])));
-            }
-
+            currentChapter = chapName;
+            currentQuestions = chaptersData[chapName] || [];
             currentIndex = 0;
-            loadQuestion();
+            loadPracticeQuestion();
         }
 
-        function loadQuestion() {
-            if (filteredQuestions.length === 0) {
-                document.getElementById('q-text').textContent = "No questions found under this filter or bookmark list.";
+        function loadPracticeQuestion() {
+            if (currentQuestions.length === 0) {
+                document.getElementById('q-text').textContent = "No questions added for this chapter yet.";
                 document.getElementById('options-container').innerHTML = "";
                 document.getElementById('solutionBox').style.display = "none";
                 document.getElementById('q-counter').textContent = "0 of 0";
+                document.getElementById('q-chapter-title').textContent = `Chapter: ${currentChapter}`;
                 return;
             }
 
-            if (currentIndex >= filteredQuestions.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = filteredQuestions.length - 1;
+            if (currentIndex >= currentQuestions.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = currentQuestions.length - 1;
 
-            let q = filteredQuestions[currentIndex];
-            let originalIdx = allQuestions.indexOf(q);
-
-            document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${filteredQuestions.length}`;
-            document.getElementById('q-subject').textContent = q.subject || "Physics";
+            let q = currentQuestions[currentIndex];
+            document.getElementById('q-chapter-title').textContent = `Chapter: ${currentChapter}`;
+            document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
             document.getElementById('q-text').textContent = q.q;
 
             let optList = document.getElementById('options-container');
@@ -191,22 +139,11 @@
                 li.onclick = () => checkAnswer(i, q.correct);
                 optList.appendChild(li);
             });
-
-            let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
-            document.getElementById('bookmarkBtn').textContent = bms.includes(originalIdx) ? "★ Bookmarked" : "☆ Bookmark";
         }
 
         function checkAnswer(selectedIdx, correctIdx) {
             if (answeredState) return;
             answeredState = true;
-            statAttempted++;
-
-            if (selectedIdx === correctIdx) {
-                statCorrect++;
-            }
-
-            document.getElementById('stat-attempted').textContent = statAttempted;
-            document.getElementById('stat-correct').textContent = statCorrect;
 
             for (let i = 0; i < 4; i++) {
                 let li = document.getElementById(`opt${i}`);
@@ -214,30 +151,15 @@
                 else if (i === selectedIdx) li.classList.add('wrong-ans');
             }
 
-            document.getElementById('q-explanation').textContent = filteredQuestions[currentIndex].explanation || "Detailed solution is provided by Allen expert faculty.";
+            document.getElementById('q-explanation').textContent = currentQuestions[currentIndex].explanation || "Detailed solution available.";
             document.getElementById('solutionBox').style.display = "block";
         }
 
-        function bookmarkCurrent() {
-            let q = filteredQuestions[currentIndex];
-            let originalIdx = allQuestions.indexOf(q);
-            let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
-            
-            let btn = document.getElementById('bookmarkBtn');
-            if (bms.includes(originalIdx)) {
-                bms = bms.filter(item => item !== originalIdx);
-                btn.textContent = "☆ Bookmark";
-            } else {
-                bms.push(originalIdx);
-                btn.textContent = "★ Bookmarked";
-            }
-            localStorage.setItem('neet_bookmarks', JSON.stringify(bms));
-        }
+        function nextQ() { currentIndex++; loadPracticeQuestion(); }
+        function prevQ() { currentIndex--; loadPracticeQuestion(); }
 
-        function nextQ() { currentIndex++; loadQuestion(); }
-        function prevQ() { currentIndex--; loadQuestion(); }
-
-        loadQuestion();
+        loadSidebar();
+        loadPracticeQuestion();
     </script>
 </body>
 </html>
