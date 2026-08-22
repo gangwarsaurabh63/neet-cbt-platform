@@ -15,10 +15,9 @@ const allNeetTests = {
 };
 
 // =========================================================================
-// 2. CHAPTER-WISE PRACTICE QUESTION BANK (Complete Syllabus & PDF Questions)
+// 2. CHAPTER-WISE PRACTICE QUESTION BANK (Complete Syllabus & All PDF Questions)
 // =========================================================================
 const chapterwisePracticeBank = {
-    // ----------------- PHYSICS -----------------
     "Physics": {
         "Physics and Measurement": [],
         "Kinematics": [],
@@ -27,7 +26,6 @@ const chapterwisePracticeBank = {
         "Current Electricity": []
     },
 
-    // ----------------- CHEMISTRY -----------------
     "Chemistry": {
         "Some Basic Concepts of Chemistry": [],
         "Structure of Atom": [],
@@ -35,269 +33,193 @@ const chapterwisePracticeBank = {
         "Biomolecules": []
     },
 
-    // ----------------- BOTANY -----------------
     "Botany": {
         "The Living World": [],
         "Biological Classification": [],
         "Plant Kingdom": [],
         "Cell - The Unit of Life": [
-            {
-                q: "Which of the following is true? (1) Most of the organisms have single cell in their bodies (2) Robert Hooke was the first person to describe a living cell (3) Both (4) None",
-                options: ["Most organisms have single cell", "Robert Hooke described living cell", "Both", "None"],
-                correct: 3,
-                explanation: "Most organisms have a single cell (unicellular), but Robert Hooke described dead cork cells, not living cells[span_0](start_span)[span_0](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Who was the first person to see cells under the microscope and give them a name?",
-                options: ["Anton van Leeuwenhoek", "Robert Hooke", "Theodor Schwann", "Matthias Schleiden"],
-                correct: 1,
-                explanation: "Robert Hooke was the first person to observe and name cells[span_1](start_span)[span_1](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Which object is not composed of cells?",
-                options: ["Feather", "Garden soil", "Plank of wood", "Leaf"],
-                correct: 1,
-                explanation: "Garden soil is not composed of cells[span_2](start_span)[span_2](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Unicellular organisms are:",
-                options: [
-                    "Not capable of independent existence because they cannot perform all essential functions",
-                    "Not capable of independent existence but can perform vital functions",
-                    "Are capable of independent existence and perform all essential vital functions",
-                    "Are capable to lead independent existence but they perform some vital functions"
-                ],
-                correct: 2,
-                explanation: "Unicellular organisms are capable of independent existence and perform all essential vital functions[span_3](start_span)[span_3](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Match column I with column II and select the correct option: A. Leeuwenhoek - First saw living cell, B. Robert Brown - Discovered nucleus, C. Schleiden - All plants are composed..., D. Schwann - Cell wall unique to plants",
-                options: ["A-(i), B-(iii), C-(iv), D-(ii)", "A-(i), B-(iii), C-(ii), D-(iv)", "A-(iii), B-(i), C-(iv), D-(ii)", "A-(i), B-(iv), C-(ii), D-(iii)"],
-                correct: 0,
-                explanation: "Leeuwenhoek first saw living cells, Robert Brown discovered the nucleus, Schleiden stated all plants are composed of cells, and Schwann noted plant cell walls/membranes[span_4](start_span)[span_4](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Select the incorrect statement.",
-                options: ["Anything less than a complete structure of a cell does not ensure independent living", "Subcellular components can regenerate whole cell", "A cell arises by fusion of two cells", "None of these"],
-                correct: 2,
-                explanation: "A cell arises from pre-existing cells, not typically by the fusion of two cells in the context of cell theory fundamentals[span_5](start_span)[span_5](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "The cells discovered in thin sections of cork by Robert Hooke were actually:",
-                options: ["Cell wall", "Cellulose", "Protoplasm", "Nuclei"],
-                correct: 0,
-                explanation: "The structures observed by Robert Hooke were plant cell walls[span_6](start_span)[span_6](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Just like Robert Hooke is related to cork cells, Anton von Leeuwenhoek is related to:",
-                options: ["Nucleus", "Lysosome", "Live cells", "Chromatin"],
-                correct: 2,
-                explanation: "Leeuwenhoek is related to live cells[span_7](start_span)[span_7](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "The figures of cork cells as seen by Robert Hooke were published in the book:",
-                options: ["Origin of species", "Species plantarum", "Genera plantarum", "Micrographia"],
-                correct: 3,
-                explanation: "Robert Hooke published his findings in his book Micrographia[span_8](start_span)[span_8](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Matthias Schleiden was:",
-                options: ["British Zoologist", "German Botanist", "British Botanist", "German Zoologist"],
-                correct: 1,
-                explanation: "Matthias Schleiden was a German botanist[span_9](start_span)[span_9](end_span).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Who gave final shape to cell theory?",
-                options: ["Virchow", "Schwann", "Schleiden", "Leeuwenhoek"],
-                correct: 0,
-                explanation: "Rudolf Virchow gave the final shape to cell theory.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "The new cells originate:",
-                options: ["By bacterial fermentation", "From abiotic material", "From pre-existing cells", "Through regeneration of old cells"],
-                correct: 2,
-                explanation: "New cells originate from pre-existing cells (Omnis cellula-e cellula).",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Which one is an exception to cell theory?",
-                options: ["Virus", "Mycoplasma", "Algae", "All the above"],
-                correct: 0,
-                explanation: "Viruses are non-cellular and represent an exception to cell theory.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "In which year did Matthias Schleiden observe different types of cells in various plant tissue?",
-                options: ["1902", "1855", "1838", "1905"],
-                correct: 2,
-                explanation: "Schleiden made his observations in 1838.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Cell theory was formulated by:",
-                options: ["Schleiden and Schwann", "Robert Hooke", "Leeuwenhoek", "Marcello Malpighi"],
-                correct: 0,
-                explanation: "Cell theory was formulated by Schleiden and Schwann.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "'Omnis cellula-e cellula' i.e., new cells arise from pre-existing cells; this statement is given by:",
-                options: ["Schleiden and Schwann", "Rudolf Virchow", "Robert Brown", "George Palade"],
-                correct: 1,
-                explanation: "This statement was given by Rudolf Virchow.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Select the right option which relates to Schwann: I. Thin outer layer known as plasma membrane, II. Cell wall is a unique character of plant cell, III. Body of plants and animals are composed of cells and products of cells.",
-                options: ["All are correct", "Only III is correct", "II and III are correct", "All are incorrect"],
-                correct: 0,
-                explanation: "All listed statements correctly align with Theodor Schwann's conclusions.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Assertion: The cell theory given by Schleiden and Schwann was modified by Rudolf Virchow. Reason: Cell theory says that all cells arise from pre-existing cells.",
-                options: ["Both Assertion and Reason are true and Reason is correct explanation", "Both are true but Reason is not correct explanation", "Assertion is true but Reason is false", "Assertion is false but Reason is true"],
-                correct: 0,
-                explanation: "Virchow modified the theory precisely by adding that cells arise from pre-existing cells.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Prokaryotic cells are generally _____ than the eukaryotic cells.",
-                options: ["Smaller, slower", "Larger, slower", "Smaller, faster", "Larger, faster"],
-                correct: 2,
-                explanation: "Prokaryotic cells are generally smaller and multiply faster than eukaryotic cells.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Nuclear membrane is absent in:",
-                options: ["Penicillium", "Agaricus", "Volvox", "Nostoc"],
-                correct: 3,
-                explanation: "Nostoc is a prokaryote (cyanobacterium) and lacks a nuclear membrane.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Which of the following structures is not found in a prokaryotic cell?",
-                options: ["Nucleoid", "Plasma membrane", "Nuclear envelope", "Ribosome"],
-                correct: 2,
-                explanation: "Prokaryotic cells lack a true nuclear envelope.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Which of the cell is round and biconcave?",
-                options: ["Mesophyll cell", "Tracheid", "RBC", "WBC"],
-                correct: 2,
-                explanation: "Human red blood cells (RBCs) are round and biconcave.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "What is the size of the smallest cells in micrometer?",
-                options: ["0.3", "0.4", "1.0", "3.0"],
-                correct: 0,
-                explanation: "Mycoplasmas, the smallest cells, are about 0.3 micrometers in length.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Which of the following is largest isolated cell?",
-                options: ["Neuron", "Ostrich egg", "WBC", "None"],
-                correct: 1,
-                explanation: "The egg of an ostrich is the largest isolated single cell.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Longest cell in our body is nerve fibre. The smallest is of:",
-                options: ["Human sperm", "Eye", "Kidney and Intestine", "Blood"],
-                correct: 0,
-                explanation: "Human sperm cells are among the smallest cells in the human body.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "An example of a prokaryotic cell is:",
-                options: ["Blue-green algae", "Pleuro Pneumoniae Like Organism (PPLO)", "Bacteria", "All of these"],
-                correct: 3,
-                explanation: "All listed examples are prokaryotes.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "The main difference between prokaryotic and eukaryotic cell is that in the prokaryotic cell there is no: I. nucleus with a nuclear membrane, II. mitochondria and chloroplasts, III. cell wall, IV. genetic material.",
-                options: ["Only I", "Only II", "I and II", "I and III"],
-                correct: 2,
-                explanation: "Prokaryotes lack a membrane-bound nucleus and membrane-bound organelles like mitochondria and chloroplasts.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Bacterial cell wall is made of:",
-                options: ["Peptidoglycan", "Murein", "Chitin", "Both (1) and (2)"],
-                correct: 3,
-                explanation: "Bacterial cell walls are composed of peptidoglycan, also known as murein.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "When was the most accepted model for plasma membrane organization given?",
-                options: ["1962", "1972", "1984", "1964"],
-                correct: 1,
-                explanation: "The Fluid Mosaic Model was proposed by Singer and Nicolson in 1972.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "Fungal cell wall is made of:",
-                options: ["Chitin", "Galactan", "Mannan", "All of the above"],
-                correct: 0,
-                explanation: "Fungal cell walls are principally composed of chitin.",
-                pyqYear: "NEET Practice"
-            },
-            {
-                q: "🖼️ [Diagram Based] Identify the parts labeled A, B, C, and D in the given section of cilia/flagella showing the 9+2 axoneme arrangement:",
-                options: [
-                    "A-Plasma membrane, B-Interdoublet bridge, C-Central microtubule, D-Radial spoke",
-                    "A-Plasma membrane, B-Arm, C-Central microtubule, D-Radial spoke",
-                    "A-Plasma membrane, B-Interdoublet bridge, C-Hub, D-Radial spoke",
-                    "A-Plasma membrane, B-Interdoublet bridge, C-Hub, D-Arm"
-                ],
-                correct: 0,
-                explanation: "The cross-section of a cilium or flagellum shows an outer plasma membrane enclosing an axoneme with 9 peripheral doublets and 2 central microtubules connected by bridges and radial spokes.",
-                pyqYear: "NEET Diagram Question"
-            },
-            {
-                q: "🖼️ [Diagram Based] In the ultrastructure of a typical plant chloroplast, what do labels A and B typically represent in standard NCERT diagrams?",
-                options: [
-                    "A-Thylakoid; B-Stroma",
-                    "A-Stroma lamella; B-Granum",
-                    "A-Granum; B-Stroma",
-                    "A-Stroma; B-Thylakoid"
-                ],
-                correct: 1,
-                explanation: "In standard chloroplast diagrams, 'A' points to the inter-grana stroma lamella connecting stacks, and 'B' points to the stacked granum.",
-                pyqYear: "NEET Diagram Question"
-            },
-            {
-                q: "🖼️ [Diagram Based] Which cell organelle shows the polar 'cis' (forming) and 'trans' (maturing) faces involved in packaging secretory proteins?",
-                options: ["Mitochondria", "Golgi apparatus", "Endoplasmic reticulum", "Chloroplast"],
-                correct: 1,
-                explanation: "The Golgi apparatus consists of many flat, disc-shaped sacs or cisternae stacked parallelly, featuring distinct convex cis (forming) and concave trans (maturing) faces.",
-                pyqYear: "NEET Diagram Question"
-            },
-            {
-                q: "🖼️ [Diagram Based] A structure showing 9 evenly spaced peripheral fibrils of tubulin protein without any central microtubules (the 9+0 arrangement) is found in:",
-                options: ["Cilia", "Flagella", "Centriole", "Eukaryotic chromosome"],
-                correct: 2,
-                explanation: "Centrioles and basal bodies feature a 9+0 triplet microtubule arrangement, unlike the 9+2 arrangement found in cilia and flagella axonemes.",
-                pyqYear: "NEET Diagram Question"
-            }
+            { q: "Which of the following is true? (1) Most of the organisms have single cell in their bodies (2) Robert Hooke was the first person to describe a living cell (3) Both (4) None", options: ["Most organisms have single cell", "Robert Hooke described living cell", "Both", "None"], correct: 3, explanation: "Most organisms have a single cell, but Robert Hooke described dead cork cells, not living cells[span_0](start_span)[span_0](end_span)." },
+            { q: "Who was the first person to see cells under the microscope and give them a name?", options: ["Anton van Leeuwenhoek", "Robert Hooke", "Theodor Schwann", "Matthias Schleiden"], correct: 1, explanation: "Robert Hooke first observed and named cells[span_1](start_span)[span_1](end_span)." },
+            { q: "Which object is not composed of cells?", options: ["Feather", "Garden soil", "Plank of wood", "Leaf"], correct: 1, explanation: "Garden soil is not composed of cells[span_2](start_span)[span_2](end_span)." },
+            { q: "Unicellular organism are", options: ["Not capable of independent existence because they cannot perform all essential functions", "Not capable of independent existence but they can perform all essential vital functions", "Are capable of independent existence and perform all the essential vital functions", "Are capable to lead independent existence but they perform some vital functions"], correct: 2, explanation: "Unicellular organisms are capable of independent existence and perform all essential vital functions[span_3](start_span)[span_3](end_span)." },
+            { q: "Match column I with column II and select the correct option from the codes given below.", options: ["A-(i), B-(iii), C-(iv), D-(ii)", "A-(i), B-(iii), C-(ii), D-(iv)", "A-(iii), B-(i), C-(iv), D-(ii)", "A-(i), B-(iv), C-(ii), D-(iii)"], correct: 0, explanation: "Leeuwenhoek first saw living cells, Robert Brown discovered nucleus, Schleiden stated all plants are composed of cells, Schwann noted plant membrane[span_4](start_span)[span_4](end_span)." },
+            { q: "Select the incorrect statement.", options: ["Anything less than a complete structure of a cell does not ensure independent living", "Subcellular components can regenerate whole cell", "A cell arises by fusion of two cells", "None of these"], correct: 2, explanation: "Cells arise from pre-existing cells, not typically by the fusion of two cells in this context[span_5](start_span)[span_5](end_span)." },
+            { q: "The cells discovered in thin sections of cork by Robert Hooke were actually", options: ["Cell wall", "Cellulose", "Protoplasm", "Nuclei"], correct: 0, explanation: "The structures observed by Robert Hooke were plant cell walls[span_6](start_span)[span_6](end_span)." },
+            { q: "Just like Robert Hooke is related to cork cells, Anton von Leeuwenhoek is related to:", options: ["Nucleus", "Lysosome", "Live cells", "Chromatin"], correct: 2, explanation: "Leeuwenhoek discovered/described live cells[span_7](start_span)[span_7](end_span)." },
+            { q: "The figures of cork cells as seen by Robert Hooke were published in the book:", options: ["Origin of species", "Species plantarum", "Genera plantarum", "Micrographia"], correct: 3, explanation: "Published in Micrographia[span_8](start_span)[span_8](end_span)." },
+            { q: "Matthias Schleiden was:", options: ["British Zoologist", "German Botanist", "British Botanist", "German Zoologist"], correct: 1, explanation: "Matthias Schleiden was a German botanist[span_9](start_span)[span_9](end_span)." },
+            { q: "Who gave final shape to cell theory?", options: ["Virchow", "Schwann", "Schleiden", "Leeuwenhoek"], correct: 0, explanation: "Virchow gave final shape to cell theory[span_10](start_span)[span_10](end_span)." },
+            { q: "The new cells originate:", options: ["By bacterial fermentation", "From abiotic material", "From pre-existing cells", "Through regeneration of old cells"], correct: 2, explanation: "New cells originate from pre-existing cells[span_11](start_span)[span_11](end_span)." },
+            { q: "Which one is an exception to cell theory?", options: ["Virus", "Mycoplasma", "Algae", "All the above"], correct: 0, explanation: "Viruses are an exception to cell theory[span_12](start_span)[span_12](end_span)." },
+            { q: "In which year did Matthias Schleiden observe different types of cells in various plant tissue?", options: ["1902", "1855", "1838", "1905"], correct: 2, explanation: "Observed in 1838[span_13](start_span)[span_13](end_span)." },
+            { q: "Cell theory was formulated by", options: ["Schleiden and Schwann", "Robert Hooke", "Leeuwenhoek", "Marcello Malpighi"], correct: 0, explanation: "Formulated by Schleiden and Schwann[span_14](start_span)[span_14](end_span)." },
+            { q: "'Omnis cellula-e cellula' i.e., new cells arise from pre-existing cells; this statement is given by:", options: ["Schleiden and Schwann", "Rudolf Virchow", "Robert Brown", "George Palade"], correct: 1, explanation: "Given by Rudolf Virchow[span_15](start_span)[span_15](end_span)." },
+            { q: "Select the right option which relates to Schwann regarding the following statement.", options: ["All are correct", "Only III is correct", "II and III are correct", "All are incorrect"], correct: 0, explanation: "All statements regarding Schwann's findings are correct[span_16](start_span)[span_16](end_span)." },
+            { q: "In the following questions, a statement of Assertion is followed by a statement of reason. (Schleiden & Schwann / Virchow)", options: ["Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)", "Both Assertion (A) and Reason (R) are true but Reason (R) is not the correct explanation", "Assertion (A) is true but Reason (R) is false", "Assertion (A) is false but Reason (R) is true"], correct: 0, explanation: "Virchow modified the cell theory stating cells arise from pre-existing cells[span_17](start_span)[span_17](end_span)." },
+            { q: "Assertion (A): Rudolf Virchow modified the hypothesis... Reason(R): Cell theory does not explain how new cells were formed.", options: ["Both A and R are true and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true, but R is false", "A is false, but R is true"], correct: 0, explanation: "Both statements are true and R explains A[span_18](start_span)[span_18](end_span)." },
+            { q: "Which of the following is not an exception of cell theory?", options: ["Bacteria", "Viruses", "Prions", "Viroids"], correct: 0, explanation: "Bacteria follow cell theory[span_19](start_span)[span_19](end_span)." },
+            { q: "Prokaryotic cells are generally ______ than the eukaryotic cells.", options: ["Smaller, slower", "Larger, slower", "Smaller, faster", "Larger, faster"], correct: 2, explanation: "Prokaryotes are smaller and faster[span_20](start_span)[span_20](end_span)." },
+            { q: "Nuclear membrane is absent in", options: ["Penicillium", "Agaricus", "Volvox", "Nostoc"], correct: 3, explanation: "Nostoc is a prokaryote lacking a nuclear membrane[span_21](start_span)[span_21](end_span)." },
+            { q: "Which of the following structures is not found in a prokaryotic cell?", options: ["Nucleoid", "Plasma membrane", "Nuclear envelope", "Ribosome"], correct: 2, explanation: "Nuclear envelope is absent[span_22](start_span)[span_22](end_span)." },
+            { q: "Which of the cell is round and biconcave?", options: ["Mesophyll cell", "Tracheid", "RBC", "WBC"], correct: 2, explanation: "RBCs are round and biconcave[span_23](start_span)[span_23](end_span)." },
+            { q: "What is the size of the smallest cells in micrometer?", options: ["0.3", "0.4", "1.0", "3.0"], correct: 0, explanation: "Mycoplasma are ~0.3 µm[span_24](start_span)[span_24](end_span)." },
+            { q: "Which of the following is largest isolated cell?", options: ["Neuron", "Ostrich egg", "WBC", "None"], correct: 1, explanation: "Ostrich egg[span_25](start_span)[span_25](end_span)." },
+            { q: "Longest cell in our body is nerve fibre. The smallest is of:", options: ["Human sperm", "Eye", "Kidney and Intestine", "Blood"], correct: 0, explanation: "Human sperm[span_26](start_span)[span_26](end_span)." },
+            { q: "Piyush observed a slide of white blood cells under microscope... Select the diagram...", options: ["(1)", "(2)", "(3)", "(4)"], correct: 1, explanation: "Amoeboid white blood cells[span_27](start_span)[span_27](end_span)." },
+            { q: "Arrange the following cells in an ascending order of their sizes: I. Mycoplasma II. Ostrich egg III. Human RBC IV. Bacteria", options: ["I, II, III, IV", "I, IV, III, II", "II, IV, I, III", "IV, III, II, I"], correct: 1, explanation: "Ascending order: Mycoplasma, Bacteria, Human RBC, Ostrich egg[span_28](start_span)[span_28](end_span)." },
+            { q: "Match the column I with column II correctly. (Bacteria, Viruses, PPLO, Eukaryotic)", options: ["I-B, II-D, III-C, IV-A", "I-A, II-B, III-C, IV-D", "I-D, II-C, III-B, IV-A", "I-B, II-D, III-A, IV-C"], correct: 0, explanation: "Matches correct size ranges[span_29](start_span)[span_29](end_span)." },
+            { q: "An example of a prokaryotic cell is:", options: ["Blue-green algae", "Pleuro Pneumoniae Like Organism (PPLO)", "3", "All of these"], correct: 3, explanation: "All are prokaryotic[span_30](start_span)[span_30](end_span)." },
+            { q: "The main difference between prokaryotic and eukaryotic cell is that in the prokaryotic cell there is no:", options: ["Only I", "Only II", "I and II", "I and III"], correct: 2, explanation: "Lacks nuclear membrane and organelles like mitochondria/chloroplasts[span_31](start_span)[span_31](end_span)." },
+            { q: "Match the column I (cell type) with column II (size) and choose the correct option.", options: ["A-(i), B-(ii), C-(iii), D-(iv)", "A-(iv), B-(iii), C-(ii), D-(i)", "A-(i), B-(iii), C-(ii), D-(iv)", "A-(iv), B-(ii), C-(iii), D-(i)"], correct: 1, explanation: "Matches size dimensions correctly[span_32](start_span)[span_32](end_span)." },
+            { q: "Select the incorrect match between columns I, II and III.", options: ["a", "b", "c", "d"], correct: 3, explanation: "Tracheids description mismatch[span_33](start_span)[span_33](end_span)." },
+            { q: "Select correct set of statements from given below. (Cytoplasm, Cell envelope, Endomembrane, Golgi)", options: ["A & D", "A & C", "A, C, D", "All are correct"], correct: 1, explanation: "Statements A and C are correct[span_34](start_span)[span_34](end_span)." },
+            { q: "Which of the following statement (s) is/are correct? (Cell shape, Eukaryotic, Cytoplasm)", options: ["A, B, C and D", "A and B only", "B and D only", "C and D only"], correct: 0, explanation: "All statements are correct[span_35](start_span)[span_35](end_span)." },
+            { q: "Most prokaryotic cells, particularly the bacterial cells, have:", options: ["A chemically simple cell envelope", "A chemically complex cell envelope", "No cell envelope", "Cell envelope only in the form a cell Membrane"], correct: 1, explanation: "Chemically complex cell envelope[span_36](start_span)[span_36](end_span)." },
+            { q: "Which of the following part provides sticky character to the bacterial cell?", options: ["Cell wall", "Mesosome", "Plasma membrane", "Glycocalyx"], correct: 3, explanation: "Glycocalyx provides sticky character[span_37](start_span)[span_37](end_span)." },
+            { q: "Bacterial cell wall is made of:", options: ["Peptidoglycan", "Murein", "Chitin", "Both (1) and (2)"], correct: 3, explanation: "Both peptidoglycan and murein[span_38](start_span)[span_38](end_span)." },
+            { q: "A specialized Structure develop from cell membrane of prokaryotes cell is", options: ["Tubulin", "Mesosome", "Cilia", "Centriole"], correct: 1, explanation: "Mesosome[span_39](start_span)[span_39](end_span)." },
+            { q: "In bacterial cells, cell envelope involve all, except:", options: ["cell wall", "mesosomes", "glycocalyx", "plasma membrane"], correct: 1, explanation: "Mesosomes are not a layer of the outer envelope[span_40](start_span)[span_40](end_span)." },
+            { q: "Bacterial cells have a chemically complex cell envelope. The cell envelope consists of a tightly...", options: ["outermost cell wall followed by plasma membrane and then glycocalyx", "outermost glycocalyx followed by plasma membrane and the cell wall", "outermost cell wall followed by glycocalyx and then plasma membrane", "outermost glycocalyx followed by the cell wall and then the plasma membrane"], correct: 3, explanation: "Glycocalyx, cell wall, plasma membrane order[span_41](start_span)[span_41](end_span)." },
+            { q: "The term \"Glycocalyx\" is used for:", options: ["a layer surrounding the cell wall of bacteria", "a layer present between cell wall and plasma membrane of bacteria", "cell wall of bacteria", "plasma membrane of bacteria"], correct: 0, explanation: "Layer surrounding cell wall[span_42](start_span)[span_42](end_span)." },
+            { q: "Correct sequence of layers of bacterial cell envelope is:", options: ["Cell membrane -> Glycocalyx -> Cell wall", "Glycocalyx -> Cell wall -> Cell membrane", "Cell wall -> Glycocalyx -> Cell membrane", "Glycocalyx -> Cell membrane -> Cell wall"], correct: 1, explanation: "Glycocalyx -> Cell wall -> Cell membrane[span_43](start_span)[span_43](end_span)." },
+            { q: "Given below is a diagram of a bacterial cell. Choose the correct option...", options: ["X is cell envelope", "Y is made of peptidoglycan", "Infolding of Z is polysome", "All of these"], correct: 1, explanation: "Y cell wall is made of peptidoglycan[span_44](start_span)[span_44](end_span)." },
+            { q: "Assertion: Certain bacteria possess plasmid. Reason: Certain bacteria possess resistance to antibiotics.", options: ["Both the assertion and the reason are true, and the reason is a correct explanation", "Both the assertion and reason are true, but reason is not a correct explanation", "Assertion is true, but the reason is false", "Both the assertion and reason are false"], correct: 1, explanation: "Both true, reason explains plasmid function[span_45](start_span)[span_45](end_span)." },
+            { q: "Label the parts of the flagellum in the bacterial cell...", options: ["1 = Filament, 2 = Hook, 3 = Basal body", "1 = Basal body, 2 = Hook, 3 = Filament", "1 = Hook, 2 = Basal Body, 3 = Filament", "1 = Filament, 2 = Basal body, 3 = Hook"], correct: 0, explanation: "Filament, Hook, Basal body[span_46](start_span)[span_46](end_span)." },
+            { q: "Longest portion of bacterial flagellum come out from bacterial cell surface is", options: ["Fimbriae", "Basal body", "Filament", "Hook"], correct: 2, explanation: "Filament[span_47](start_span)[span_47](end_span)." },
+            { q: "What is the special protein found in pili?", options: ["Flagellin", "Nexin", "Dyenin", "Pilin"], correct: 3, explanation: "Pilin[span_48](start_span)[span_48](end_span)." },
+            { q: "Which of the following are small bristle like structures found in bacteria?", options: ["Pili", "Flagella", "Fimbriae", "Cilia"], correct: 2, explanation: "Fimbriae[span_49](start_span)[span_49](end_span)." },
+            { q: "Match the structures given in column-I with their functions/explanations given in column-II...", options: ["a-(i), b-(ii), c-(iii), d-(iv)", "a-(iv), b-(iii), c-(ii), d-(i)", "a-(iii), b-(iv), c-(ii), d-(i)", "a-(iii), b-(ii), c-(iv), d-(i)"], correct: 2, explanation: "Matches correctly[span_50](start_span)[span_50](end_span)." },
+            { q: "Refer to the given structure of a prokaryotic cell and select the correct statement...", options: ["P is a layer of non-cellulosic polysaccharides", "Q is double layered...", "R is an impermeable covering...", "S could be tubular outgrowths..."], correct: 0, explanation: "P capsule layer composition[span_51](start_span)[span_51](end_span)." },
+            { q: "Which option is correct about prokaryotic ribosomes?", options: ["Only I and II", "One I", "Only I, III", "Only III"], correct: 3, explanation: "Only III is correct[span_52](start_span)[span_52](end_span)." },
+            { q: "Identify the figure given below. Choose the correct option. (Polysomes)", options: ["It is present in not only prokaryotes but eukaryotes also", "mRNA is transcribed into proteins", "It is present only in association with cell organelles", "All of these"], correct: 0, explanation: "Present in both prokaryotes and eukaryotes[span_53](start_span)[span_53](end_span)." },
+            { q: "Gas vacuole is present in:", options: ["P only", "Q only", "R only", "All P, Q and R"], correct: 3, explanation: "All listed bacteria[span_54](start_span)[span_54](end_span)." },
+            { q: "Which one of the following is not an inclusion body found in prokaryotes?", options: ["Glycogen granule", "Polysome", "Phosphate granule", "Cyanophycean granule"], correct: 1, explanation: "Polysome is not an inclusion body[span_55](start_span)[span_55](end_span)." },
+            { q: "Select the option accordingly. (Prokaryotic ribosomes / polysomes)", options: ["PQR TFT", "PQR FTT", "PQR TFF", "PQR TTF"], correct: 3, explanation: "True-True-False patterns[span_56](start_span)[span_56](end_span)." },
+            { q: "In a prokaryotic cell, the inclusion bodies:", options: ["are not bounded by any membrane system", "lie freely in the cytoplasm", "Both (A) and (B)", "None of the above"], correct: 2, explanation: "Not membrane bound and lie freely in cytoplasm[span_57](start_span)[span_57](end_span)." },
+            { q: "When was the most accepted model for plasma membrane organization given?", options: ["1962", "1972", "1984", "1964"], correct: 1, explanation: "1972 (Fluid Mosaic Model)[span_58](start_span)[span_58](end_span)." },
+            { q: "Which of the following component of Plasma membrane is present in the form of bilayer?", options: ["Lipid", "Protein", "Carbohydrate", "All"], correct: 0, explanation: "Lipid[span_59](start_span)[span_59](end_span)." },
+            { q: "Plasma membrane is", options: ["Semi-solid", "Quasifluid", "Non-living", "Both (2) and (3)"], correct: 3, explanation: "Quasifluid and non-living[span_60](start_span)[span_60](end_span)." },
+            { q: "Choose the incorrect statement regarding cell membrane.", options: ["Generally smaller molecules pass easily and readily than large molecules", "Water soluble substance pass through it less readily than lipid soluble substances", "In addition to phospholipid membrane it also contains cholesterol", "None of these"], correct: 3, explanation: "None of these are incorrect statements[span_61](start_span)[span_61](end_span)." },
+            { q: "Reason why hydrophobic tail is towards inner side?", options: ["Hydrophobic tail should not come in contact with water.", "Charge hydrocarbon chain is protected from polar head.", "Polar tail should be in contact with each other.", "All of the above."], correct: 0, explanation: "Protected from aqueous environment[span_62](start_span)[span_62](end_span)." },
+            { q: "In human RBC the percentage of lipid in membrane is:", options: ["52", "40", "54", "60"], correct: 1, explanation: "40%[span_63](start_span)[span_63](end_span)." },
+            { q: "Danieli and Davson model can be represented as", options: ["P-P-L-L", "P-L-L-P", "L-P-P-L", "P-L-P-L"], correct: 1, explanation: "P-L-L-P[span_64](start_span)[span_64](end_span)." },
+            { q: "Which part of phospholipid is protected from aqueous environment?", options: ["Head", "Tail", "Both head and tail", "Phospholipid is not protected from aqueous Environment."], correct: 1, explanation: "Tail[span_65](start_span)[span_65](end_span)." },
+            { q: "Tail of phospholipid is made of", options: ["Fatty acids", "Saturated hydrocarbon", "Unsaturated hydrocarbon", "More than one is true"], correct: 3, explanation: "More than one is true[span_66](start_span)[span_66](end_span)." },
+            { q: "Which of the following is incorrect with respect to unit membrane as per Robertson?", options: ["Lipid bilayer is sandwiched between protein layers", "Lipid bilayer is surrounded by Globular Proteins", "Average a thickness of unit membrane is about 75 Å", "All of the above"], correct: 1, explanation: "Surrounded by extended protein sheets, not globular proteins[span_67](start_span)[span_67](end_span)." },
+            { q: "Plasma membrane is", options: ["Selectively permeable", "Permeable.", "Impermeable.", "Can be any of the above"], correct: 0, explanation: "Selectively permeable[span_68](start_span)[span_68](end_span)." },
+            { q: "Many molecules can move briefly across the membrane without any requirement of energy and special membrane proteins. This is called", options: ["Active transport", "Simple diffusion", "Facilitated diffusion", "All of these"], correct: 1, explanation: "Simple diffusion[span_69](start_span)[span_69](end_span)." },
+            { q: "Na+/K+ pump involve in transport", options: ["Downhill", "Passive transport", "Uphill", "Along concentration gradient"], correct: 2, explanation: "Uphill active transport[span_70](start_span)[span_70](end_span)." },
+            { q: "Which of the following cell lacks cell wall?", options: ["Animal cell", "Plant cell", "Algal cell", "Bacterial cell"], correct: 0, explanation: "Animal cell[span_71](start_span)[span_71](end_span)." },
+            { q: "Fungal cell wall is made of", options: ["Chitin", "Galactan", "Mannan", "All of the above"], correct: 0, explanation: "Chitin[span_72](start_span)[span_72](end_span)." },
+            { q: "Cell wall is", options: ["Outer to plasma membrane", "Inner to plasma membrane", "Elastic", "More than one is true"], correct: 0, explanation: "Outer to plasma membrane[span_73](start_span)[span_73](end_span)." },
+            { q: "Continuity of cytoplasm from cell to cell is maintained through cytoplasmic connections in plants called", options: ["ER", "tight junction", "gap junction", "plasmodesmata"], correct: 3, explanation: "Plasmodesmata[span_74](start_span)[span_74](end_span)." },
+            { q: "Plant cell have rigid cell wall promote all function except", options: ["Give protection", "Cell to cell interaction", "Provides a barrier to undesirable macromolecules", "Exocytosis"], correct: 3, explanation: "Exocytosis[span_75](start_span)[span_75](end_span)." },
+            { q: "The cell wall and middle lamellae may be traversed by", options: ["Plasmodesmata", "Secondary cell wall", "Neighbouring cell", "Cortex"], correct: 0, explanation: "Plasmodesmata[span_76](start_span)[span_76](end_span)." },
+            { q: "Plasmodesmata is connection between young cell which connect two plant cell is in", options: ["Meristematic phase", "Permanent cells", "Dead cell", "All of the above"], correct: 0, explanation: "Meristematic phase[span_77](start_span)[span_77](end_span)." },
+            { q: "From the given cells: Diatom, Amoeba, Mycoplasma, Dinoflagellates, Euglena, Mesophyll cell. How many have cell wall?", options: ["Two", "Three", "Four", "Five"], correct: 1, explanation: "Three (Diatoms, Dinoflagellates, Mesophyll)[span_78](start_span)[span_78](end_span)." },
+            { q: "Choose the correct option. Statement P & Q.", options: ["Both statements are correct.", "Both statements are incorrect.", "Only statement Q is correct", "Only statement P is correct"], correct: 2, explanation: "Only statement Q is correct[span_79](start_span)[span_79](end_span)." },
+            { q: "Primary wall is capable of...... which .... as cell matures", options: ["Growth, increases", "growth, diminishes", "Extension, increases", "Both (1) and (3)"], correct: 1, explanation: "Growth, diminishes[span_80](start_span)[span_80](end_span)." },
+            { q: "Which one of the following is present in plant cell wall?", options: ["Cellulose", "Hemicellulose", "Pectin", "All of the above"], correct: 3, explanation: "All of the above[span_81](start_span)[span_81](end_span)." },
+            { q: "______ and ______ are traversed by plasmodesmata.", options: ["Plasma membrane and cell wall", "Plasma membrane and middle lamella", "Middle lamella and plasma membrane", "Middle lamella and cell wall"], correct: 3, explanation: "Middle lamella and cell wall[span_82](start_span)[span_82](end_span)." },
+            { q: "Fill in the blank: The term 'cell membrane' was given by... discovered by Schwann...", options: ["Nageli and Cramer", "Robert Brown", "Schwann and Schleiden", "Rudolf Virchow and Robert Brown"], correct: 0, explanation: "Nageli and Cramer[span_83](start_span)[span_83](end_span)." },
+            { q: "The fluid nature of the membrane is important from the point of view of functions like:", options: ["cell division and cell growth", "endocytosis and secretion", "formation of intercellular junctions", "All of these"], correct: 3, explanation: "All of these[span_84](start_span)[span_84](end_span)." },
+            { q: "Read the Assertion and Reason carefully to mark the correct option... (Lipid bilayer orientation)", options: ["Both the Assertion (A) and the Reason (R) are true and the Reason (R) is a correct explanation of the Assertion (A).", "Both the Assertion (A) and Reason (R) are true but the Reason (R) is not a correct explanation", "Both A and R are true and R is the correct explanation of A.", "Both A and R are true but R is NOT the correct explanation."], correct: 0, explanation: "Both true and correct explanation[span_85](start_span)[span_85](end_span)." },
+            { q: "Which of the following macromolecules are found in the plasma membrane?", options: ["Lipids only", "Lipids and proteins", "Lipids, proteins and carbohydrates", "Proteins and carbohydrates"], correct: 2, explanation: "Lipids, proteins and carbohydrates[span_86](start_span)[span_86](end_span)." },
+            { q: "Given below are two statements: Assertion A & Reason R (Transport / Cell wall)", options: ["A is true but R is false.", "A is false but R is true.", "Both A and R are true and R is the correct explanation of A.", "Both A and R are true but R is NOT the correct explanation of A."], correct: 0, explanation: "A is true but R is false[span_87](start_span)[span_87](end_span)." },
+            { q: "Nucleolus is", options: ["Single membrane bound", "Always one in number per nucleus", "Not stainable", "Ribosome factory"], correct: 3, explanation: "Ribosome factory[span_88](start_span)[span_88](end_span)." },
+            { q: "Nucleolus is", options: ["Spherical", "Not continuous with nucleoplasm", "More in number in those cells that actively carry out protein synthesis", "More than one is true"], correct: 3, explanation: "More than one is true[span_89](start_span)[span_89](end_span)." },
+            { q: "Read the given statements and select the correct option. (Plant vs Animal cells in distilled water)", options: ["Both statements 1 and 2 are correct.", "Statement 1 is correct but statement 2 is incorrect", "Statement 1 is incorrect but statement 2 is correct", "Both statements 1 and 2 are incorrect."], correct: 0, explanation: "Both statements 1 and 2 are correct[span_90](start_span)[span_90](end_span)." },
+            { q: "This question consist of two statements... Assertion: Endocytosis is not shown by plant cells. Reason: Plant cells have rigid cell wall...", options: ["Both assertion and reason are correct and reason is correct explanation of assertion.", "Both assertion and reason are correct and reason is not correct explanation of assertion.", "Assertion in true but reason is false.", "Both assertion and reason are false."], correct: 0, explanation: "Both correct and correct explanation[span_91](start_span)[span_91](end_span)." },
+            { q: "The cell are held together by a Ca-pectate layer called:", options: ["Primary cell wall", "Secondary cell wall", "Middle lamella", "Tertiary cell wall"], correct: 2, explanation: "Middle lamella[span_92](start_span)[span_92](end_span)." },
+            { q: "Major site of lipid synthesis in cell is", options: ["SER", "RER", "Golgi body", "All of the above"], correct: 0, explanation: "SER[span_93](start_span)[span_93](end_span)." },
+            { q: "The SER is the major site of synthesis of", options: ["Lipid only", "Protein only", "Lipid, steroidal hormones and glycogen metabolism", "Protein and lipid"], correct: 2, explanation: "Lipid, steroidal hormones and glycogen metabolism[span_94](start_span)[span_94](end_span)." },
+            { q: "A cell, which is very active in the synthesis and secretion of proteins...", options: ["Equal amount of RER and SER", "More SER than RER", "More RER than SER", "More GB and no RER"], correct: 2, explanation: "More RER than SER[span_95](start_span)[span_95](end_span)." },
+            { q: "Endoplasmic reticulum is called RER when it has on its surface", options: ["Elementary particles", "Ribosomes", "Oxysome", "Quantasomes"], correct: 1, explanation: "Ribosomes[span_96](start_span)[span_96](end_span)." },
+            { q: "P and Q are the major sites for the synthesis of ______ and ______ respectively.", options: ["proteins and lipids", "lipids and proteins", "carbohydrates and lipids", "vitamins and proteins"], correct: 1, explanation: "lipids and proteins[span_97](start_span)[span_97](end_span)." },
+            { q: "Which of the following is associated with detoxification?", options: ["Golgi body", "Lysosome", "SER", "Peroxisome"], correct: 2, explanation: "SER[span_98](start_span)[span_98](end_span)." },
+            { q: "When was Golgi body discovered?", options: ["1998", "1898", "1975", "1972"], correct: 1, explanation: "1898[span_99](start_span)[span_99](end_span)." },
+            { q: "After packaging the materials are released from which face of Golgi body?", options: ["Cis", "Trans", "Forming", "Convex"], correct: 1, explanation: "Trans[span_100](start_span)[span_100](end_span)." },
+            { q: "Which of the following is not a function of Golgi body?", options: ["Formation of lysosome", "Packaging of material", "Synthesis of glycogen", "Synthesis of glycolipid"], correct: 2, explanation: "Synthesis of glycogen[span_101](start_span)[span_101](end_span)." },
+            { q: "What is diameter of cisternae of Golgi body in micrometer?", options: ["0.5-1.0", "1.0-2.0", "0.2-1.0", "1.0-4.1"], correct: 0, explanation: "0.5-1.0[span_102](start_span)[span_102](end_span)." },
+            { q: "Which face of Golgi body is present near nucleus?", options: ["Cis", "Trans", "Maturing", "Concave"], correct: 0, explanation: "Cis[span_103](start_span)[span_103](end_span)." },
+            { q: "Select the option with correct labelling of given structure. (Golgi)", options: ["A-Cisternae, B-Vesicle C-Trans-face, D-Cisface.", "A-Cisternae, B-Vesicle ,C-Cis-face, D-Transface.", "A-Vesicle, B-Cisternae, C-Cis-face, D-Transface.", "A-Tubules, B-Vesicle ,C-Trans-face, D-Cis- face."], correct: 0, explanation: "Correct anatomical label mapping[span_104](start_span)[span_104](end_span)." },
+            { q: "Which of the following is the correct sequence/route of the secretory product?", options: ["ER -> Vesicles -> Cis region of GB -> Trans region of GB -> Vesicles -> Plasma membrane", "ER -> GB -> Lysosome -> Nuclear membrane -> Plasma membrane", "ER -> Vesicles -> Trans region of GB -> Cis region of GB -> Vesicles -> Plasms membrane", "Lysosome -> ER GB -> Vesicles -> Cell membrane"], correct: 0, explanation: "ER -> Vesicles -> Cis -> Trans -> Vesicles -> Plasma membrane[span_105](start_span)[span_105](end_span)." },
+            { q: "The cis face and trans face of Golgi body are:", options: ["Similar and connected", "Entirely different and not connected", "Entirely different and connected", "Similar but not connected"], correct: 2, explanation: "Entirely different and connected[span_106](start_span)[span_106](end_span)." },
+            { q: "Lysosomal enzymes work at", options: ["Acidic Ph", "Basic pH", "Both acidic and basic pH", "None of these"], correct: 0, explanation: "Acidic pH[span_107](start_span)[span_107](end_span)." },
+            { q: "The newly formed lysosome is called", options: ["Primary lysosome", "Secondary lysosome", "Autophagic lysosome", "All of the above"], correct: 0, explanation: "Primary lysosome[span_108](start_span)[span_108](end_span)." },
+            { q: "Match List-I with List-II. (Organelles & functions)", options: ["A-III, B-II, C-IV, D-I", "A-II, B-III, C-IV, D-I", "A-I, B-III, C-II, D-IV", "A-IV, B-II, C-III, D-I"], correct: 0, explanation: "Matches lists correctly[span_109](start_span)[span_109](end_span)." },
+            { q: "Which of the following statements is not correct? (Lysosomes)", options: ["Lysosomes are formed by the process of packaging in the endoplasmic reticulum.", "Lysosomes have numerous hydrolytic enzymes.", "The hydrolytic enzymes of lysosomes are active under acidic pH.", "Lysosomes are membrane-bound structures."], correct: 0, explanation: "Formed via Golgi body packaging, not directly ER packaging[span_110](start_span)[span_110](end_span)." },
+            { q: "Match the following. (Protein, lipid, glycoprotein, hydrolytic enzyme)", options: ["A-(i), B-(ii), C-(iii), D-(iv)", "A-(iv), B-(ii), C-(i), D-(iii)", "A-(iv), B-(i), C-(ii), D-(iii)", "A-(i), B-(iii), C-(ii), D-(iv)"], correct: 2, explanation: "Matches correctly[span_111](start_span)[span_111](end_span)." },
+            { q: "Most of the water in mature plant cells occurs chiefly in which of the following?", options: ["Cell wall", "Cytoplasm", "Vacuoles", "Nucleus"], correct: 2, explanation: "Vacuoles[span_112](start_span)[span_112](end_span)." },
+            { q: "Read the following statements... (Water, sap, tonoplast, 90% volume)", options: ["Lysosome", "Vacuole", "Peroxisome", "Food"], correct: 1, explanation: "Vacuole[span_113](start_span)[span_113](end_span)." },
+            { q: "Which one is correct? (Amoeba contractile vacuole / protist food vacuole)", options: ["In Amoeba, contractile vacuole is important for excretion and osmoregulation.", "In many cells as in protists, food vacuoles are formed by engulfing the food particles.", "Both (A) and (B).", "Vacuole is always small sized in all cells of Plant."], correct: 2, explanation: "Both (A) and (B)[span_114](start_span)[span_114](end_span)." },
+            { q: "The concentration of a number of ions and other materials is higher in vacuoles than those in Cytoplasm, why?", options: ["Tonoplast has a number of active transport system that pumps ions into vacuole from cytoplasm.", "Through osmosis, a large amount of ions go continuously to vacuole from cytoplasm.", "Cytoplasmic ions enter the vacuole through osmotic flow of water.", "Vacuole is always engaged in the hydrolysis of salts into their ions."], correct: 0, explanation: "Active transport system pumps ions[span_115](start_span)[span_115](end_span)." },
+            { q: "In an Amoeba cell, vacuoles", options: ["contains water, sap and excretory product", "is bound by a single membrane called tonoplast", "maintains turgor pressure", "Can be food vacuole and contractile vacuole"], correct: 3, explanation: "Can be food vacuole and contractile vacuole[span_116](start_span)[span_116](end_span)." },
+            { q: "Sap vacuole is absent in:", options: ["Plant cell", "Bacterial cell", "Blue green algal cells", "More than one"], correct: 3, explanation: "More than one (Bacterial and blue-green algae)[span_117](start_span)[span_117](end_span)." },
+            { q: "Find out the incorrect statement regarding plastid", options: ["Double membrane bound organelle", "Semi-autonomous", "Lack naked DNA molecule", "More than one is true"], correct: 2, explanation: "Plastids do not lack naked DNA molecules[span_118](start_span)[span_118](end_span)." },
+            { q: "Number of thylakoids in a granum is", options: ["5-10", "2-100", "100-150", "150-200"], correct: 1, explanation: "2-100[span_119](start_span)[span_119](end_span)." },
+            { q: "Choose the correct statements. (Mitochondria & Chloroplast)", options: ["IV and V", "II only", "II, IV and V", "III and V"], correct: 1, explanation: "II only[span_120](start_span)[span_120](end_span)." },
+            { q: "Match column I with column II and select the correct option...", options: ["A- (iv), B- (v), C- (i) , D- (ii)", "A- (i), B- (ii), C- (iv), D- (iii)", "A- (iv), B- (i), C- (ii), D- (iii)", "A- (i), B- (ii), C- (iii), D- (iv)"], correct: 0, explanation: "Matches correctly[span_121](start_span)[span_121](end_span)." },
+            { q: "Identify (A) and (B) in the given figure and select the correct option. (Chloroplast)", options: ["A- Thylakoid; B-Stroma", "A- Stroma lamella; B-Granum", "A-Granum; B-Stroma", "A-Stroma; B-Granum"], correct: 1, explanation: "A-Stroma lamella; B-Granum[span_122](start_span)[span_122](end_span)." },
+            { q: "Read the given statements and select the correct option. (Semi-autonomous)", options: ["Both statement 1 and statement 2 are correct.", "Statement 1 is correct but statement 2 is Incorrect.", "Statement 1 is incorrect but statement 2 is correct.", "Both statement 1 and 2 are incorrect."], correct: 0, explanation: "Both statement 1 and 2 are correct[span_123](start_span)[span_123](end_span)." },
+            { q: "Match column I with column II and select the correct option... (Chloroplast, Chromoplast, Leucoplast)", options: ["A-(iii), B-(i), C-(ii)", "A-(iii), B-(ii), C-(i)", "A-(i), B-(iii), C-(ii)", "A-(i), B-(ii), C-(iii)"], correct: 1, explanation: "A-(iii), B-(ii), C-(i)[span_124](start_span)[span_124](end_span)." },
+            { q: "Read the given statements and select the correct option. (Chloroplast & mitochondria semi-autonomous)", options: ["Both statement 1 and statement 2 are correct", "Statement 1 is correct but statement 2 is incorrect", "Statement 1 is incorrect but statement 2 is correct", "Both statement 1 and 2 are incorrect"], correct: 0, explanation: "Both correct[span_125](start_span)[span_125](end_span)." },
+            { q: "Choose the incorrectly matched pair.", options: ["Cytoskeleton - Maintain the shape of cell.", "Rough Endoplasmic Reticulum (RER)-Involved in protein synthesis and secretion.", "70S-Found in prokaryotic cell only.", "Contractile vacuole - Helps in excretion."], correct: 2, explanation: "70S found in mitochondria/chloroplasts too[span_126](start_span)[span_126](end_span)." },
+            { q: "A cell organelle 'X' is divided into two types on the basis of a cell organelle 'Y'...", options: ["Golgi complex and ribosome", "SER and mitochondria", "ER and ribosome", "Lysosome and ER"], correct: 2, explanation: "ER and ribosome[span_127](start_span)[span_127](end_span)." },
+            { q: "Which is the important site of formation of glycoproteins and glycolipids in eukaryotic cells?", options: ["Peroxisomes", "Golgi bodies", "Polysomes", "Endoplasmic reticulum"], correct: 1, explanation: "Golgi bodies[span_128](start_span)[span_128](end_span)." },
+            { q: "Directions: In the given question, two statements are given as Statement-I and Statement-II...", options: ["Both Statement-I and Statement-II are correct.", "Both Statement-I and Statement-II are incorrect.", "Statement-I is correct and Statement-II is incorrect.", "Statement-I is incorrect and Statement-II is correct."], correct: 1, explanation: "Both incorrect[span_129](start_span)[span_129](end_span)." },
+            { q: "Vacuole in a plant cell:", options: ["is membrane bound and contains storage proteins and lipids", "is membrane bound and contains water and excretory substances", "lacks membrane and contains air", "lacks membrane and contains water and excretory substances"], correct: 1, explanation: "Membrane bound and contains water and excretory substances[span_130](start_span)[span_130](end_span)." },
+            { q: "The DNA is located in the", options: ["Cristae, mitochondria", "Matrix, mitochondria", "Intermembrane space, mitochondria", "Grana, chloroplast"], correct: 1, explanation: "Matrix, mitochondria[span_131](start_span)[span_131](end_span)." },
+            { q: "Which of the following statement is incorrect?", options: ["Mitochondria, unless specifically stained are not easily visible under the microscope", "Physiological activity of cells determines the number of mitochondria per cell", "Mitochondrion, a powerhouse of cells has DNA, RNA, ribosomes, and enzyme. So it can survive outside the cell", "Mitochondria divide by fission"], correct: 2, explanation: "Cannot survive outside the cell independently[span_132](start_span)[span_132](end_span)." },
+            { q: "If mitochondria is absent in mature RBC what will be the source of energy:", options: ["TCA", "ETS", "link reaction", "Glycolysis"], correct: 3, explanation: "Glycolysis[span_133](start_span)[span_133](end_span)." },
+            { q: "Which of the following feature is present in mitochondria?", options: ["Linear DNA, 70S ribosome", "Circular DNA, glycogen synthesis", "Circular DNA, dsDNA, 70S ribosome", "Circular DNA, single strand DNA, 70S ribosome"], correct: 2, explanation: "Circular DNA, dsDNA, 70S ribosome[span_134](start_span)[span_134](end_span)." },
+            { q: "Mitochondria and chloroplast are: 1. Semi-autonomous 2. Formed by division...", options: ["Both (1) and (2) are correct", "(2) is true but (1) is false", "(1) is true but (2) is false", "Both (1) and (2) are false"], correct: 2, explanation: "(1) is true but (2) is false[span_135](start_span)[span_135](end_span)." },
+            { q: "Extra chromosomal DNA occurs in:", options: ["Mitochondria", "Ribosomes", "Nucleus", "Chromosomes"], correct: 0, explanation: "Mitochondria[span_136](start_span)[span_136](end_span)." },
+            { q: "The number of chloroplast varies form 1 per cell in ______ to ______ per cell in the mesophyll.", options: ["A-Chlorella, B-15 to 20", "B-Chlamydomonas, B-20 to 40", "A-Chlamydomonas, B-15 to 20", "A-Chlamydomonas, B-10 to 40"], correct: 1, explanation: "Chlamydomonas and 20 to 40[span_137](start_span)[span_137](end_span)." },
+            { q: "Which of the following substances are stored in aleuroplast?", options: ["Starch", "Oil and Lipids", "Proteins", "Water and Oil"], correct: 2, explanation: "Proteins[span_138](start_span)[span_138](end_span)." },
+            { q: "Ribosome subunit bind to ER surface is", options: ["40 S", "60 S", "30 S", "50 S"], correct: 1, explanation: "60 S[span_139](start_span)[span_139](end_span)." },
+            { q: "Microtubules are made of", options: ["Tubulin proteins", "Flagellin proteins", "Nexin proteins", "Actin protein"], correct: 0, explanation: "Tubulin proteins[span_140](start_span)[span_140](end_span)." },
+            { q: "An elaborate network of filamentous proteinaceous structures present in the cytoplasm is collectively known as", options: ["Cilia", "Flagella", "Cytoskeleton", "ER"], correct: 2, explanation: "Cytoskeleton[span_141](start_span)[span_141](end_span)." },
+            { q: "Which of the following are involved in motility of bacterial cell?", options: ["Flagella", "Cilia", "Fimbriae", "Pili"], correct: 0, explanation: "Flagella[span_142](start_span)[span_142](end_span)." },
+            { q: "Go through the section of cilia / flagella showing the different parts. (A, B, C, D)", options: ["A Plasma membrane, B - Interdoublet bridge, C- Central microtubule, D-Radial spoke", "A-Plasma membrane, B Arm, C-Central microtubule, D-Radial spoke", "A Plasma membrane, B- Interdoublet bridge, C-Hub, D-Radial spoke", "A Plasma membrane, B Interdoublet bridge, C-Hub, D-Arm"], correct: 0, explanation: "Matches correct axoneme anatomy[span_143](start_span)[span_143](end_span)." },
+            { q: "What is the total number of microtubules in cilia and flagella?", options: ["9", "2", "20", "18"], correct: 2, explanation: "20[span_144](start_span)[span_144](end_span)." },
+            { q: "Cilia and flagella are similar in", options: ["Structure", "Their number per cell", "Distribution", "All of the above"], correct: 0, explanation: "Structure[span_145](start_span)[span_145](end_span)." },
+            { q: "Cilia and flagella are covered by", options: ["Cell wall", "Basal body", "Axoneme", "Plasma membrane"], correct: 3, explanation: "Plasma membrane[span_146](start_span)[span_146](end_span)." },
+            { q: "An organelle with an internal cross-section showing characteristic '9+2' array is the", options: ["microtubule", "microfilament", "cilium or flagellum", "cytoskeleton"], correct: 2, explanation: "cilium or flagellum[span_147](start_span)[span_147](end_span)." },
+            { q: "Nine doublets and two singlets are present in", options: ["Microtubule", "Spindle fibers", "Centriole", "Cilium"], correct: 3, explanation: "Cilium[span_148](start_span)[span_148](end_span)." },
+            { q: "Mark the correct statement. S-I: Core of cilium/flagellum is axoneme. S-II: Central tubules...", options: ["S-I correct and S-II incorrect", "S-I and S-II both correct", "S-I and S-II both incorrect", "S-I incorrect and S-II correct"], correct: 1, explanation: "S-I and S-II both correct[span_149](start_span)[span_149](end_span)." },
+            { q: "Animal cells contain another non-membrane bound organelle called", options: ["Centrosome", "Mitochondria", "Chloroplast", "Ribosome"], correct: 0, explanation: "Centrosome[span_150](start_span)[span_150](end_span)." },
+            { q: "The cellular component at the base of each cilium or flagellum is", options: ["Centriole", "Nucleus", "Microvillus", "Basal Body"], correct: 3, explanation: "Basal Body[span_151](start_span)[span_151](end_span)." },
+            { q: "Arrangement of microtubules in a flagellum and a centriole is respectively", options: ["9+2 and 9+1", "9+1 and 9+0", "9+0 and 9+2", "9+2 and 9+0"], correct: 3, explanation: "9+2 and 9+0[span_152](start_span)[span_152](end_span)." },
+            { q: "Match the cell organelles given in column I with cellular processes...", options: ["a-ii, b-i, c-iii, d- iv", "a-i, b-iii, c-iv, d-ii", "a-i, b-iv, c-iii, d-iv", "a-iv, b-iii, c-i, d-ii"], correct: 0, explanation: "Matches lists correctly[span_153](start_span)[span_153](end_span)." },
+            { q: "Match the List-I with List-II. (Golgi, Lysosomes, Vacuoles, Ribosomes)", options: ["A-R, B-S, C-Q, D-P", "A-S, B-R, C-P, D-Q", "A-R, B-Q, C-S, D-P", "A-P, B-Q, C-S, D-R"], correct: 0, explanation: "Matches lists correctly[span_154](start_span)[span_154](end_span)." },
+            { q: "Match List-I with List-II to find out the correct. (Cell envelope, plasma membrane, mesosome, ribosomes)", options: ["A-I, B-II, C-IV, D-III", "A-IV, B-III, C - I, D-II", "A-II, B-I, C-III, D-IV", "A-II, B-III, C-IV, D-I"], correct: 0, explanation: "Matches lists correctly[span_155](start_span)[span_155](end_span)." },
+            { q: "Match the lists and select the correct option: (Cristae, Cisternae, Thylakoid, Axoneme)", options: ["A-(S); B-(P); C-(Q); D-(R)", "A-(Q); B-(R); C-(S); D-(P)", "A-(R); B-(P); C-(S); D-(Q)", "A-(Q); B-(S); C-(R); D-(P)"], correct: 2, explanation: "A-(R); B-(P); C-(S); D-(Q)[span_156](start_span)[span_156](end_span)." },
+            { q: "Match the following Lists and select the correct option. (SER, RER, Golgi, Centriole)", options: ["(A)(III) (I) (II) (IV)", "(A)(IV) (II) (I) (III)", "(A)(I) (II) (III) (IV)", "(A)(II) (I) (III) (IV)"], correct: 3, explanation: "Matches correctly[span_157](start_span)[span_157](end_span)." },
+            { q: "Match the lists and select the correct option. (Centrioles, Cilia, etc.)", options: ["A-(P,Q); B-(R,S)", "A-(Q,S); B-(P,R)", "A-(P,R); B-(Q,S)", "A-(P,S); B-(Q,R)"], correct: 3, explanation: "A-(P,S); B-(Q,R)[span_158](start_span)[span_158](end_span)." },
+            { q: "Choose the incorrect match.", options: ["Nucleus - RNA", "Lysosome - Protein synthesis", "Mitochondria Cellular respiration", "Cytoskeleton - Microtubules"], correct: 1, explanation: "Lysosome - Protein synthesis is incorrect[span_159](start_span)[span_159](end_span)." },
+            { q: "Study the following table... Which two show the correct combination?", options: ["I and II", "II and III", "III and IV", "I and III"], correct: 3, explanation: "I and III[span_160](start_span)[span_160](end_span)." },
+            { q: "Match column I with column II and select the option from the codes given below. (Mitochondria, Lysosomes, etc.)", options: ["A-(I), B-(II), C-(III), D-(III)", "A-(III), B-(I), C-(I), D-(II)", "A-(III), B-(II), C-(I), D-(III)", "A-(II), B-(III), C-(I), D-(III)"], correct: 2, explanation: "A-(III), B-(II), C-(I), D-(III)[span_161](start_span)[span_161](end_span)." },
+            { q: "Chromatin is stained by", options: ["Acidic dye", "Basic dye", "Chromatin can never be stained", "Crystal violet"], correct: 1, explanation: "Basic dye[span_162](start_span)[span_162](end_span)." },
+            { q: "Which of the following is incorrectly matched pair?", options: ["70S ribosomes - Prokaryotes", "80S ribosomes - Eukaryotes", "Axoneme-Cilia", "Centromere - Centrosome"], correct: 3, explanation: "Centromere - Centrosome[span_163](start_span)[span_163](end_span)." },
+            { q: "How many of the following cell organelles is/are found only in animal cells? ...", options: ["One", "Two", "Three", "Four"], correct: 0, explanation: "One[span_164](start_span)[span_164](end_span)." },
+            { q: "Assertion (A): Nucleolus is a site for active ribosomal RNA synthesis. Reason (R)...", options: ["both Assertion (A) and Reason (R) are True and the Reason (R) is a correct explanation", "both Assertion (A) and Reason (R) are True but Reason (R) is not a correct explanation", "Assertion (A) is True but the Reason (R) is False.", "Assertion (A) is False but the Reason (R) is True."], correct: 2, explanation: "Assertion is True but the Reason is False[span_165](start_span)[span_165](end_span)." },
+            { q: "Match List-I with List-II to find out the correct option. (Perinuclear space, Axoneme, etc.)", options: ["A-I, B-III, C-II, D-IV", "A-I, B-IV, C-II, D-III", "A-II, B-III, C-I, D-IV", "A-III, B-I, C-II, D-IV"], correct: 3, explanation: "A-III, B-I, C-II, D-IV[span_166](start_span)[span_166](end_span)." },
+            { q: "Histones are rich in", options: ["Alanine and glycine", "Lysine and arginine", "Histidine and serine", "Cysteine and tyrosine"], correct: 1, explanation: "Lysine and arginine[span_167](start_span)[span_167](end_span)." },
+            { q: "The name chromatin was coined by:", options: ["Flemming", "Robert Brown", "George Palade", "Camillo Golgi"], correct: 0, explanation: "Flemming[span_168](start_span)[span_168](end_span)." },
+            { q: "Chromatin consists of", options: ["DNA only", "DNA + Histones", "DNA RNA + Histones + Non-histones proteins", "Ribonucleoproteins only"], correct: 2, explanation: "DNA RNA + Histones + Non-histones proteins[span_169](start_span)[span_169](end_span)." },
+            { q: "Which of the following features is common to prokaryotes and many eukaryotes?", options: ["Chromatin material present", "Cell wall present", "Nuclear membrane present", "Membrane bound sub-cellular organelles present"], correct: 0, explanation: "Chromatin/nucleic material equivalent[span_170](start_span)[span_170](end_span)." },
+            { q: "The centromere lies slightly away from the middle... This type of chromosome is called", options: ["Acrocentric", "Submetacentric", "Metacentric", "Subtelocentric"], correct: 1, explanation: "Submetacentric[span_171](start_span)[span_171](end_span)." },
+            { q: "The shorter and longer arms of a submetacentric chromosome are referred to as", options: ["s-arm and l-arm respectively", "p-arm and q-arm respectively", "q-arm and p-arm respectively", "m-arm and n-arm respectively"], correct: 1, explanation: "p-arm and q-arm respectively[span_172](start_span)[span_172](end_span)." },
+            { q: "Part of chromosome after secondary constriction is called:", options: ["Chromomere", "Telomere", "Satellite", "Primary constriction"], correct: 2, explanation: "Satellite[span_173](start_span)[span_173](end_span)." },
+            { q: "Structure which provides the shape of chromosomes is called", options: ["Centromere", "Centriole", "Satellite", "Chromomere"], correct: 0, explanation: "Centromere[span_174](start_span)[span_174](end_span)." },
+            { q: "Chromosome is visible in", options: ["Dividing cells", "Non-dividing cells", "Interphase of cell cycle", "All of the above"], correct: 0, explanation: "Dividing cells[span_175](start_span)[span_175](end_span)." },
+            { q: "Chromosomes can be classified on the basis of position of", options: ["Centriole", "Centromere", "Satellite", "Telomere"], correct: 1, explanation: "Centromere[span_176](start_span)[span_176](end_span)." },
+            { q: "Read the following statements carefully and find out whether they are true or false. (Lysosomes, Chromatin, Vacuole, Nucleolus)", options: ["I-T, II-F, III-T, IV-T", "I-T, II-T, III-T, IV-T", "I-T, II-T, III-F, IV-T", "I-F, II-T, III-T, IV-T"], correct: 2, explanation: "I-T, II-T, III-F, IV-T[span_177](start_span)[span_177](end_span)." },
+            { q: "Chromosome having centromere in its middle is:", options: ["acrocentric.", "telocentric.", "metacentric.", "sub-metacentric."], correct: 2, explanation: "metacentric[span_178](start_span)[span_178](end_span)." }
         ]
     },
 
-    // ----------------- ZOOLOGY -----------------
     "Zoology": {
         "Animal Kingdom": [],
         "Human Physiology - Heart": [],
