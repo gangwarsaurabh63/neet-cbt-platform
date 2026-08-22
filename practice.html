@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET Question Practice Mode</title>
+    <script src="questions.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        header { background-color: #003366; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header h2 { margin: 0; font-size: 16px; }
+        .btn-home { background: #e0e0e0; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; }
+
+        .container { max-width: 750px; margin: 20px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 95%; }
+        
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        select, button { padding: 8px 12px; border-radius: 4px; border: 1px solid #ccc; font-size: 13px; font-weight: bold; cursor: pointer; }
+        .filter-select { background: #fff; color: #333; }
+
+        .q-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #003366; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+        .q-text { font-size: 14px; line-height: 1.5; margin-bottom: 15px; }
+
+        .options-list { list-style: none; padding: 0; margin: 0 0 15px 0; }
+        .options-list li { margin-bottom: 8px; padding: 10px 12px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 13px; background: #fff; transition: background 0.2s; }
+        .options-list li:hover { background-color: #f8fafc; }
+        .options-list li.correct-ans { background-color: #d4edda !important; border-color: #28a745; color: #155724; font-weight: bold; }
+        .options-list li.wrong-ans { background-color: #f8d7da !important; border-color: #dc3545; color: #721c24; }
+
+        .solution-box { background: #e8f4fd; border-left: 4px solid #007bff; padding: 12px; border-radius: 4px; margin-top: 15px; font-size: 13px; color: #004085; display: none; }
+        
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        .btn-nav { background: #003366; color: white; border: none; padding: 10px 20px; border-radius: 4px; }
+        .btn-bookmark { background: #ffc107; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>NEET Practice Hub - Chapterwise / Subjectwise</h2>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 Home</button>
+    </header>
+
+    <div class="container">
+        <div class="filter-bar">
+            <select id="subjectFilter" class="filter-select" onchange="filterQuestions()">
+                <option value="All">All Subjects</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Botany">Botany</option>
+                <option value="Zoology">Zoology</option>
+            </select>
+            <button class="btn-bookmark" onclick="toggleBookmarkFilter()" id="bmFilterBtn">⭐ Show Bookmarks Only</button>
+        </div>
+
+        <div class="q-header">
+            <span id="q-counter">Question 1</span>
+            <span id="q-subject" style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Physics</span>
+        </div>
+
+        <div class="q-text" id="q-text">Loading question...</div>
+
+        <ul class="options-list" id="options-container">
+            <li onclick="checkAnswer(0)" id="opt0"></li>
+            <li onclick="checkAnswer(1)" id="opt1"></li>
+            <li onclick="checkAnswer(2)" id="opt2"></li>
+            <li onclick="checkAnswer(3)" id="opt3"></li>
+        </ul>
+
+        <div class="solution-box" id="solutionBox">
+            <strong>Explanation:</strong> <span id="q-explanation"></span>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-nav" onclick="prevQ()">◄ Previous</button>
+            <button class="btn-bookmark" onclick="bookmarkCurrent()" id="bookmarkBtn">☆ Bookmark</button>
+            <button class="btn-nav" onclick="nextQ()">Next ►</button>
+        </div>
+    </div>
+
+    <script>
+        const activeTestId = localStorage.getItem('active_test_id') || 'test1';
+        let allQuestions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
+        let filteredQuestions = [...allQuestions];
+        
+        let currentIndex = 0;
+        let showBookmarksOnly = false;
+        let answeredState = false;
+
+        function filterQuestions() {
+            let sub = document.getElementById('subjectFilter').value;
+            if (sub === "All") {
+                filteredQuestions = [...allQuestions];
+            } else {
+                filteredQuestions = allQuestions.filter(q => (q.subject || "Physics") === sub);
+            }
+            if (showBookmarksOnly) {
+                let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
+                filteredQuestions = filteredQuestions.filter((_, idx) => bms.includes(allQuestions.indexOf(filteredQuestions[idx]) !== -1 ? allQuestions.indexOf(filteredQuestions[idx]) : idx));
+            }
+            currentIndex = 0;
+            loadPracticeQuestion();
+        }
+
+        function toggleBookmarkFilter() {
+            showBookmarksOnly = !showBookmarksOnly;
+            document.getElementById('bmFilterBtn').textContent = showBookmarksOnly ? "⭐ Showing Bookmarks" : "⭐ Show Bookmarks Only";
+            filterQuestions();
+        }
+
+        function loadPracticeQuestion() {
+            if (filteredQuestions.length === 0) {
+                document.getElementById('q-text').textContent = "No questions found for this filter.";
+                document.getElementById('options-container').innerHTML = "";
+                document.getElementById('solutionBox').style.display = "none";
+                return;
+            }
+
+            if (currentIndex >= filteredQuestions.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = filteredQuestions.length - 1;
+
+            let q = filteredQuestions[currentIndex];
+            let originalIdx = allQuestions.indexOf(q);
+
+            document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${filteredQuestions.length}`;
+            document.getElementById('q-subject').textContent = q.subject || "Physics";
+            document.getElementById('q-text').textContent = q.q;
+
+            let optList = document.getElementById('options-container');
+            optList.innerHTML = "";
+            answeredState = false;
+            document.getElementById('solutionBox').style.display = "none";
+
+            q.options.forEach((optText, i) => {
+                let li = document.createElement('li');
+                li.id = `opt${i}`;
+                li.textContent = optText;
+                li.onclick = () => checkAnswer(i, q.correct);
+                optList.appendChild(li);
+            });
+
+            let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
+            document.getElementById('bookmarkBtn').textContent = bms.includes(originalIdx) ? "★ Bookmarked" : "☆ Bookmark";
+        }
+
+        function checkAnswer(selectedIdx, correctIdx) {
+            if (answeredState) return;
+            answeredState = true;
+
+            for (let i = 0; i < 4; i++) {
+                let li = document.getElementById(`opt${i}`);
+                if (i === correctIdx) li.classList.add('correct-ans');
+                else if (i === selectedIdx) li.classList.add('wrong-ans');
+            }
+
+            document.getElementById('q-explanation').textContent = filteredQuestions[currentIndex].explanation || "Detailed solution is not available.";
+            document.getElementById('solutionBox').style.display = "block";
+        }
+
+        function bookmarkCurrent() {
+            let q = filteredQuestions[currentIndex];
+            let originalIdx = allQuestions.indexOf(q);
+            let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
+            
+            let btn = document.getElementById('bookmarkBtn');
+            if (bms.includes(originalIdx)) {
+                bms = bms.filter(item => item !== originalIdx);
+                btn.textContent = "☆ Bookmark";
+            } else {
+                bms.push(originalIdx);
+                btn.textContent = "★ Bookmarked";
+            }
+            localStorage.setItem('neet_bookmarks', JSON.stringify(bms));
+        }
+
+        function nextQ() { currentIndex++; loadPracticeQuestion(); }
+        function prevQ() { currentIndex--; loadPracticeQuestion(); }
+
+        loadPracticeQuestion();
+    </script>
+</body>
+</html>
