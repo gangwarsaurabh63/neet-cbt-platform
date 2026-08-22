@@ -57,7 +57,6 @@
                     <span id="q-counter">Question 0 of 0</span>
                 </div>
 
-                <!-- CRITICAL FIX: innerHTML used here to render line breaks cleanly -->
                 <div class="q-text" id="q-text">Loading question...</div>
 
                 <ul class="options-list" id="options-container">
@@ -88,8 +87,16 @@
 
         let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
         let currentQuestions = chaptersData[selectedChapter] || [];
-        let currentIndex = 0;
+        
+        // Load saved index if available in local storage
+        let storageKey = `neet_practice_progress_${selectedSubject}_${selectedChapter}`;
+        let savedIndex = localStorage.getItem(storageKey);
+        let currentIndex = savedIndex ? parseInt(savedIndex) : 0;
         let answeredState = false;
+
+        function savePracticeProgress() {
+            localStorage.setItem(storageKey, currentIndex);
+        }
 
         function loadPracticeQuestion() {
             if (currentQuestions.length === 0) {
@@ -102,10 +109,11 @@
             if (currentIndex >= currentQuestions.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = currentQuestions.length - 1;
 
+            // Save state whenever question is loaded
+            savePracticeProgress();
+
             let q = currentQuestions[currentIndex];
             document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
-            
-            // Renders HTML formatting (<br>, <b>, etc.) properly
             document.getElementById('q-text').innerHTML = q.q;
 
             let pyqBadge = document.getElementById('pyq-badge');
