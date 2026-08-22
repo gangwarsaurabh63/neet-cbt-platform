@@ -15,7 +15,7 @@ const allNeetTests = {
 };
 
 // =========================================================================
-// 2. CHAPTER-WISE PRACTICE QUESTION BANK (Complete Official NEET Syllabus)
+// 2. CHAPTER-WISE PRACTICE QUESTION BANK (NTA Table Format for Matching)
 // =========================================================================
 const chapterwisePracticeBank = {
     // =====================================================================
@@ -95,7 +95,11 @@ const chapterwisePracticeBank = {
                 explanation: "Robert Hooke[span_1](start_span)[span_1](end_span)." 
             },
             { 
-                q: "Match Column I with Column II and select the correct option:<br><br><b>Column I</b><br>A. Leeuwenhoek<br>B. Robert Brown<br>C. Schleiden<br>D. Schwann<br><br><b>Column II</b><br>(i) First saw and described living cell<br>(ii) Cell wall is unique to plant cells<br>(iii) Discovered the nucleus<br>(iv) All plants are composed of cells", 
+                q: "Match Column I with Column II and select the correct option:<br><br>" +
+                   "<table style='width:100%; border-collapse: collapse; margin-bottom: 10px; font-size: 14px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px;'>" +
+                   "<tr><td style='width:50%; vertical-align: top; padding: 10px; border-right: 1px solid #e2e8f0;'><b>Column I</b><br>A. Leeuwenhoek<br>B. Robert Brown<br>C. Schleiden<br>D. Schwann</td>" +
+                   "<td style='width:50%; vertical-align: top; padding: 10px;'><b>Column II</b><br>(i) First saw and described living cell<br>(ii) Cell wall is unique to plant cells<br>(iii) Discovered the nucleus<br>(iv) All plants are composed of cells</td></tr>" +
+                   "</table>", 
                 options: ["(1) A-(i), B-(iii), C-(iv), D-(ii)", "(2) A-(i), B-(iii), C-(ii), D-(iv)", "(3) A-(iii), B-(i), C-(iv), D-(ii)", "(4) A-(i), B-(iv), C-(ii), D-(iii)"], 
                 correct: 0, 
                 explanation: "A-(i), B-(iii), C-(iv), D-(ii)[span_2](start_span)[span_2](end_span)." 
