@@ -37,7 +37,7 @@
         .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; gap: 10px; margin-top: 20px; }
         .btn-nav { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
 
-        /* Question Palette Grid (NEETprep Style) */
+        /* Question Palette Grid */
         .palette-container { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
         .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; padding-right: 4px; }
@@ -59,7 +59,6 @@
     </header>
 
     <div class="layout">
-        <!-- Question Main Card -->
         <div class="content" id="questionContainer">
             <div>
                 <div class="q-header">
@@ -70,6 +69,7 @@
                     <span id="q-counter">Question 0 of 0</span>
                 </div>
 
+                <!-- Uses innerHTML for proper tag rendering -->
                 <div class="q-text" id="q-text">Loading question...</div>
 
                 <ul class="options-list" id="options-container">
@@ -90,7 +90,6 @@
             </div>
         </div>
 
-        <!-- NEETprep Style Question Palette / Jump Grid -->
         <div class="palette-container">
             <div class="palette-title">Question Navigator</div>
             <div class="palette-grid" id="paletteGrid"></div>
@@ -123,7 +122,7 @@
             let attempts = getAttempts();
             attempts[qIndex] = { selectedIdx: selectedIdx };
             localStorage.setItem(attemptsStorageKey, JSON.stringify(attempts));
-            buildQuestionPalette(); // Refresh palette coloring
+            buildQuestionPalette();
         }
 
         function getBookmarks() {
@@ -167,12 +166,8 @@
                 btn.className = 'palette-btn';
                 btn.textContent = idx + 1;
 
-                if (idx === currentIndex) {
-                    btn.classList.add('active');
-                }
-                if (attempts[idx] !== undefined) {
-                    btn.classList.add('attempted');
-                }
+                if (idx === currentIndex) btn.classList.add('active');
+                if (attempts[idx] !== undefined) btn.classList.add('attempted');
 
                 btn.onclick = () => jumpToQuestion(idx);
                 grid.appendChild(btn);
@@ -246,19 +241,13 @@
                 else if (i === selectedIdx) li.classList.add('wrong-ans');
             }
 
-            document.getElementById('q-explanation').textContent = currentQuestions[currentIndex].explanation || "Detailed solution available.";
+            // innerHTML used here to render clean short solutions properly
+            document.getElementById('q-explanation').innerHTML = currentQuestions[currentIndex].explanation || "Detailed solution available.";
             document.getElementById('solutionBox').style.display = "block";
         }
 
-        function nextQ() { 
-            currentIndex++; 
-            loadPracticeQuestion(); 
-        }
-
-        function prevQ() { 
-            currentIndex--; 
-            loadPracticeQuestion(); 
-        }
+        function nextQ() { currentIndex++; loadPracticeQuestion(); }
+        function prevQ() { currentIndex--; loadPracticeQuestion(); }
 
         loadPracticeQuestion();
     </script>
