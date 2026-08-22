@@ -9,12 +9,14 @@
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-        .header-actions { display: flex; gap: 8px; align-items: center; }
-        .btn-action { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
-        .btn-bookmark { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+        header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40%; }
+        .header-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .btn-action { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; }
+        .btn-bookmark { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
         .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: bold; }
+        .btn-filter-inc { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+        .btn-filter-all { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
@@ -39,7 +41,7 @@
 
         /* Question Palette Grid */
         .palette-container { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
         .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; padding-right: 4px; }
         .palette-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; height: 38px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
         .palette-btn:hover { background: #e2e8f0; }
@@ -52,13 +54,17 @@
     <header>
         <div class="logo">📖 <span id="nav-chapter-title">Chapter</span></div>
         <div class="header-actions">
-            <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Bookmark</button>
+            <button class="btn-action btn-filter-all" onclick="filterMode('all')">All</button>
+            <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
+            <button class="btn-action btn-filter-inc" onclick="filterMode('incorrect')">❌ Incorrect</button>
+            <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Save</button>
             <button class="btn-action" onclick="window.location.href='practice.html'">⬅ Chapters</button>
             <button class="btn-action" onclick="window.location.href='index.html'">🏠 Home</button>
         </div>
     </header>
 
     <div class="layout">
+        <!-- Question Main Card -->
         <div class="content" id="questionContainer">
             <div>
                 <div class="q-header">
@@ -69,7 +75,6 @@
                     <span id="q-counter">Question 0 of 0</span>
                 </div>
 
-                <!-- Uses innerHTML for proper tag rendering -->
                 <div class="q-text" id="q-text">Loading question...</div>
 
                 <ul class="options-list" id="options-container">
@@ -90,8 +95,12 @@
             </div>
         </div>
 
+        <!-- NEETprep Style Question Palette / Jump Grid -->
         <div class="palette-container">
-            <div class="palette-title">Question Navigator</div>
+            <div class="palette-title">
+                <span id="palette-heading">Question Navigator</span>
+                <span id="filter-status" style="font-size:11px; color:#16a34a; font-weight:600;"></span>
+            </div>
             <div class="palette-grid" id="paletteGrid"></div>
         </div>
     </div>
@@ -104,11 +113,11 @@
         document.getElementById('q-sub-title').textContent = `Subject: ${selectedSubject} | Chapter: ${selectedChapter}`;
 
         let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
-        let currentQuestions = chaptersData[selectedChapter] || [];
+        let rawQuestions = chaptersData[selectedChapter] || [];
         
-        let progressStorageKey = `neet_practice_progress_${selectedSubject}_${selectedChapter}`;
-        let savedIndex = localStorage.getItem(progressStorageKey);
-        let currentIndex = savedIndex ? parseInt(savedIndex) : 0;
+        let currentFilter = 'all';
+        let activeQuestionsList = [...rawQuestions];
+        let currentIndex = 0;
 
         let attemptsStorageKey = `neet_practice_attempts_${selectedSubject}_${selectedChapter}`;
         let bookmarkStorageKey = `neet_bookmarks_${selectedSubject}_${selectedChapter}`;
@@ -118,9 +127,9 @@
             return data ? JSON.parse(data) : {};
         }
 
-        function saveAttempt(qIndex, selectedIdx) {
+        function saveAttempt(origIndex, selectedIdx) {
             let attempts = getAttempts();
-            attempts[qIndex] = { selectedIdx: selectedIdx };
+            attempts[origIndex] = { selectedIdx: selectedIdx };
             localStorage.setItem(attemptsStorageKey, JSON.stringify(attempts));
             buildQuestionPalette();
         }
@@ -131,13 +140,17 @@
         }
 
         function toggleBookmark() {
+            if (activeQuestionsList.length === 0) return;
+            let currentQ = activeQuestionsList[currentIndex];
+            let origIndex = rawQuestions.indexOf(currentQ);
+
             let bookmarks = getBookmarks();
-            let indexInBookmarks = bookmarks.indexOf(currentIndex);
+            let indexInBookmarks = bookmarks.indexOf(origIndex);
             if (indexInBookmarks > -1) {
                 bookmarks.splice(indexInBookmarks, 1);
                 alert("Bookmark removed!");
             } else {
-                bookmarks.push(currentIndex);
+                bookmarks.push(origIndex);
                 alert("Question bookmarked successfully!");
             }
             localStorage.setItem(bookmarkStorageKey, JSON.stringify(bookmarks));
@@ -145,15 +158,42 @@
         }
 
         function updateBookmarkButtonUI() {
+            if (activeQuestionsList.length === 0) return;
+            let currentQ = activeQuestionsList[currentIndex];
+            let origIndex = rawQuestions.indexOf(currentQ);
+
             let bookmarks = getBookmarks();
             let btn = document.getElementById('bookmarkBtn');
-            if (bookmarks.includes(currentIndex)) {
+            if (bookmarks.includes(origIndex)) {
                 btn.classList.add('bookmarked');
-                btn.textContent = "🔖 Bookmarked";
+                btn.textContent = "🔖 Saved";
             } else {
                 btn.classList.remove('bookmarked');
-                btn.textContent = "🔖 Bookmark";
+                btn.textContent = "🔖 Save";
             }
+        }
+
+        function filterMode(mode) {
+            currentFilter = mode;
+            let attempts = getAttempts();
+            let bookmarks = getBookmarks();
+
+            if (mode === 'bookmarks') {
+                activeQuestionsList = rawQuestions.filter((_, idx) => bookmarks.includes(idx));
+                document.getElementById('filter-status').textContent = "[ Filter: Bookmarks ]";
+            } else if (mode === 'incorrect') {
+                activeQuestionsList = rawQuestions.filter((_, idx) => {
+                    let att = attempts[idx];
+                    return att !== undefined && att.selectedIdx !== rawQuestions[idx].correct;
+                });
+                document.getElementById('filter-status').textContent = "[ Filter: Incorrect ]";
+            } else {
+                activeQuestionsList = [...rawQuestions];
+                document.getElementById('filter-status').textContent = "";
+            }
+
+            currentIndex = 0;
+            loadPracticeQuestion();
         }
 
         function buildQuestionPalette() {
@@ -161,43 +201,54 @@
             grid.innerHTML = "";
             let attempts = getAttempts();
 
-            currentQuestions.forEach((_, idx) => {
+            if (activeQuestionsList.length === 0) {
+                grid.innerHTML = "<span style='font-size:12px; color:#64748b;'>No questions available in this filter.</span>";
+                return;
+            }
+
+            activeQuestionsList.forEach((q, idx) => {
+                let origIndex = rawQuestions.indexOf(q);
                 let btn = document.createElement('button');
                 btn.className = 'palette-btn';
-                btn.textContent = idx + 1;
+                btn.textContent = origIndex + 1; // Display original question number
 
-                if (idx === currentIndex) btn.classList.add('active');
-                if (attempts[idx] !== undefined) btn.classList.add('attempted');
+                if (idx === currentIndex) {
+                    btn.classList.add('active');
+                }
+                if (attempts[origIndex] !== undefined) {
+                    btn.classList.add('attempted');
+                }
 
-                btn.onclick = () => jumpToQuestion(idx);
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    loadPracticeQuestion();
+                };
                 grid.appendChild(btn);
             });
         }
 
-        function jumpToQuestion(index) {
-            currentIndex = index;
-            loadPracticeQuestion();
-        }
-
         function loadPracticeQuestion() {
-            if (currentQuestions.length === 0) {
-                document.getElementById('q-text').textContent = "No questions found for this chapter yet.";
+            if (activeQuestionsList.length === 0) {
+                document.getElementById('q-text').textContent = "No questions match this filter view.";
                 document.getElementById('options-container').innerHTML = "";
                 document.getElementById('q-counter').textContent = "0 of 0";
                 document.getElementById('bookmarkBtn').style.display = 'none';
-                document.getElementById('paletteGrid').innerHTML = "";
+                buildQuestionPalette();
                 return;
+            } else {
+                document.getElementById('bookmarkBtn').style.display = 'block';
             }
 
-            if (currentIndex >= currentQuestions.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = currentQuestions.length - 1;
+            if (currentIndex >= activeQuestionsList.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = activeQuestionsList.length - 1;
 
-            localStorage.setItem(progressStorageKey, currentIndex);
             updateBookmarkButtonUI();
             buildQuestionPalette();
 
-            let q = currentQuestions[currentIndex];
-            document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
+            let q = activeQuestionsList[currentIndex];
+            let origIndex = rawQuestions.indexOf(q);
+
+            document.getElementById('q-counter').textContent = `Question ${origIndex + 1} of ${rawQuestions.length} (Filtered view: ${currentIndex + 1}/${activeQuestionsList.length})`;
             document.getElementById('q-text').innerHTML = q.q;
 
             let pyqBadge = document.getElementById('pyq-badge');
@@ -221,16 +272,19 @@
             });
 
             let attempts = getAttempts();
-            if (attempts[currentIndex] !== undefined) {
-                applyAttemptState(attempts[currentIndex].selectedIdx, q.correct);
+            if (attempts[origIndex] !== undefined) {
+                applyAttemptState(attempts[origIndex].selectedIdx, q.correct);
             }
         }
 
         function checkAnswer(selectedIdx, correctIdx) {
+            let currentQ = activeQuestionsList[currentIndex];
+            let origIndex = rawQuestions.indexOf(currentQ);
             let attempts = getAttempts();
-            if (attempts[currentIndex] !== undefined) return; 
 
-            saveAttempt(currentIndex, selectedIdx);
+            if (attempts[origIndex] !== undefined) return; 
+
+            saveAttempt(origIndex, selectedIdx);
             applyAttemptState(selectedIdx, correctIdx);
         }
 
@@ -241,13 +295,22 @@
                 else if (i === selectedIdx) li.classList.add('wrong-ans');
             }
 
-            // innerHTML used here to render clean short solutions properly
-            document.getElementById('q-explanation').innerHTML = currentQuestions[currentIndex].explanation || "Detailed solution available.";
+            let currentQ = activeQuestionsList[currentIndex];
+            document.getElementById('q-explanation').innerHTML = currentQ.explanation || "Detailed solution available.";
             document.getElementById('solutionBox').style.display = "block";
         }
 
-        function nextQ() { currentIndex++; loadPracticeQuestion(); }
-        function prevQ() { currentIndex--; loadPracticeQuestion(); }
+        function nextQ() { 
+            if(activeQuestionsList.length === 0) return;
+            currentIndex++; 
+            loadPracticeQuestion(); 
+        }
+
+        function prevQ() { 
+            if(activeQuestionsList.length === 0) return;
+            currentIndex--; 
+            loadPracticeQuestion(); 
+        }
 
         loadPracticeQuestion();
     </script>
