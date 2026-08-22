@@ -157,7 +157,7 @@
             <div class="mode-card practice-accent">
                 <div>
                     <h3>📖 Chapter-wise Practice Hub</h3>
-                    <p>Practice physics, chemistry, botany, and zoology chapter by chapter with instant correct/incorrect answer validations.</p>
+                    <p>Select your subject here and open the practice hub to choose specific chapters and questions.</p>
                     
                     <div class="select-group">
                         <label>Select Practice Subject:</label>
@@ -180,7 +180,6 @@
     </footer>
 
     <script>
-        // Smooth Splash Screen Removal
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -189,7 +188,6 @@
             }, 600);
         });
 
-        // Initialize Candidate Profile
         if (!localStorage.getItem('neet_candidate_name')) {
             localStorage.setItem('neet_candidate_name', 'Saurabh Gangwar');
         }
@@ -212,13 +210,13 @@
         function launchMockTest() {
             let testId = document.getElementById('testSelect').value;
             localStorage.setItem('active_test_id', testId);
-            window.location.href = 'instructions.html'; // Routes through NTA Instructions page
+            window.location.href = 'instructions.html';
         }
 
         function launchPracticeMode() {
             let subject = document.getElementById('practiceSubjectSelect').value;
             localStorage.setItem('active_practice_subject', subject);
-            window.location.href = 'practice.html'; // Launches Chapter-wise Practice Hub
+            window.location.href = 'practice.html'; // Opens practice page containing the chapter list for that subject
         }
     </script>
 </body>
