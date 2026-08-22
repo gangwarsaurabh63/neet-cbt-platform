@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET CBT - General Instructions</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+
+        header { background-color: #003366; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        header h2 { margin: 0; font-size: 16px; }
+
+        .container { max-width: 900px; margin: 20px auto; background: white; border: 1px solid #cbd5e1; border-radius: 8px; padding: 30px; width: 95%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex: 1; }
+        
+        h3 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-top: 0; font-size: 16px; }
+        .inst-box { font-size: 13px; line-height: 1.6; color: #334155; max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; padding: 15px; border-radius: 6px; background: #f8fafc; margin-bottom: 20px; }
+        .inst-box ul { padding-left: 20px; margin: 5px 0; }
+        .inst-box li { margin-bottom: 8px; }
+
+        .candidate-summary { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 6px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 13px; }
+        .candidate-summary span { font-weight: bold; color: #1e3a8a; }
+
+        .declaration-box { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 25px; font-size: 13px; color: #1e293b; cursor: pointer; }
+        .declaration-box input[type="checkbox"] { transform: scale(1.3); margin-top: 2px; accent-color: #2563eb; cursor: pointer; }
+
+        .btn-proceed { background: #16a34a; color: white; border: none; padding: 12px 30px; border-radius: 6px; font-weight: bold; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s; }
+        .btn-proceed:disabled { background: #94a3b8; cursor: not-allowed; }
+        .btn-proceed:hover:not(:disabled) { background: #15803d; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>NTA CBT Examination Instructions</h2>
+        <button onclick="window.location.href='index.html'" style="background:#e0e0e0; border:none; padding:6px 12px; border-radius:4px; font-weight:bold; cursor:pointer; font-size:12px;">🏠 Back to Home</button>
+    </header>
+
+    <div class="container">
+        <div class="candidate-summary">
+            <div>Candidate Name: <span id="lbl-name">Saurabh</span></div>
+            <div>Test Paper: <span id="lbl-test">Allen Major Test</span></div>
+            <div>Duration: <span>3 Hours 15 Minutes</span></div>
+        </div>
+
+        <h3>Please read the instructions carefully</h3>
+        
+        <div class="inst-box">
+            <strong>General Instructions:</strong>
+            <ul>
+                <li>The test duration is 195 minutes (3 Hours 15 Minutes). The clock will be set at the server. The countdown timer in the top right corner of screen will display the remaining time available for you to complete the exam.</li>
+                <li>The question palette displayed on the right side of screen will show the status of each question using color codes:
+                    <ul style="margin-top: 5px;">
+                        <li><span style="background: #e2e8f0; padding: 2px 6px; border-radius: 3px;">Gray</span> - You have not visited the question yet.</li>
+                        <li><span style="background: #ff6b6b; color:white; padding: 2px 6px; border-radius: 3px;">Red</span> - You have visited the question but not answered it.</li>
+                        <li><span style="background: #51cf66; color:white; padding: 2px 6px; border-radius: 3px;">Green</span> - You have answered the question.</li>
+                        <li><span style="background: #7c3aed; color:white; padding: 2px 6px; border-radius: 3px;">Purple</span> - You marked the question for review.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <strong>Marking Scheme:</strong>
+            <ul>
+                <li>Each question carries <strong>+4 Marks</strong> for correct answers.</li>
+                <li>There is a negative marking of <strong>-1 Mark</strong> for every incorrect answer.</li>
+                <li>No marks will be deducted for unattempted or marked-for-review questions.</li>
+            </ul>
+        </div>
+
+        <label class="declaration-box">
+            <input type="checkbox" id="declareCheck" onchange="toggleProceedBtn()">
+            <span>I have read and understood all the instructions. I agree that negative marking is applicable, and I will not use any unfair means during the examination.</span>
+        </label>
+
+        <button class="btn-proceed" id="proceedBtn" disabled onclick="startExam()">Proceed to Exam ➔</button>
+    </div>
+
+    <script>
+        let candidateName = localStorage.getItem('neet_candidate_name') || 'Saurabh Gangwar';
+        let activeTest = localStorage.getItem('active_test_id') || 'test1';
+        
+        document.getElementById('lbl-name').textContent = candidateName;
+        document.getElementById('lbl-test').textContent = activeTest.toUpperCase();
+
+        function toggleProceedBtn() {
+            let isChecked = document.getElementById('declareCheck').checked;
+            document.getElementById('proceedBtn').disabled = !isChecked;
+        }
+
+        function startExam() {
+            window.location.href = 'exam.html';
+        }
+    </script>
+</body>
+</html>
