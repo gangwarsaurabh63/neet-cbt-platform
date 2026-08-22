@@ -7,206 +7,48 @@
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f6f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Top Candidate Profile Card Header */
-        .candidate-header {
-            background: white;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .avatar-box {
-            width: 45px;
-            height: 45px;
-            border: 2px solid #666;
-            background: #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-        }
+        .candidate-header { background: white; border-bottom: 1px solid #ddd; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .avatar-box { width: 45px; height: 45px; border: 2px solid #666; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
         .avatar-box svg { width: 28px; height: 28px; fill: #555; }
-        .candidate-details {
-            font-size: 12px;
-            line-height: 1.4;
-            color: #333;
-        }
+        .candidate-details { font-size: 12px; line-height: 1.4; color: #333; }
         .candidate-details span { font-weight: bold; }
-        .timer-badge {
-            background: #0088ff;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 13px;
-            display: inline-block;
-        }
+        .timer-badge { background: #0088ff; color: white; padding: 4px 10px; border-radius: 15px; font-weight: bold; font-size: 13px; display: inline-block; }
 
-        /* Main Workspace */
-        .main-container {
-            flex: 1;
-            padding: 15px;
-            max-width: 800px;
-            margin: auto;
-            width: 100%;
-        }
+        .main-container { flex: 1; padding: 15px; max-width: 800px; margin: auto; width: 100%; }
+        .question-card { background: white; border: 1px solid #ddd; border-radius: 6px; padding: 20px; margin-bottom: 20px; }
 
-        .question-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+        .q-header { font-size: 16px; font-weight: bold; color: #111; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .q-text { font-size: 14px; line-height: 1.6; color: #222; margin-bottom: 20px; }
 
-        .q-header {
-            font-size: 16px;
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        .q-text {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #222;
-            margin-bottom: 20px;
-        }
-
-        /* Options */
         .options-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
-        .options-list li {
-            margin-bottom: 10px;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .options-list li { margin-bottom: 10px; padding: 10px 12px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 14px; background: #fff; display: flex; align-items: center; gap: 10px; }
         .options-list li:hover { background-color: #f8fafc; }
         .options-list input[type="radio"] { accent-color: #0088ff; transform: scale(1.2); }
 
-        /* Color-Coded Action Stack */
-        .action-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .btn-action {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 13px;
-            cursor: pointer;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
+        .action-stack { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .btn-action { width: 100%; padding: 12px; border: none; border-radius: 4px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; }
         .btn-save-next { background-color: #82c974; color: white; }
         .btn-clear { background-color: #ffffff; color: #333; border: 1px solid #ccc; }
         .btn-save-review { background-color: #f6bd60; color: white; }
         .btn-review-next { background-color: #3b82f6; color: white; }
 
-        /* Question Palette Section Built Directly on Screen */
-        .palette-section {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .palette-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #003366;
-            margin: 0 0 10px 0;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .palette-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 6px;
-            max-height: 180px;
-            overflow-y: auto;
-            padding: 5px 0;
-        }
-        .pal-num-btn {
-            height: 32px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            background: #e2e8f0;
-            font-size: 12px;
-        }
+        .palette-section { background: white; border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; }
+        .palette-title { font-size: 14px; font-weight: bold; color: #003366; margin: 0 0 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .palette-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; max-height: 180px; overflow-y: auto; padding: 5px 0; }
+        .pal-num-btn { height: 32px; border-radius: 4px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; background: #e2e8f0; font-size: 12px; }
 
-        /* Bottom Footer Navigation Bar */
-        .bottom-nav {
-            background: white;
-            border-top: 1px solid #ddd;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-nav {
-            padding: 10px 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 13px;
-            cursor: pointer;
-            background: #f8fafc;
-            color: #333;
-        }
-        .btn-submit-green {
-            background-color: #51cf66;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 13px;
-            cursor: pointer;
-        }
+        .bottom-nav { background: white; border-top: 1px solid #ddd; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .btn-nav { padding: 10px 16px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; font-size: 13px; cursor: pointer; background: #f8fafc; color: #333; }
+        .btn-submit-green { background-color: #51cf66; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; font-size: 13px; cursor: pointer; }
 
-        @media (max-width: 600px) {
-            .palette-grid { grid-template-columns: repeat(6, 1fr); }
-        }
+        @media (max-width: 600px) { .palette-grid { grid-template-columns: repeat(6, 1fr); } }
     </style>
 </head>
 <body>
 
-    <!-- Top Candidate Profile Card Header -->
     <div class="candidate-header">
         <div class="header-left">
             <div class="avatar-box">
@@ -218,11 +60,10 @@
                 Remaining Time : <span class="timer-badge" id="timer">03:15:00</span>
             </div>
         </div>
+        <button onclick="window.location.href='index.html'" style="background:#dc2626; color:white; border:none; padding:6px 10px; border-radius:4px; font-size:12px; font-weight:bold; cursor:pointer;">Quit Test</button>
     </div>
 
-    <!-- Main Workspace -->
     <div class="main-container">
-        <!-- Question Card -->
         <div class="question-card">
             <div class="q-header">
                 <span id="q-title">Question 1:</span>
@@ -238,7 +79,6 @@
                 <li onclick="selectOpt(3)"><input type="radio" name="opt" id="r3"> <span id="opt3"></span></li>
             </ul>
 
-            <!-- Stacked Action Buttons -->
             <div class="action-stack">
                 <button class="btn-action btn-save-next" onclick="saveAndNext()">SAVE & NEXT</button>
                 <button class="btn-action btn-clear" onclick="clearResponse()">CLEAR</button>
@@ -247,14 +87,12 @@
             </div>
         </div>
 
-        <!-- Question Palette Section directly on screen -->
         <div class="palette-section">
             <div class="palette-title">Question Palette (Click any number to jump)</div>
             <div class="palette-grid" id="paletteGrid"></div>
         </div>
     </div>
 
-    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
         <button class="btn-nav" onclick="prevQuestion()">&lt;&lt; BACK</button>
         <button class="btn-nav" onclick="nextQuestion()">NEXT &gt;&gt;</button>
@@ -367,7 +205,7 @@
         initPalette();
         loadQuestion(0);
 
-        let timeRemaining = 11700;
+        let timeRemaining = 11700; // 3 Hours 15 Minutes Official NTA Duration
         const timerElement = document.getElementById('timer');
         setInterval(() => {
             if (subjectTime[activeSubject] !== undefined) subjectTime[activeSubject]++;
