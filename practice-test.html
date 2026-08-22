@@ -57,6 +57,7 @@
                     <span id="q-counter">Question 0 of 0</span>
                 </div>
 
+                <!-- CRITICAL FIX: innerHTML used here to render line breaks cleanly -->
                 <div class="q-text" id="q-text">Loading question...</div>
 
                 <ul class="options-list" id="options-container">
@@ -92,7 +93,7 @@
 
         function loadPracticeQuestion() {
             if (currentQuestions.length === 0) {
-                document.getElementById('q-text').textContent = "No questions found for this chapter yet. You can add them in questions.js!";
+                document.getElementById('q-text').textContent = "No questions found for this chapter yet.";
                 document.getElementById('options-container').innerHTML = "";
                 document.getElementById('q-counter').textContent = "0 of 0";
                 return;
@@ -103,9 +104,10 @@
 
             let q = currentQuestions[currentIndex];
             document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
-            document.getElementById('q-text').textContent = q.q;
+            
+            // Renders HTML formatting (<br>, <b>, etc.) properly
+            document.getElementById('q-text').innerHTML = q.q;
 
-            // PYQ Badge trigger
             let pyqBadge = document.getElementById('pyq-badge');
             if (q.pyqYear) {
                 pyqBadge.textContent = `🔥 Previous Year Question (${q.pyqYear})`;
