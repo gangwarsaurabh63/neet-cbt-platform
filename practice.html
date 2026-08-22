@@ -9,47 +9,75 @@
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .logo { font-size: 16px; font-weight: bold; color: #16a34a; }
+        header { background: #ffffff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60%; }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+        .btn-toggle-chap { background: #16a34a; color: white; border: none; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; display: none; }
         .btn-home { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
 
-        .layout { display: flex; flex: 1; max-width: 1100px; margin: 20px auto; width: 100%; gap: 20px; padding: 0 15px; }
+        .layout { display: flex; flex: 1; max-width: 1100px; margin: 20px auto; width: 100%; gap: 20px; padding: 0 15px; position: relative; }
 
-        .sidebar { width: 280px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; height: fit-content; }
-        .sidebar h3 { font-size: 14px; margin-top: 0; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
-        .chapter-btn { width: 100%; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: #334155; }
+        /* Sidebar Styling */
+        .sidebar { width: 280px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; height: fit-content; transition: all 0.3s ease; }
+        .sidebar h3 { font-size: 14px; margin-top: 0; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .chapter-btn { width: 100%; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 6px; margin-bottom: 6px; font-size: 13px; font-weight: 600; cursor: pointer; color: #334155; }
         .chapter-btn:hover, .chapter-btn.active { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
 
-        .content { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
+        /* Content Area Styling */
+        .content { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
         
-        .q-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
-        .q-text { font-size: 14px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; }
+        .q-header { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; gap: 10px; flex-wrap: wrap; }
+        .q-text { font-size: 15px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; word-break: break-word; }
 
         .options-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
-        .options-list li { margin-bottom: 8px; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; font-size: 13px; background: #fff; transition: background 0.2s; }
+        .options-list li { margin-bottom: 10px; padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; font-size: 14px; background: #fff; transition: background 0.2s; word-break: break-word; }
         .options-list li:hover { background: #f8fafc; }
         .options-list li.correct-ans { background: #f0fdf4 !important; border-color: #22c55e; color: #166534; font-weight: bold; }
         .options-list li.wrong-ans { background: #fef2f2 !important; border-color: #ef4444; color: #991b1b; }
 
-        .solution-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #166534; display: none; line-height: 1.5; }
+        .solution-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 14px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #166534; display: none; line-height: 1.5; word-break: break-word; }
         
-        .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-        .btn-nav { background: #16a34a; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; }
+        .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; gap: 10px; }
+        .btn-nav { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
+
+        /* Responsive Breakpoint for Mobile Devices */
+        @media(max-width: 768px) {
+            .layout { flex-direction: column; padding: 0 10px; margin: 10px auto; }
+            .btn-toggle-chap { display: inline-block; }
+            .sidebar { 
+                display: none; 
+                position: absolute; 
+                top: 10px; left: 10px; right: 10px; 
+                z-index: 100; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+                max-height: 400px; 
+                overflow-y: auto; 
+            }
+            .sidebar.mobile-open { display: block; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">📖 Chapter-wise Practice Hub (<span id="active-sub-label">Physics</span>)</div>
-        <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
+        <div class="logo">📖 Practice: <span id="active-sub-label">Physics</span></div>
+        <div class="header-actions">
+            <button class="btn-toggle-chap" onclick="toggleMobileSidebar()">📚 Chapters</button>
+            <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
+        </div>
     </header>
 
     <div class="layout">
-        <div class="sidebar">
-            <h3>Chapters</h3>
+        <!-- Sidebar Chapters -->
+        <div class="sidebar" id="sidebarElement">
+            <h3>
+                Select Chapter 
+                <span style="cursor:pointer; font-size:16px; display:none;" id="closeSidebar" onclick="toggleMobileSidebar()">✕</span>
+            </h3>
             <div id="chapterListContainer"></div>
         </div>
 
+        <!-- Question Content -->
         <div class="content">
             <div>
                 <div class="q-header">
@@ -57,7 +85,7 @@
                     <span id="q-counter">Question 0 of 0</span>
                 </div>
 
-                <div class="q-text" id="q-text">Select a chapter from the sidebar to start practicing.</div>
+                <div class="q-text" id="q-text">Select a chapter from the menu to start practicing.</div>
 
                 <ul class="options-list" id="options-container">
                     <li id="opt0"></li>
@@ -91,13 +119,26 @@
         function loadSidebar() {
             let container = document.getElementById('chapterListContainer');
             container.innerHTML = "";
+            
+            if(window.innerWidth <= 768) {
+                document.getElementById('closeSidebar').style.display = 'inline';
+            }
+
             Object.keys(chaptersData).forEach(chapName => {
                 let btn = document.createElement('button');
                 btn.className = `chapter-btn ${chapName === currentChapter ? 'active' : ''}`;
                 btn.textContent = `${chapName} (${chaptersData[chapName].length})`;
-                btn.onclick = () => selectChapter(chapName, btn);
+                btn.onclick = () => {
+                    selectChapter(chapName, btn);
+                    if(window.innerWidth <= 768) toggleMobileSidebar(); // Auto-close on mobile after selecting
+                };
                 container.appendChild(btn);
             });
+        }
+
+        function toggleMobileSidebar() {
+            let sb = document.getElementById('sidebarElement');
+            sb.classList.toggle('mobile-open');
         }
 
         function selectChapter(chapName, btnElement) {
