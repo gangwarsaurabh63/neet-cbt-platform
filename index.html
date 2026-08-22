@@ -3,198 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET 2026 - Ultimate CBT & Practice Portal</title>
+    <title>NEET 2026 - Testing & Practice Portal</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Splash Screen Loader */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        .spinner {
-            width: 50px; height: 50px;
-            border: 4px solid rgba(255,255,255,0.2);
-            border-radius: 50%;
-            border-top-color: #38bdf8;
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Navigation Bar */
         nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-        .nav-logo { font-size: 20px; font-weight: 800; color: #2563eb; display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
-        .nav-profile { display: flex; align-items: center; gap: 12px; background: #f1f5f9; padding: 6px 14px; border-radius: 30px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 600; color: #334155; }
+        .nav-logo { font-size: 20px; font-weight: 800; color: #2563eb; display: flex; align-items: center; gap: 8px; }
+        .nav-profile { background: #f1f5f9; padding: 6px 14px; border-radius: 30px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 600; color: #334155; }
 
-        /* Hero Section */
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; padding: 50px 20px; text-align: center; position: relative; overflow: hidden; }
-        .hero h1 { font-size: 32px; margin: 0 0 10px 0; font-weight: 800; letter-spacing: -0.5px; }
-        .hero p { color: #94a3b8; font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.5; }
-        
-        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
-        .stat-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(5px); }
-        .stat-num { font-size: 20px; font-weight: 700; color: #38bdf8; }
-        .stat-label { font-size: 12px; color: #cbd5e1; margin-top: 2px; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; padding: 45px 20px; text-align: center; }
+        .hero h1 { font-size: 30px; margin: 0 0 10px 0; font-weight: 800; }
+        .hero p { color: #94a3b8; font-size: 15px; max-width: 600px; margin: 0 auto; line-height: 1.5; }
 
-        /* Main Container */
-        .main-container { max-width: 1100px; margin: -30px auto 40px auto; padding: 0 20px; width: 100%; flex: 1; z-index: 10; position: relative; }
+        .main-container { max-width: 1000px; margin: -25px auto 40px auto; padding: 0 20px; width: 100%; flex: 1; z-index: 10; position: relative; }
 
-        /* Profile Greeting Card */
-        .greeting-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px 30px; margin-bottom: 30px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .greeting-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px 30px; margin-bottom: 30px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .greeting-card h2 { margin: 0 0 5px 0; font-size: 20px; color: #0f172a; }
-        .greeting-card p { margin: 0; color: #64748b; font-size: 14px; }
         .name-edit-box { display: flex; gap: 8px; }
-        .name-edit-box input { padding: 9px 14px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; outline: none; transition: border-color 0.2s; }
-        .name-edit-box input:focus { border-color: #2563eb; }
-        .btn-update { background: #2563eb; color: white; border: none; padding: 9px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: background 0.2s; }
-        .btn-update:hover { background: #1d4ed8; }
+        .name-edit-box input { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; outline: none; }
+        .btn-update { background: #2563eb; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; }
 
-        /* Mode Selection Grid */
-        .section-heading { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .section-heading { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 15px; }
+        .mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
 
-        .mode-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .mode-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
         .mode-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #2563eb; }
         .mode-card.practice-accent::before { background: #16a34a; }
-        .mode-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08); }
 
-        .mode-card h3 { margin: 0 0 12px 0; font-size: 18px; color: #0f172a; }
-        .mode-card p { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .mode-card h3 { margin: 0 0 10px 0; font-size: 18px; color: #0f172a; }
+        .mode-card p { color: #64748b; font-size: 13px; line-height: 1.5; margin-bottom: 20px; }
 
-        .feature-bullets { list-style: none; padding: 0; margin: 0 0 25px 0; font-size: 13px; color: #475569; }
-        .feature-bullets li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .feature-bullets li::before { content: '✓'; color: #16a34a; font-weight: bold; }
+        .select-group { margin-bottom: 15px; }
+        .select-group label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 5px; }
+        .select-group select { width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background: #fff; }
 
-        .btn-launch { background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; text-align: center; transition: background 0.2s; display: block; width: 100%; text-decoration: none; }
-        .btn-launch:hover { background: #1d4ed8; }
+        .btn-launch { background: #2563eb; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; text-align: center; width: 100%; }
         .btn-launch.practice-btn { background: #16a34a; }
-        .btn-launch.practice-btn:hover { background: #15803d; }
 
-        /* Footer */
-        footer { text-align: center; padding: 20px; color: #94a3b8; font-size: 13px; background: white; border-top: 1px solid #e2e8f0; margin-top: auto; }
+        footer { text-align: center; padding: 20px; color: #94a3b8; font-size: 13px; background: white; border-top: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen Loader -->
-    <div id="splash-screen">
-        <div class="spinner"></div>
-        <h2 style="margin: 0; font-size: 22px; letter-spacing: -0.5px;">NEET CBT & Practice Hub</h2>
-        <p style="margin: 8px 0 0 0; color: #94a3b8; font-size: 13px;">Preparing your testing environment...</p>
-    </div>
-
-    <!-- Top Navigation Bar -->
     <nav>
-        <div class="nav-logo">
-            <span>🎯</span> NEETPrep Elite
-        </div>
-        <div class="nav-profile" id="nav-badge">
-            👤 Candidate: Saurabh
-        </div>
+        <div class="nav-logo"><span>🎯</span> NEETPrep Elite</div>
+        <div class="nav-profile" id="nav-badge">Candidate: Saurabh</div>
     </nav>
 
-    <!-- Hero Banner -->
     <div class="hero">
-        <h1>Master Your NEET UG Preparation</h1>
-        <p>Simulate the exact NTA Computer Based Test environment or practice chapter-wise with instant detailed explanations.</p>
-        
-        <div class="hero-stats">
-            <div class="stat-item">
-                <div class="stat-num">180</div>
-                <div class="stat-label">Questions per Test</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">3h 15m</div>
-                <div class="stat-label">Official NTA Timing</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">4 / -1</div>
-                <div class="stat-label">Marking Scheme</div>
-            </div>
-        </div>
+        <h1>Official CBT Tests & Chapter-wise Practice</h1>
+        <p>Choose between full-length simulated mock tests or targeted chapter-wise question practice.</p>
     </div>
 
-    <!-- Main Dashboard Container -->
     <div class="main-container">
-        
-        <!-- Welcome Card & Profile Update -->
         <div class="greeting-card">
             <div>
                 <h2 id="greeting-title">Welcome back, Saurabh!</h2>
-                <p>Your portal is fully synchronized. Choose a mode below to begin your session.</p>
+                <p style="margin:0; color:#64748b; font-size:13px;">Manage your profile name below.</p>
             </div>
             <div class="name-edit-box">
-                <input type="text" id="candidateNameInput" placeholder="Enter full name">
-                <button class="btn-update" onclick="updateCandidateName()">Update Profile</button>
+                <input type="text" id="candidateNameInput" placeholder="Your name">
+                <button class="btn-update" onclick="updateCandidateName()">Update</button>
             </div>
         </div>
 
-        <div class="section-heading">🚀 Choose Your Learning Mode</div>
+        <div class="section-heading">Select Workspace Mode</div>
         
         <div class="mode-grid">
-            <!-- Mock Test Mode Card -->
+            <!-- Mock Test Mode Box -->
             <div class="mode-card">
                 <div>
-                    <h3>Official CBT Mock Test Mode</h3>
-                    <p>Experience real exam pressure with strict countdown timers, color-coded OMR question palettes, and instant score evaluation.</p>
-                    <ul class="feature-bullets">
-                        <li>Live 3 Hours 15 Minutes Countdown Timer</li>
-                        <li>Question Palette (Answered, Review, Unattempted)</li>
-                        <li>Subject-wise Score Breakdown & Rank Estimator</li>
-                    </ul>
+                    <h3>🚀 Full-Length Mock Test Mode</h3>
+                    <p>Take complete 180-question tests with official NTA timing, negative marking, and result scorecards.</p>
+                    
+                    <div class="select-group">
+                        <label>Select Test Paper:</label>
+                        <select id="testSelect">
+                            <option value="test1">Allen Last Major Test 1</option>
+                            <option value="test2">Allen Last Major Test 2</option>
+                        </select>
+                    </div>
                 </div>
-                <button class="btn-launch" onclick="launchTest('exam.html')">Launch Mock Test ➔</button>
+                <button class="btn-launch" onclick="launchMockTest()">Start Mock Test ➔</button>
             </div>
 
-            <!-- Practice Mode Card -->
+            <!-- Chapterwise Practice Box -->
             <div class="mode-card practice-accent">
                 <div>
-                    <h3>Chapterwise Practice Mode</h3>
-                    <p>Learn at your own pace with instant correct/incorrect answer highlights and step-by-step faculty explanations.</p>
-                    <ul class="feature-bullets">
-                        <li>Instant Answer Validation & Solutions</li>
-                        <li>Subject Filtering (Physics, Chem, Botany, Zoology)</li>
-                        <li>Bookmark Questions for Revision</li>
-                    </ul>
+                    <h3>📖 Chapter-wise Practice Hub</h3>
+                    <p>Practice questions topic by topic with instant solutions and explanation support.</p>
+                    
+                    <div class="select-group">
+                        <label>Select Subject:</label>
+                        <select id="practiceSubjectSelect">
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Botany">Botany</option>
+                            <option value="Zoology">Zoology</option>
+                        </select>
+                    </div>
                 </div>
-                <button class="btn-launch practice-btn" onclick="launchTest('practice.html')">Launch Practice Hub ➔</button>
+                <button class="btn-launch practice-btn" onclick="launchPracticeMode()">Open Practice Hub ➔</button>
             </div>
         </div>
-
     </div>
 
-    <footer>
-        &copy; 2026 NEET CBT & Practice Portal | Built for Future Doctors
-    </footer>
+    <footer>&copy; 2026 NEET CBT & Practice Portal</footer>
 
     <script>
-        // Smooth Splash Screen Removal
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                setTimeout(() => splash.style.display = 'none', 500);
-            }, 600);
-        });
-
-        // Initialize Candidate Profile
         if (!localStorage.getItem('neet_candidate_name')) {
             localStorage.setItem('neet_candidate_name', 'Saurabh Gangwar');
         }
-
         let currentCandidate = localStorage.getItem('neet_candidate_name');
         document.getElementById('greeting-title').textContent = `Welcome back, ${currentCandidate}!`;
-        document.getElementById('nav-badge').textContent = `👤 Candidate: ${currentCandidate}`;
+        document.getElementById('nav-badge').textContent = `Candidate: ${currentCandidate}`;
         document.getElementById('candidateNameInput').value = currentCandidate;
 
         function updateCandidateName() {
@@ -202,14 +125,21 @@
             if (nameVal) {
                 localStorage.setItem('neet_candidate_name', nameVal);
                 document.getElementById('greeting-title').textContent = `Welcome back, ${nameVal}!`;
-                document.getElementById('nav-badge').textContent = `👤 Candidate: ${nameVal}`;
-                alert("Candidate profile updated successfully!");
+                document.getElementById('nav-badge').textContent = `Candidate: ${nameVal}`;
+                alert("Updated!");
             }
         }
 
-        function launchTest(page) {
-            localStorage.setItem('active_test_id', 'test1');
-            window.location.href = page;
+        function launchMockTest() {
+            let testId = document.getElementById('testSelect').value;
+            localStorage.setItem('active_test_id', testId);
+            window.location.href = 'exam.html';
+        }
+
+        function launchPracticeMode() {
+            let subject = document.getElementById('practiceSubjectSelect').value;
+            localStorage.setItem('active_practice_subject', subject);
+            window.location.href = 'practice.html';
         }
     </script>
 </body>
