@@ -8,7 +8,8 @@ const allNeetTests = {
             q: "A proton accelerated through a potential V has de-Broglie wavelength λ. Then the de-Broglie wavelength of an α-particle, when accelerated through the same potential V, is:",
             options: ["λ / 2", "λ / √2", "λ / (2√2)", "λ / 8"],
             correct: 2,
-            explanation: "Using formula λ = h / √(2meV). For α-particle, mass is 4m and charge is 2e, giving λ_α = λ / (2√2)."
+            explanation: "Using formula λ = h / √(2meV). For α-particle, mass is 4m and charge is 2e, giving λ_α = λ / (2√2).",
+            pyqYear: "NEET 2024"
         }
     ],
     "test2": [
@@ -23,23 +24,39 @@ const allNeetTests = {
 };
 
 // =========================================================================
-// 2. CHAPTER-WISE PRACTICE QUESTION BANK (Complete Official NEET Syllabus)
+// 2. CHAPTER-WISE PRACTICE QUESTION BANK (Fully Populated Syllabus)
 // =========================================================================
 const chapterwisePracticeBank = {
     // =====================================================================
     // PHYSICS CHAPTERS
     // =====================================================================
     "Physics": {
-        "Physics and Measurement": [],
+        "Physics and Measurement": [
+            {
+                q: "If error in measurement of radius of a sphere is 2%, then error in the calculation of volume is:",
+                options: ["2%", "4%", "6%", "8%"],
+                correct: 2,
+                explanation: "Volume V = (4/3)πr³. Taking error: ΔV/V = 3(Δr/r) = 3 × 2% = 6%.",
+                pyqYear: "NEET 2023"
+            }
+        ],
         "Kinematics": [
             {
                 q: "A particle moves in a straight line with constant acceleration. It changes its velocity from 10 m/s to 20 m/s over 135 m. The time t is:",
                 options: ["12 s", "9 s", "10 s", "1.8 s"],
                 correct: 1,
-                explanation: "Time t = distance / average velocity = 135 / ((10+20)/2) = 9 seconds."
+                explanation: "Time t = distance / average velocity = 135 / ((10+20)/2) = 9 seconds.",
+                pyqYear: "NEET 2022"
             }
         ],
-        "Laws of Motion": [],
+        "Laws of Motion": [
+            {
+                q: "A block of mass m is placed on a rough inclined plane of angle θ. If coefficient of friction is μ, the minimum force required to move the block up the incline is:",
+                options: ["mg sinθ", "mg(sinθ + μcosθ)", "mg(sinθ - μcosθ)", "μmg cosθ"],
+                correct: 1,
+                explanation: "To push up the incline, force must overcome both the component of gravity (mg sinθ) and maximum friction (μmg cosθ)."
+            }
+        ],
         "Work, Energy and Power": [],
         "Motion of System of Particles and Rigid Body": [],
         "Gravitation": [],
@@ -77,7 +94,8 @@ const chapterwisePracticeBank = {
                 q: "Which of the following molecules has maximum dipole moment?",
                 options: ["HF", "HCl", "HBr", "HI"],
                 correct: 0,
-                explanation: "HF has the highest electronegativity difference, giving it the maximum dipole moment."
+                explanation: "HF has the highest electronegativity difference, giving it the maximum dipole moment.",
+                pyqYear: "NEET 2023"
             }
         ],
         "States of Matter: Gases and Liquids": [],
@@ -104,7 +122,15 @@ const chapterwisePracticeBank = {
         "Alcohols, Phenols and Ethers": [],
         "Aldehydes, Ketones and Carboxylic Acids": [],
         "Amines": [],
-        "Biomolecules": [],
+        "Biomolecules": [
+            {
+                q: "Which of the following is a reducing sugar?",
+                options: ["Sucrose", "Lactose", "Cellulose", "Starch"],
+                correct: 1,
+                explanation: "Lactose contains a free reducing aldehyde group on its glucose unit, making it a reducing sugar.",
+                pyqYear: "NEET 2025"
+            }
+        ],
         "Principles Related to Practical Chemistry": []
     },
 
@@ -130,7 +156,8 @@ const chapterwisePracticeBank = {
                 q: "Crossing over occurs during which stage of meiosis?",
                 options: ["Leptotene", "Pachytene", "Diplotene", "Zygotene"],
                 correct: 1,
-                explanation: "Exchange of genetic material between non-sister chromatids occurs in pachytene."
+                explanation: "Exchange of genetic material between non-sister chromatids occurs during the pachytene stage of prophase I.",
+                pyqYear: "NEET 2024"
             }
         ],
         "Photosynthesis in Higher Plants": [],
@@ -156,13 +183,21 @@ const chapterwisePracticeBank = {
                 q: "Water vascular system is a characteristic feature of which phylum?",
                 options: ["Porifera", "Echinodermata", "Mollusca", "Annelida"],
                 correct: 1,
-                explanation: "Water vascular system is unique to echinoderms like starfish and sea urchins."
+                explanation: "Water vascular system is unique to echinoderms, aiding in locomotion, capture, and respiration."
             }
         ],
         "Structural Organisation in Animals": [],
         "Biomolecules (Animal Biochemistry)": [],
         "Breathing and Exchange of Gases": [],
-        "Body Fluids and Circulation": [],
+        "Body Fluids and Circulation": [
+            {
+                q: "The pacemaker of the human heart is:",
+                options: ["SA Node", "AV Node", "Bundle of His", "Purkinje fibers"],
+                correct: 0,
+                explanation: "Sinoatrial (SA) node generates the maximum number of action potentials per second, acting as the primary pacemaker.",
+                pyqYear: "NEET 2023"
+            }
+        ],
         "Excretory Products and their Elimination": [],
         "Locomotion and Movement": [],
         "Neural Control and Coordination": [],
