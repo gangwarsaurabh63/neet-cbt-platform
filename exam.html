@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET CBT - Test Portal</title>
+    <title>NEET CBT - Official Test Portal</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
@@ -56,7 +56,7 @@
             </div>
             <div class="candidate-details">
                 Candidate Name : <span id="cand-name">Saurabh</span><br>
-                Test Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="color: #e67e22;">Target NEET CBT Test</span><br>
+                Test Paper &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="test-paper-label" style="color: #e67e22;">Test 1</span><br>
                 Remaining Time : <span class="timer-badge" id="timer">03:15:00</span>
             </div>
         </div>
@@ -101,11 +101,13 @@
 
     <script>
         const activeTestId = localStorage.getItem('active_test_id') || 'test1';
+        document.getElementById('test-paper-label').textContent = activeTestId.toUpperCase();
+
         if (localStorage.getItem(`${activeTestId}_submitted`) === 'true') {
             window.location.href = "result.html";
         }
 
-        const candidateName = localStorage.getItem('neet_candidate_name') || "Saurabh";
+        const candidateName = localStorage.getItem('neet_candidate_name') || "Saurabh Gangwar";
         document.getElementById('cand-name').textContent = candidateName;
 
         const questions = (typeof allNeetTests !== 'undefined' && allNeetTests[activeTestId]) ? allNeetTests[activeTestId] : [];
@@ -205,7 +207,7 @@
         initPalette();
         loadQuestion(0);
 
-        let timeRemaining = 11700; // 3 Hours 15 Minutes Official NTA Duration
+        let timeRemaining = 11700; // 3 Hours 15 Minutes
         const timerElement = document.getElementById('timer');
         setInterval(() => {
             if (subjectTime[activeSubject] !== undefined) subjectTime[activeSubject]++;
