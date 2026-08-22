@@ -91,13 +91,24 @@
         let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
         let currentQuestions = chaptersData[selectedChapter] || [];
         
-        let storageKey = `neet_practice_progress_${selectedSubject}_${selectedChapter}`;
-        let savedIndex = localStorage.getItem(storageKey);
+        let progressStorageKey = `neet_practice_progress_${selectedSubject}_${selectedChapter}`;
+        let savedIndex = localStorage.getItem(progressStorageKey);
         let currentIndex = savedIndex ? parseInt(savedIndex) : 0;
-        let answeredState = false;
 
-        // Bookmark Storage Key
+        // Attempt storage key (stores map of attempted questions: { [index]: { selectedIdx: number } })
+        let attemptsStorageKey = `neet_practice_attempts_${selectedSubject}_${selectedChapter}`;
         let bookmarkStorageKey = `neet_bookmarks_${selectedSubject}_${selectedChapter}`;
+
+        function getAttempts() {
+            let data = localStorage.getItem(attemptsStorageKey);
+            return data ? JSON.parse(data) : {};
+        }
+
+        function saveAttempt(qIndex, selectedIdx) {
+            let attempts = getAttempts();
+            attempts[qIndex] = { selectedIdx: selectedIdx };
+            localStorage.setItem(attemptsStorageKey, JSON.stringify(attempts));
+        }
 
         function getBookmarks() {
             let bookmarks = localStorage.getItem(bookmarkStorageKey);
@@ -106,17 +117,14 @@
 
         function toggleBookmark() {
             let bookmarks = getBookmarks();
-            let qId = currentIndex; // Using index as unique identifier for this chapter's questions
-            
-            let indexInBookmarks = bookmarks.indexOf(qId);
+            let indexInBookmarks = bookmarks.indexOf(currentIndex);
             if (indexInBookmarks > -1) {
-                bookmarks.splice(indexInBookmarks, 1); // Remove bookmark
+                bookmarks.splice(indexInBookmarks, 1);
                 alert("Bookmark removed!");
             } else {
-                bookmarks.push(qId); // Add bookmark
+                bookmarks.push(currentIndex);
                 alert("Question bookmarked successfully!");
             }
-            
             localStorage.setItem(bookmarkStorageKey, JSON.stringify(bookmarks));
             updateBookmarkButtonUI();
         }
@@ -133,10 +141,6 @@
             }
         }
 
-        function savePracticeProgress() {
-            localStorage.setItem(storageKey, currentIndex);
-        }
-
         function loadPracticeQuestion() {
             if (currentQuestions.length === 0) {
                 document.getElementById('q-text').textContent = "No questions found for this chapter yet.";
@@ -149,7 +153,7 @@
             if (currentIndex >= currentQuestions.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = currentQuestions.length - 1;
 
-            savePracticeProgress();
+            localStorage.setItem(progressStorageKey, currentIndex);
             updateBookmarkButtonUI();
 
             let q = currentQuestions[currentIndex];
@@ -166,7 +170,6 @@
 
             let optList = document.getElementById('options-container');
             optList.innerHTML = "";
-            answeredState = false;
             document.getElementById('solutionBox').style.display = "none";
 
             q.options.forEach((optText, i) => {
@@ -176,12 +179,23 @@
                 li.onclick = () => checkAnswer(i, q.correct);
                 optList.appendChild(li);
             });
+
+            // Restore previous attempt state if already answered (NEETprep style)
+            let attempts = getAttempts();
+            if (attempts[currentIndex] !== undefined) {
+                applyAttemptState(attempts[currentIndex].selectedIdx, q.correct);
+            }
         }
 
         function checkAnswer(selectedIdx, correctIdx) {
-            if (answeredState) return;
-            answeredState = true;
+            let attempts = getAttempts();
+            if (attempts[currentIndex] !== undefined) return; // Prevent changing once answered
 
+            saveAttempt(currentIndex, selectedIdx);
+            applyAttemptState(selectedIdx, correctIdx);
+        }
+
+        function applyAttemptState(selectedIdx, correctIdx) {
             for (let i = 0; i < 4; i++) {
                 let li = document.getElementById(`opt${i}`);
                 if (i === correctIdx) li.classList.add('correct-ans');
@@ -194,13 +208,11 @@
 
         function nextQ() { 
             currentIndex++; 
-            savePracticeProgress(); 
             loadPracticeQuestion(); 
         }
 
         function prevQ() { 
             currentIndex--; 
-            savePracticeProgress(); 
             loadPracticeQuestion(); 
         }
 
