@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Session - NEET CBT Portal</title>
+    <title>Neetprep Elite - Practice Session</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
@@ -52,7 +52,7 @@
 <body>
 
     <header>
-        <div class="logo">📖 <span id="nav-chapter-title">Chapter</span></div>
+        <div class="logo">⚡ Neetprep Elite: <span id="nav-chapter-title">Chapter</span></div>
         <div class="header-actions">
             <button class="btn-action btn-filter-all" onclick="filterMode('all')">All</button>
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <!-- NEETprep Style Question Palette / Jump Grid -->
+        <!-- Question Palette / Jump Grid -->
         <div class="palette-container">
             <div class="palette-title">
                 <span id="palette-heading">Question Navigator</span>
@@ -210,7 +210,7 @@
                 let origIndex = rawQuestions.indexOf(q);
                 let btn = document.createElement('button');
                 btn.className = 'palette-btn';
-                btn.textContent = origIndex + 1; // Display original question number
+                btn.textContent = origIndex + 1;
 
                 if (idx === currentIndex) {
                     btn.classList.add('active');
