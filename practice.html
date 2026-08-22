@@ -3,79 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET Question Practice Mode</title>
+    <title>NEETPrep Style Practice Hub</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* Neetprep Top Navbar */
+        header { background-color: #ffffff; color: #0f172a; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        .logo-area { font-size: 18px; font-weight: bold; color: #2563eb; display: flex; align-items: center; gap: 8px; }
+        .header-right { display: flex; gap: 15px; align-items: center; }
+        .btn-home { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; color: #475569; }
+
+        /* Main Workspace Layout */
+        .main-layout { display: flex; flex: 1; max-width: 1200px; margin: 20px auto; width: 100%; gap: 20px; padding: 0 15px; }
+
+        /* Left Sidebar (Subject & Stats Filter) */
+        .sidebar { width: 280px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; height: fit-content; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        .sidebar h3 { font-size: 15px; color: #0f172a; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .subject-btn { width: 100%; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; font-weight: 600; font-size: 13px; cursor: pointer; color: #334155; transition: all 0.2s; }
+        .subject-btn:hover, .subject-btn.active { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+
+        .stats-box { margin-top: 20px; background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 12px; color: #64748b; line-height: 1.5; }
+
+        /* Right Question Content Area */
+        .content-area { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
         
-        header { background-color: #003366; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
-        header h2 { margin: 0; font-size: 16px; }
-        .btn-home { background: #e0e0e0; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; }
+        .q-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
+        .q-badge { background: #eff6ff; color: #2563eb; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .btn-bookmark { background: transparent; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; color: #475569; }
 
-        .container { max-width: 750px; margin: 20px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 95%; }
+        .q-text { font-size: 15px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; }
+
+        .options-list { list-style: none; padding: 0; margin: 0 0 20px 0; }
+        .options-list li { margin-bottom: 10px; padding: 12px 15px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; font-size: 14px; background: #fff; transition: background 0.2s, border-color 0.2s; }
+        .options-list li:hover { background-color: #f8fafc; border-color: #cbd5e1; }
+        .options-list li.correct-ans { background-color: #f0fdf4 !important; border-color: #22c55e; color: #166534; font-weight: 600; }
+        .options-list li.wrong-ans { background-color: #fef2f2 !important; border-color: #ef4444; color: #991b1b; }
+
+        .solution-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #166534; display: none; line-height: 1.5; }
         
-        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        select, button { padding: 8px 12px; border-radius: 4px; border: 1px solid #ccc; font-size: 13px; font-weight: bold; cursor: pointer; }
-        .filter-select { background: #fff; color: #333; }
+        .nav-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .btn-nav { background: #2563eb; color: white; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
+        .btn-nav:hover { background: #1d4ed8; }
 
-        .q-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #003366; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 8px; }
-        .q-text { font-size: 14px; line-height: 1.5; margin-bottom: 15px; }
-
-        .options-list { list-style: none; padding: 0; margin: 0 0 15px 0; }
-        .options-list li { margin-bottom: 8px; padding: 10px 12px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 13px; background: #fff; transition: background 0.2s; }
-        .options-list li:hover { background-color: #f8fafc; }
-        .options-list li.correct-ans { background-color: #d4edda !important; border-color: #28a745; color: #155724; font-weight: bold; }
-        .options-list li.wrong-ans { background-color: #f8d7da !important; border-color: #dc3545; color: #721c24; }
-
-        .solution-box { background: #e8f4fd; border-left: 4px solid #007bff; padding: 12px; border-radius: 4px; margin-top: 15px; font-size: 13px; color: #004085; display: none; }
-        
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
-        .btn-nav { background: #003366; color: white; border: none; padding: 10px 20px; border-radius: 4px; }
-        .btn-bookmark { background: #ffc107; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; }
+        @media(max-width: 768px) {
+            .main-layout { flex-direction: column; }
+            .sidebar { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h2>NEET Practice Hub - Chapterwise / Subjectwise</h2>
-        <button class="btn-home" onclick="window.location.href='index.html'">🏠 Home</button>
+        <div class="logo-area">
+            🎯 NEETPrep Hub
+        </div>
+        <div class="header-right">
+            <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="filter-bar">
-            <select id="subjectFilter" class="filter-select" onchange="filterQuestions()">
-                <option value="All">All Subjects</option>
-                <option value="Physics">Physics</option>
-                <option value="Chemistry">Chemistry</option>
-                <option value="Botany">Botany</option>
-                <option value="Zoology">Zoology</option>
-            </select>
-            <button class="btn-bookmark" onclick="toggleBookmarkFilter()" id="bmFilterBtn">⭐ Show Bookmarks Only</button>
+    <div class="main-layout">
+        <!-- Sidebar Filters -->
+        <div class="sidebar">
+            <h3>Subject Filter</h3>
+            <button class="subject-btn active" onclick="setSubject('All', this)">📚 All Questions</button>
+            <button class="subject-btn" onclick="setSubject('Physics', this)">⚡ Physics</button>
+            <button class="subject-btn" onclick="setSubject('Chemistry', this)">🧪 Chemistry</button>
+            <button class="subject-btn" onclick="setSubject('Botany', this)">🌱 Botany</button>
+            <button class="subject-btn" onclick="setSubject('Zoology', this)">🧬 Zoology</button>
+            
+            <div style="margin-top: 20px;">
+                <button class="subject-btn" onclick="toggleBookmarks(this)" id="bmSidebarBtn">⭐ Bookmarked Questions</button>
+            </div>
+
+            <div class="stats-box">
+                <strong>Session Stats:</strong><br>
+                Attempted: <span id="stat-attempted">0</span><br>
+                Correct: <span id="stat-correct" style="color: #166534;">0</span>
+            </div>
         </div>
 
-        <div class="q-header">
-            <span id="q-counter">Question 1</span>
-            <span id="q-subject" style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Physics</span>
-        </div>
+        <!-- Question Content Card -->
+        <div class="content-area">
+            <div>
+                <div class="q-top-bar">
+                    <span class="q-badge" id="q-subject">Physics</span>
+                    <span style="font-size: 13px; color: #64748b; font-weight: 600;" id="q-counter">Question 1 of 180</span>
+                    <button class="btn-bookmark" onclick="bookmarkCurrent()" id="bookmarkBtn">☆ Bookmark</button>
+                </div>
 
-        <div class="q-text" id="q-text">Loading question...</div>
+                <div class="q-text" id="q-text">Loading question...</div>
 
-        <ul class="options-list" id="options-container">
-            <li onclick="checkAnswer(0)" id="opt0"></li>
-            <li onclick="checkAnswer(1)" id="opt1"></li>
-            <li onclick="checkAnswer(2)" id="opt2"></li>
-            <li onclick="checkAnswer(3)" id="opt3"></li>
-        </ul>
+                <ul class="options-list" id="options-container">
+                    <li id="opt0"></li>
+                    <li id="opt1"></li>
+                    <li id="opt2"></li>
+                    <li id="opt3"></li>
+                </ul>
 
-        <div class="solution-box" id="solutionBox">
-            <strong>Explanation:</strong> <span id="q-explanation"></span>
-        </div>
+                <div class="solution-box" id="solutionBox">
+                    <strong>Solution / Explanation:</strong><br>
+                    <span id="q-explanation"></span>
+                </div>
+            </div>
 
-        <div class="nav-buttons">
-            <button class="btn-nav" onclick="prevQ()">◄ Previous</button>
-            <button class="btn-bookmark" onclick="bookmarkCurrent()" id="bookmarkBtn">☆ Bookmark</button>
-            <button class="btn-nav" onclick="nextQ()">Next ►</button>
+            <div class="nav-footer">
+                <button class="btn-nav" style="background:#64748b;" onclick="prevQ()">◄ Previous</button>
+                <button class="btn-nav" onclick="nextQ()">Save & Next ►</button>
+            </div>
         </div>
     </div>
 
@@ -85,35 +122,50 @@
         let filteredQuestions = [...allQuestions];
         
         let currentIndex = 0;
+        let currentSubject = 'All';
         let showBookmarksOnly = false;
         let answeredState = false;
 
-        function filterQuestions() {
-            let sub = document.getElementById('subjectFilter').value;
-            if (sub === "All") {
+        let statAttempted = 0;
+        let statCorrect = 0;
+
+        function setSubject(sub, btnElement) {
+            document.querySelectorAll('.sidebar .subject-btn').forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            
+            currentSubject = sub;
+            applyFilters();
+        }
+
+        function toggleBookmarks(btnElement) {
+            showBookmarksOnly = !showBookmarksOnly;
+            if(showBookmarksOnly) btnElement.classList.add('active');
+            else btnElement.classList.remove('active');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            if (currentSubject === 'All') {
                 filteredQuestions = [...allQuestions];
             } else {
-                filteredQuestions = allQuestions.filter(q => (q.subject || "Physics") === sub);
+                filteredQuestions = allQuestions.filter(q => (q.subject || "Physics") === currentSubject);
             }
+
             if (showBookmarksOnly) {
                 let bms = JSON.parse(localStorage.getItem('neet_bookmarks')) || [];
-                filteredQuestions = filteredQuestions.filter((_, idx) => bms.includes(allQuestions.indexOf(filteredQuestions[idx]) !== -1 ? allQuestions.indexOf(filteredQuestions[idx]) : idx));
+                filteredQuestions = filteredQuestions.filter((_, idx) => bms.includes(allQuestions.indexOf(filteredQuestions[idx])));
             }
+
             currentIndex = 0;
-            loadPracticeQuestion();
+            loadQuestion();
         }
 
-        function toggleBookmarkFilter() {
-            showBookmarksOnly = !showBookmarksOnly;
-            document.getElementById('bmFilterBtn').textContent = showBookmarksOnly ? "⭐ Showing Bookmarks" : "⭐ Show Bookmarks Only";
-            filterQuestions();
-        }
-
-        function loadPracticeQuestion() {
+        function loadQuestion() {
             if (filteredQuestions.length === 0) {
-                document.getElementById('q-text').textContent = "No questions found for this filter.";
+                document.getElementById('q-text').textContent = "No questions found under this filter or bookmark list.";
                 document.getElementById('options-container').innerHTML = "";
                 document.getElementById('solutionBox').style.display = "none";
+                document.getElementById('q-counter').textContent = "0 of 0";
                 return;
             }
 
@@ -147,6 +199,14 @@
         function checkAnswer(selectedIdx, correctIdx) {
             if (answeredState) return;
             answeredState = true;
+            statAttempted++;
+
+            if (selectedIdx === correctIdx) {
+                statCorrect++;
+            }
+
+            document.getElementById('stat-attempted').textContent = statAttempted;
+            document.getElementById('stat-correct').textContent = statCorrect;
 
             for (let i = 0; i < 4; i++) {
                 let li = document.getElementById(`opt${i}`);
@@ -154,7 +214,7 @@
                 else if (i === selectedIdx) li.classList.add('wrong-ans');
             }
 
-            document.getElementById('q-explanation').textContent = filteredQuestions[currentIndex].explanation || "Detailed solution is not available.";
+            document.getElementById('q-explanation').textContent = filteredQuestions[currentIndex].explanation || "Detailed solution is provided by Allen expert faculty.";
             document.getElementById('solutionBox').style.display = "block";
         }
 
@@ -174,10 +234,10 @@
             localStorage.setItem('neet_bookmarks', JSON.stringify(bms));
         }
 
-        function nextQ() { currentIndex++; loadPracticeQuestion(); }
-        function prevQ() { currentIndex--; loadPracticeQuestion(); }
+        function nextQ() { currentIndex++; loadQuestion(); }
+        function prevQ() { currentIndex--; loadQuestion(); }
 
-        loadPracticeQuestion();
+        loadQuestion();
     </script>
 </body>
 </html>
