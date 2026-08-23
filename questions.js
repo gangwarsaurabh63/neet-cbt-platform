@@ -31,8 +31,22 @@ const chapterwisePracticeBank = {
             { q: "The unit for nuclear dose given to a patient is:", options: ["(a) fermi", "(b) rutherford", "(c) curie", "(d) roentgen"], correct: 3, explanation: "Roentgen is used for radiation dose.", examType: "neet" },
             { q: "Which of the following is not the unit of time?", options: ["(a) microsecond", "(b) leap year", "(c) lunar months", "(d) parallactic second"], correct: 3, explanation: "Parallactic second (parsec) is a distance unit.", examType: "neet" },
             { q: "The unit of Stefan's constant σ is:", options: ["(a) W m⁻² K⁻¹", "(b) W m² K⁻⁴", "(c) W m⁻² K⁻⁴", "(d) W m⁻² K⁴"], correct: 2, explanation: "Derived from Stefan-Boltzmann law.", examType: "neet" },
-            { q: "Match Column-I with Column-II and select correct option.", options: ["(a) R, P, S, T, Q", "(b) S, P, R, Q, T", "(c) R, P, S, Q, T", "(d) S, P, R, T, Q"], correct: 2, explanation: "Standard prefix mapping.", examType: "neet" },
-            { q: "Two clocks are tested against a standard clock... Which clock will you prefer?", options: ["(a) Clock 1", "(b) Clock 2"], correct: 1, explanation: "Clock 2 has higher precision.", examType: "neet" },
+            { 
+                q: "<b>Match List-I with List-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I (Prefix)</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II (Value)</th></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Pico</td><td style='padding:7px; border:1px solid #cbd5e1;'>I. 10⁻¹²</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Nano</td><td style='padding:7px; border:1px solid #cbd5e1;'>II. 10⁻⁹</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Femto</td><td style='padding:7px; border:1px solid #cbd5e1;'>III. 10⁻¹⁵</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Atto</td><td style='padding:7px; border:1px solid #cbd5e1;'>IV. 10⁻¹⁸</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:", 
+                options: ["(a) R, P, S, T, Q", "(b) S, P, R, Q, T", "(c) R, P, S, Q, T", "(d) S, P, R, T, Q"], 
+                correct: 2, 
+                explanation: "Standard SI prefix mapping.", 
+                examType: "neet" 
+            },
+            { q: "Two clocks are tested against a standard clock... Which clock will you prefer based on precision?", options: ["(a) Clock 1", "(b) Clock 2"], correct: 1, explanation: "Clock 2 has higher precision.", examType: "neet" },
             { q: "Which of the following ratios express pressure?<br>(i) Force/Area<br>(ii) Energy/Volume<br>(iii) Energy/Area<br>(iv) Force/Volume", options: ["(a) Only (i) is correct.", "(b) Only (ii) is correct.", "(c) Only (iii) is correct.", "(d) Both (i) and (ii) are correct."], correct: 3, explanation: "Force/Area and Energy/Volume both represent pressure.", examType: "neet" },
             { q: "The unit of thermal conductivity is:", options: ["(a) W m⁻¹ K⁻¹", "(b) H m K⁻¹", "(c) J m⁻¹ K⁻¹", "(d) W m K⁻¹"], correct: 0, explanation: "Standard unit for thermal conductivity.", examType: "neet" },
             { q: "The dimension of mutual inductance is:", options: ["(a) [ML²T⁻²A⁻¹]", "(b) [ML²T⁻³A⁻¹]", "(c) [ML²T⁻²A⁻²]", "(d) [ML²T⁻³A⁻²]"], correct: 2, explanation: "Matches self-inductance dimensions.", examType: "neet" },
@@ -51,20 +65,76 @@ const chapterwisePracticeBank = {
             { q: "Which of the following pairs have same dimensional formula?", options: ["(a) Bulk modulus and energy density", "(b) Latent heat and velocity", "(c) Specific heat and latent heat", "(d) Both (a) and (b)"], correct: 0, explanation: "Bulk modulus and energy density share dimensions.", examType: "neet" },
             { q: "Which pair do not have equal dimensions?", options: ["(a) Energy and torque", "(b) force and impulse", "(c) Angular momentum and Planck's constant", "(d) Elastic modulus and pressure"], correct: 1, explanation: "Force and impulse have different dimensions.", examType: "neet" },
             { q: "The unit of electric flux is:", options: ["(a) Vm²/C", "(b) volt-second", "(c) Nm²/C", "(d) N/C²m"], correct: 2, explanation: "Electric flux unit is Nm²/C.", examType: "neet" },
-            { q: "Match List-I with List-II (Angular momentum, Torque, Stress, Pressure gradient)", options: ["(a) A-III, B-I, C-IV, D-II", "(b) A-IV, B-III, C-I, D-II", "(c) A-III, B-IV, C-I, D-II", "(d) A-II, B-I, C-III, D-IV"], correct: 0, explanation: "Correct mapping of dimensions.", examType: "neet" },
-            { q: "Match List-I with List-II (Torque, Energy density, Pressure gradient, Impulse)", options: ["(a) A-IV, B-III, C-II, D-I", "(b) A-IV, B-III, C-I, D-II", "(c) A-III, B-IV, C-I, D-II", "(d) A-II, B-I, C-III, D-IV"], correct: 3, explanation: "Correct mapping of SI unit forms.", examType: "neet" },
-            { q: "Match List-I with List-II (Planck's constant, Stopping potential, Work function, Momentum)", options: ["(a) A-III, B-I, C-II, D-IV", "(b) A-III, B-IV, C-I, D-II", "(c) A-II, B-IV, C-III, D-I", "(d) A-I, B-III, C-IV, D-II"], correct: 1, explanation: "Correctly maps list items.", examType: "neet" },
-            { q: "Match List-I with List-II (Young's Modulus, Viscosity, Planck's Constant, Work Function)", options: ["(a) A-II, B-III, C-IV, D-I", "(b) A-III, B-I, C-II, D-IV", "(c) A-I, B-III, C-IV, D-II", "(d) A-I, B-II, C-III, D-IV"], correct: 1, explanation: "Correct matching of dimensional formulas.", examType: "neet" },
+            { 
+                q: "<b>Match List-I with List-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II</th></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Angular momentum</td><td style='padding:7px; border:1px solid #cbd5e1;'>I. [ML⁻¹T⁻²]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Torque</td><td style='padding:7px; border:1px solid #cbd5e1;'>II. [ML²T⁻¹]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Stress</td><td style='padding:7px; border:1px solid #cbd5e1;'>III. [ML²T⁻²]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Pressure gradient</td><td style='padding:7px; border:1px solid #cbd5e1;'>IV. [ML⁻²T⁻²]</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:", 
+                options: ["(a) A-III, B-I, C-IV, D-II", "(b) A-IV, B-III, C-I, D-II", "(c) A-III, B-IV, C-I, D-II", "(d) A-II, B-I, C-III, D-IV"], 
+                correct: 0, 
+                explanation: "Correct mapping of dimensions.", 
+                examType: "neet" 
+            },
+            { 
+                q: "<b>Match List-I with List-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II</th></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Torque</td><td style='padding:7px; border:1px solid #cbd5e1;'>I. N m⁻²</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Energy density</td><td style='padding:7px; border:1px solid #cbd5e1;'>II. N m⁻³</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Pressure gradient</td><td style='padding:7px; border:1px solid #cbd5e1;'>III. N m</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Impulse</td><td style='padding:7px; border:1px solid #cbd5e1;'>IV. N s</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:", 
+                options: ["(a) A-IV, B-III, C-II, D-I", "(b) A-IV, B-III, C-I, D-II", "(c) A-III, B-IV, C-I, D-II", "(d) A-II, B-I, C-III, D-IV"], 
+                correct: 3, 
+                explanation: "Correct mapping of SI unit forms.", 
+                examType: "neet" 
+            },
+            { 
+                q: "<b>Match List-I with List-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II</th></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Planck's constant (h)</td><td style='padding:7px; border:1px solid #cbd5e1;'>I. [M¹L²T⁻²]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Stopping potential (Vs)</td><td style='padding:7px; border:1px solid #cbd5e1;'>II. [M¹L¹T⁻¹]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Work function (ϕ)</td><td style='padding:7px; border:1px solid #cbd5e1;'>III. [M¹L²T⁻¹]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Momentum (p)</td><td style='padding:7px; border:1px solid #cbd5e1;'>IV. [M¹L²T⁻³A⁻¹]</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:", 
+                options: ["(a) A-III, B-I, C-II, D-IV", "(b) A-III, B-IV, C-I, D-II", "(c) A-II, B-IV, C-III, D-I", "(d) A-I, B-III, C-IV, D-II"], 
+                correct: 1, 
+                explanation: "Correctly maps list items.", 
+                examType: "neet" 
+            },
+            { 
+                q: "<b>Match List-I with List-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II</th></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Young's Modulus (Y)</td><td style='padding:7px; border:1px solid #cbd5e1;'>I. [ML⁻¹T⁻¹]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Co-efficient of Viscosity (η)</td><td style='padding:7px; border:1px solid #cbd5e1;'>II. [ML²T⁻¹]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Planck's Constant (h)</td><td style='padding:7px; border:1px solid #cbd5e1;'>III. [ML⁻¹T⁻²]</td></tr>" +
+                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Work Function (ϕ)</td><td style='padding:7px; border:1px solid #cbd5e1;'>IV. [ML²T⁻²]</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:", 
+                options: ["(a) A-II, B-III, C-IV, D-I", "(b) A-III, B-I, C-II, D-IV", "(c) A-I, B-III, C-IV, D-II", "(d) A-I, B-II, C-III, D-IV"], 
+                correct: 1, 
+                explanation: "Correct matching of dimensional formulas.", 
+                examType: "neet" 
+            },
             { q: "Match List-I with List-II: Pressure gradient, Energy density, Electric field, Latent heat", options: ["(a) A-III, B-II, C-I, D-IV", "(b) A-II, B-III, C-IV, D-I", "(c) A-III, B-II, C-IV, D-I", "(d) A-II, B-III, C-I, D-IV"], correct: 2, explanation: "Matches lists correctly.", examType: "neet" },
             { q: "Match List-I with List-II: Surface tension, Pressure, Viscosity, Impulse", options: ["(a) A-IV, B-III, C-II, D-I", "(b) A-IV, B-III, C-I, D-II", "(c) A-III, B-IV, C-I, D-II", "(d) A-II, B-I, C-III, D-IV"], correct: 1, explanation: "Matches units correctly.", examType: "neet" },
             { 
                 q: "<b>Match the List-I with List-II.</b><br><br>" +
-                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:15px; font-size:13px;'>" +
-                   "<tr style='background:#f8fafc;'><th style='padding:8px;'>List-I</th><th style='padding:8px;'>List-II</th></tr>" +
-                   "<tr><td style='padding:8px;'>A. Coefficient of viscosity</td><td style='padding:8px;'>I. M L² T⁻²</td></tr>" +
-                   "<tr><td style='padding:8px;'>B. Surface tension</td><td style='padding:8px;'>II. M L² T⁻¹</td></tr>" +
-                   "<tr><td style='padding:8px;'>C. Angular momentum</td><td style='padding:8px;'>III. M L⁻¹ T⁻¹</td></tr>" +
-                   "<tr><td style='padding:8px;'>D. Rotational kinetic energy</td><td style='padding:8px;'>IV. M L⁰ T⁻²</td></tr>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:15px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-I</th><th style='padding:8px; border:1px solid #cbd5e1; text-align:center;'>List-II</th></tr>" +
+                   "<tr><td style='padding:8px; border:1px solid #cbd5e1;'>A. Coefficient of viscosity</td><td style='padding:8px; border:1px solid #cbd5e1;'>I. M L² T⁻²</td></tr>" +
+                   "<tr><td style='padding:8px; border:1px solid #cbd5e1;'>B. Surface tension</td><td style='padding:8px; border:1px solid #cbd5e1;'>II. M L² T⁻¹</td></tr>" +
+                   "<tr><td style='padding:8px; border:1px solid #cbd5e1;'>C. Angular momentum</td><td style='padding:8px; border:1px solid #cbd5e1;'>III. M L⁻¹ T⁻¹</td></tr>" +
+                   "<tr><td style='padding:8px; border:1px solid #cbd5e1;'>D. Rotational kinetic energy</td><td style='padding:8px; border:1px solid #cbd5e1;'>IV. M L⁰ T⁻²</td></tr>" +
                    "</table>" +
                    "Choose the correct answer from the options given below:", 
                 options: [
