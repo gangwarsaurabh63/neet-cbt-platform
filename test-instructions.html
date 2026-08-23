@@ -7,49 +7,41 @@
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background: #ffffff; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        header { background: #ffffff; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 18px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px; }
         .logo span { color: #16a34a; }
-        
-        .container { max-width: 850px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); width: 100%; }
+        .container { max-width: 850px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         h2 { color: #0f172a; margin-top: 0; font-size: 22px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
         .instruction-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.6; color: #334155; max-height: 350px; overflow-y: auto; margin-bottom: 25px; }
         .instruction-box ul { padding-left: 20px; margin: 0; }
         .instruction-box li { margin-bottom: 10px; }
-        
         .footer-action { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; flex-wrap: wrap; gap: 15px; }
         .checkbox-label { font-size: 14px; font-weight: 600; color: #1e293b; display: flex; align-items: center; gap: 8px; cursor: pointer; }
-        .btn-start { background: #16a34a; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.2s; }
-        .btn-start:hover { background: #15803d; }
+        .btn-start { background: #16a34a; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
         .btn-start:disabled { background: #cbd5e1; cursor: not-allowed; }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo">⚡ Neetprep <span>Elite CBT Portal</span></div>
         <div style="font-size: 13px; font-weight: 600; color: #64748b;">Re NEET AITS Test - 01 [CODE - 41712]</div>
     </header>
 
     <div class="container">
-        <h2>General Instructions / महत्वपूर्ण निर्देश</h2>
-        
+        <h2>General Instructions</h2>
         <div class="instruction-box">
             <ul>
-                <li><strong>1.</strong> The test is of 3 hrs 15 mins duration and contains 180 multiple-choice questions from Physics (45 Ques.), Chemistry (45 Ques.), and Biology (90 Ques.). All questions are compulsory.</li>
-                <li><strong>2.</strong> Each question carries 4 marks. For each correct response, you will get +4 marks. For each incorrect response, -1 mark will be deducted from the total score. Maximum marks are 720.</li>
-                <li><strong>3.</strong> The clock will be set at the server. The countdown timer in the top right corner of test screen will display the remaining time available for you to complete the exam.</li>
-                <li><strong>4.</strong> Question Palette displays the status of each question using distinct color codes (Attempted, Unattempted, Bookmarked).</li>
-                <li><strong>5.</strong> Ensure you review your answers before final submission. Once submitted, your scorecard will be generated automatically.</li>
+                <li>The test is of 3 hrs 15 mins duration and contains 180 multiple-choice questions from Physics, Chemistry, and Biology.</li>
+                <li>Each question carries 4 marks. For each correct response, +4 marks will be given. For each incorrect response, -1 mark will be deducted.</li>
+                <li>The countdown timer in the top header will display the remaining time available for you to complete the exam.</li>
             </ul>
         </div>
-
         <div class="footer-action">
             <label class="checkbox-label">
                 <input type="checkbox" id="agreeCheckbox" onchange="toggleStartButton()" style="width: 18px; height: 18px; accent-color: #16a34a;">
-                I have read and understood all the instructions.
+                I have read and understood all instructions.
             </label>
-            <button id="startBtn" class="btn-start" onclick="startTest()" disabled>Proceed to Test &rarr;</button>
+            <button id="startBtn" class="btn-start" onclick="window.location.href='test-interface.html'" disabled>Proceed to Test &rarr;</button>
         </div>
     </div>
 
@@ -57,10 +49,6 @@
         function toggleStartButton() {
             let isChecked = document.getElementById('agreeCheckbox').checked;
             document.getElementById('startBtn').disabled = !isChecked;
-        }
-
-        function startTest() {
-            window.location.href = 'test-interface.html';
         }
     </script>
 </body>
