@@ -1,74 +1,82 @@
-// =========================================================================
-// NEETPREP ELITE - MULTI-TEST SERIES CATALOG (tests.js)
-// =========================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neetprep Elite - Mock Test Series</title>
+    <script src="tests.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f1f5f9; color: #0f172a; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: #ffffff; padding: 14px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 18px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: #16a34a; }
+        .btn-back { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; color: #334155; text-decoration: none; }
+        .main-container { max-width: 850px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; }
+        .page-title { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+        .page-subtitle { font-size: 14px; color: #64748b; margin-bottom: 30px; }
+        
+        #testListContainer { display: flex; flex-direction: column; gap: 16px; }
+        .test-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.01); transition: all 0.2s ease; gap: 20px; flex-wrap: wrap; }
+        .test-card:hover { border-color: #86efac; box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.06); }
+        .test-left { display: flex; align-items: center; gap: 18px; }
+        .test-index { background: #f0fdf4; color: #16a34a; font-weight: 800; font-size: 16px; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #bbf7d0; flex-shrink: 0; }
+        .test-info h3 { font-size: 16.5px; font-weight: 700; color: #0f172a; margin-bottom: 5px; }
+        .test-meta { display: flex; gap: 15px; font-size: 12.5px; color: #64748b; font-weight: 600; flex-wrap: wrap; }
+        .btn-take-test { background: #16a34a; color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 13.5px; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+        .btn-take-test:hover { background: #15803d; }
+        footer { text-align: center; padding: 25px; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; background: #ffffff; margin-top: auto; }
+    </style>
+</head>
+<body>
 
-const fullLengthTests = {
-    "test_re_neet_01": {
-        title: "Re NEET AITS Test - 01 (Code - 41712)",
-        durationMinutes: 195, // 3 Hours 15 Mins
-        totalQuestions: 180,
-        difficulty: "Hard (NTA Pattern)",
-        questions: [
-            {
-                id: 1,
-                subject: "Biology",
-                q: "<b>Match the columns :</b><br><br>" +
-                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
-                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1;'>Column-I</th><th style='padding:8px; border:1px solid #cbd5e1;'>Column-II</th></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Amoeboid protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(i) Paramecium</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Flagellated protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(ii) Plasmodium</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Ciliated protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(iii) Entamoeba</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Sporozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(iv) Trypanosoma</td></tr>" +
-                   "</table>",
-                options: [
-                    "(1) A=(ii), B=(iv), C=(iii), D=(i)",
-                    "(2) A=(i), B=(ii), C=(iii), D=(iv)",
-                    "(3) A=(iii), B=(iv), C=(i), D=(ii)",
-                    "(4) A=(iii), B=(iv), C=(ii), D=(i)"
-                ],
-                correct: 2, 
-                explanation: "Amoeboid -> Entamoeba (iii); Flagellated -> Trypanosoma (iv); Ciliated -> Paramecium (i); Sporozoans -> Plasmodium (ii)[span_0](start_span)[span_0](end_span)."
-            },
-            {
-                id: 2,
-                subject: "Biology",
-                q: "Here are few statement given below, Identify organism on basis of statement:<br>i) Lack cell wall<br>ii) Smallest living cell known<br>iii) Can survive without oxygen<br>iv) Pathogenic in animal & plants.",
-                options: ["(1) Nostoc", "(2) Anabaena", "(3) Mycoplasma", "(4) Chlorella"],
-                correct: 2,
-                explanation: "Mycoplasma lacks a cell wall, is the smallest known living cell, can survive without oxygen, and is pathogenic[span_1](start_span)[span_1](end_span)."
-            },
-            {
-                id: 7,
-                subject: "Biology",
-                q: "<b>Match the following hormones with the respective disease:</b><br><br>" +
-                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
-                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px;'>Column-I</th><th style='padding:8px;'>Column-II</th></tr>" +
-                   "<tr><td>(a) Insulin</td><td>(i) Addison's disease</td></tr>" +
-                   "<tr><td>(b) Thyroxine</td><td>(ii) Diabetes insipidus</td></tr>" +
-                   "<tr><td>(c) Corticoids</td><td>(iii) Acromegaly</td></tr>" +
-                   "<tr><td>(d) Growth Hormone</td><td>(iv) Goitre</td></tr>" +
-                   "<tr><td></td><td>(v) Diabetes mellitus</td></tr>" +
-                   "</table>",
-                options: ["(a) a-(v), b-(iv), c-(i), d-(iii)", "(b) a-(ii), b-(iv), c-(i), d-(iii)", "(c) a-(v), b-(i), c-(ii), d-(iii)", "(d) a-(ii), b-(iv), c-(iii), d-(i)"],
-                correct: 0,
-                explanation: "Insulin -> Diabetes mellitus (v); Thyroxine -> Goitre (iv); Corticoids -> Addison's disease (i); Growth Hormone -> Acromegaly (iii)[span_2](start_span)[span_2](end_span)."
+    <header>
+        <div class="logo">⚡ Neetprep <span>Elite</span></div>
+        <button class="btn-back" onclick="window.location.href='index.html'">🏠 Back to Home</button>
+    </header>
+
+    <div class="main-container">
+        <h1 class="page-title">All India Test Series (AITS)</h1>
+        <p class="page-subtitle">Select an active NTA pattern test from the sequence below to begin your assessment.</p>
+
+        <div id="testListContainer"></div>
+    </div>
+
+    <footer>&copy; 2026 Neetprep Elite. All rights reserved.</footer>
+
+    <script>
+        window.onload = function() {
+            let container = document.getElementById('testListContainer');
+            container.innerHTML = "";
+
+            if (typeof fullLengthTests === 'undefined' || Object.keys(fullLengthTests).length === 0) {
+                container.innerHTML = "<p style='color:#64748b; font-size:14px;'>No mock tests available at the moment.</p>";
+                return;
             }
-        ]
-    },
-    "test_re_neet_02": {
-        title: "Re NEET AITS Test - 02 (Code - 41713)",
-        durationMinutes: 195,
-        totalQuestions: 180,
-        difficulty: "Moderate",
-        questions: [
-            {
-                id: 1,
-                subject: "Physics",
-                q: "Which of the following physical quantities has the same dimensions as Planck's constant?",
-                options: ["(1) Torque", "(2) Angular momentum", "(3) Linear momentum", "(4) Surface tension"],
-                correct: 1,
-                explanation: "Both Planck's constant and angular momentum have dimensions of [ML²T⁻¹]."
+
+            let counter = 1;
+            for (let testKey in fullLengthTests) {
+                let test = fullLengthTests[testKey];
+                let card = document.createElement('div');
+                card.className = 'test-card';
+                card.innerHTML = `
+                    <div class="test-left">
+                        <div class="test-index">${counter < 10 ? '0' + counter : counter}</div>
+                        <div class="test-info">
+                            <h3>${test.title}</h3>
+                            <div class="test-meta">
+                                <span>⏱️ ${Math.floor(test.durationMinutes / 60)} Hours ${test.durationMinutes % 60} Mins</span>
+                                <span>📝 ${test.totalQuestions} Questions</span>
+                                <span>🎯 Max Marks: ${test.totalQuestions * 4}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="test-instructions.html?test=${testKey}" class="btn-take-test">Take Test &rarr;</a>
+                `;
+                container.appendChild(card);
+                counter++;
             }
-        ]
-    }
-};
+        };
+    </script>
+</body>
+</html>
