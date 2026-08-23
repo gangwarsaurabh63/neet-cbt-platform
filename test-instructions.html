@@ -37,10 +37,10 @@
         <h2>General Instructions / महत्वपूर्ण निर्देश</h2>
         <div class="instruction-box">
             <ul>
-                <li>The test is of 3 hrs 15 mins duration and contains 180 multiple-choice questions from Physics, Chemistry, and Biology.</li>
-                <li>Each question carries 4 marks. For each correct response, +4 marks will be given. For each incorrect response, -1 mark will be deducted.</li>
-                <li>The countdown timer in the top header will display the remaining time available for you to complete the exam.</li>
-                <li>Ensure you review your answers before final submission. Once submitted, your scorecard will be generated automatically.</li>
+                <li>The test contains multiple-choice questions from Physics, Chemistry, Botany, and Zoology.</li>
+                <li>Each correct response carries +4 marks. Each incorrect response carries -1 negative marking.</li>
+                <li>The countdown timer in the top header indicates remaining exam time.</li>
+                <li>Upon clicking Submit, your professional performance scorecard and complete review solutions will generate automatically.</li>
             </ul>
         </div>
         <div class="footer-action">
@@ -54,7 +54,7 @@
 
     <div id="countdownModal">
         <p style="font-size: 18px; margin-bottom: 10px; font-weight: 600;">Your test is starting in...</p>
-        <div class="countdown-number" id="countdownDisplay">4</div>
+        <div class="countdown-number" id="countdownDisplay">3</div>
     </div>
 
     <script>
@@ -75,7 +75,8 @@
             let display = document.getElementById('countdownDisplay');
             modal.style.display = 'flex';
             
-            let count = 4;
+            let count = 3;
+            display.textContent = count;
             let countdownInterval = setInterval(() => {
                 count--;
                 display.textContent = count;
