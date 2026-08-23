@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neetprep Elite - CBT Mock Test Engine</title>
+    <title>Neetprep Elite - CBT Exam Engine</title>
     <script src="tests.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,17 +28,39 @@
         .palette-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; height: 38px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .palette-btn.active { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); }
         .palette-btn.attempted { background: #dcfce7; border-color: #22c55e; color: #166534; }
+
+        /* Scorecard Styling */
+        #scorecardContainer { display: none; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 800px; margin: 40px auto; width: 100%; text-align: left; }
+        .score-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 25px; }
+        .score-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .stat-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; text-align: center; }
+        .stat-box h4 { font-size: 12px; color: #64748b; text-transform: uppercase; margin-bottom: 6px; }
+        .stat-box p { font-size: 22px; font-weight: 800; color: #0f172a; }
+        .subject-breakdown { margin-bottom: 30px; }
+        .subject-breakdown h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
+        .subject-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        .subject-table th, .subject-table td { padding: 10px 14px; border: 1px solid #e2e8f0; text-align: center; }
+        .subject-table th { background: #f8fafc; color: #475569; }
+        
+        #reviewContainer { display: none; margin-top: 20px; }
+        .review-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+        .review-card.correct-ans { border-left: 5px solid #22c55e; }
+        .review-card.wrong-ans { border-left: 5px solid #ef4444; }
+        .review-card.unattempted { border-left: 5px solid #cbd5e1; }
+        .explanation-box { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 6px; margin-top: 12px; font-size: 13px; color: #166534; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">⚡ Neetprep <span id="navTestTitle">Exam Engine</span></div>
-        <div class="timer-box" id="timerDisplay">03:15:00</div>
-        <button class="btn-nav" style="background:#e11d48;" onclick="submitTest()">Submit Test</button>
+        <div class="timer-box" id="timerBox">
+            Time Left: <span id="timerDisplay">03:15:00</span>
+        </div>
+        <button class="btn-nav" id="submitBtn" style="background:#e11d48;" onclick="confirmSubmit()">Submit Test</button>
     </header>
 
-    <div class="layout">
+    <div class="layout" id="examLayout">
         <div class="content">
             <div class="q-header">
                 <span id="q-subject-label">Subject: General</span>
@@ -63,12 +85,69 @@
         </div>
     </div>
 
+    <!-- Professional Scorecard Container -->
+    <div id="scorecardContainer">
+        <div class="score-header">
+            <div>
+                <h2 id="scTestTitle" style="font-size: 20px; color: #0f172a; margin-bottom: 4px;">Exam Scorecard</h2>
+                <p style="font-size: 13px; color: #64748b;">Performance Analysis Report</p>
+            </div>
+            <button class="btn-nav" style="background:#2563eb;" onclick="window.location.href='tests.html'">Back to Tests</button>
+        </div>
+
+        <div class="score-stats-grid">
+            <div class="stat-box">
+                <h4>Total Score</h4>
+                <p id="scTotalScore" style="color: #16a34a;">0 / 0</p>
+            </div>
+            <div class="stat-box">
+                <h4>Accuracy</h4>
+                <p id="scAccuracy">0%</p>
+            </div>
+            <div class="stat-box">
+                <h4>Attempted</h4>
+                <p id="scAttempted">0 / 0</p>
+            </div>
+            <div class="stat-box">
+                <h4>Correct / Wrong</h4>
+                <p id="scCorrectWrong">0 / 0</p>
+            </div>
+        </div>
+
+        <div class="subject-breakdown">
+            <h3>Subject-Wise Breakdown</h3>
+            <table class="subject-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Questions</th>
+                        <th>Attempted</th>
+                        <th>Correct</th>
+                        <th>Incorrect</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="subjectBreakdownBody"></tbody>
+            </table>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 25px;">
+            <button class="btn-nav" style="background:#0f172a; flex:1;" onclick="toggleReviewMode()">Review Solutions & Explanations</button>
+            <button class="btn-nav" style="background:#16a34a; flex:1;" onclick="window.location.href=`test-instructions.html?test=${testKey}`">Reattempt Test</button>
+        </div>
+
+        <div id="reviewContainer">
+            <h3 style="font-size: 18px; margin: 25px 0 15px 0; color: #0f172a; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">Detailed Solutions</h3>
+            <div id="reviewList"></div>
+        </div>
+    </div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         let testKey = urlParams.get('test') || 'test_re_neet_01';
         
         let testData = (typeof fullLengthTests !== 'undefined' && fullLengthTests[testKey]) ? fullLengthTests[testKey] : { questions: [] };
-        let questionsList = testData.questions;
+        let questionsList = testData.questions || [];
         let currentIndex = 0;
         let userResponses = {};
 
@@ -92,8 +171,8 @@
 
         function buildPalette() {
             let grid = document.getElementById('paletteGrid');
+            if(!grid) return;
             grid.innerHTML = "";
-            if (questionsList.length === 0) return;
             questionsList.forEach((q, idx) => {
                 let btn = document.createElement('button');
                 btn.className = 'palette-btn';
@@ -106,10 +185,7 @@
         }
 
         function loadTestQuestion() {
-            if (questionsList.length === 0) {
-                document.getElementById('q-text').textContent = "No questions found for this test session.";
-                return;
-            }
+            if (questionsList.length === 0) return;
             let q = questionsList[currentIndex];
             document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${questionsList.length}`;
             document.getElementById('q-subject-label').textContent = `Subject: ${q.subject || 'General'}`;
@@ -140,17 +216,126 @@
             if (currentIndex > 0) { currentIndex--; loadTestQuestion(); }
         }
 
+        function confirmSubmit() {
+            let attemptedCount = Object.keys(userResponses).length;
+            let unattemptedCount = questionsList.length - attemptedCount;
+            let confirmMsg = `You have attempted ${attemptedCount} out of ${questionsList.length} questions (${unattemptedCount} unattempted).\n\nAre you sure you want to submit the test?`;
+            
+            if (confirm(confirmMsg)) {
+                submitTest();
+            }
+        }
+
         function submitTest() {
             clearInterval(timerInterval);
-            let score = 0, attempted = 0;
+            document.getElementById('timerBox').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('examLayout').style.display = 'none';
+
+            let totalMarksPossible = questionsList.length * 4;
+            let score = 0, attempted = 0, correctCount = 0, wrongCount = 0;
+            let subjectMap = {};
+
             questionsList.forEach((q, idx) => {
-                if (userResponses[idx] !== undefined) {
+                let subj = q.subject || 'General';
+                if (!subjectMap[subj]) {
+                    subjectMap[subj] = { total: 0, attempted: 0, correct: 0, wrong: 0, marks: 0 };
+                }
+                subjectMap[subj].total++;
+
+                let userAns = userResponses[idx];
+                if (userAns !== undefined) {
                     attempted++;
-                    if (userResponses[idx] === q.correct) score += 4; else score -= 1;
+                    subjectMap[subj].attempted++;
+                    if (userAns === q.correct) {
+                        score += 4;
+                        correctCount++;
+                        subjectMap[subj].correct++;
+                        subjectMap[subj].marks += 4;
+                    } else {
+                        score -= 1;
+                        wrongCount++;
+                        subjectMap[subj].wrong++;
+                        subjectMap[subj].marks -= 1;
+                    }
                 }
             });
-            alert(`Test Submitted Successfully!\nAttempted: ${attempted}/${questionsList.length}\nTotal Score: ${score}`);
-            window.location.href = 'index.html';
+
+            let accuracy = attempted > 0 ? ((correctCount / attempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('scTestTitle').textContent = testData.title || "Exam Scorecard";
+            document.getElementById('scTotalScore').textContent = `${score} / ${totalMarksPossible}`;
+            document.getElementById('scAccuracy').textContent = `${accuracy}%`;
+            document.getElementById('scAttempted').textContent = `${attempted} / ${questionsList.length}`;
+            document.getElementById('scCorrectWrong').textContent = `${correctCount} / ${wrongCount}`;
+
+            let tbody = document.getElementById('subjectBreakdownBody');
+            tbody.innerHTML = "";
+            for (let subj in subjectMap) {
+                let data = subjectMap[subj];
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600; text-align:left;">${subj}</td>
+                        <td>${data.total}</td>
+                        <td>${data.attempted}</td>
+                        <td style="color:#16a34a; font-weight:600;">${data.correct}</td>
+                        <td style="color:#dc2626; font-weight:600;">${data.wrong}</td>
+                        <td style="font-weight:700;">${data.marks}</td>
+                    </tr>
+                `;
+            }
+
+            let reviewList = document.getElementById('reviewList');
+            reviewList.innerHTML = "";
+            questionsList.forEach((q, idx) => {
+                let userAns = userResponses[idx];
+                let statusClass = "unattempted";
+                let statusText = "Unattempted";
+                if (userAns !== undefined) {
+                    if (userAns === q.correct) {
+                        statusClass = "correct-ans";
+                        statusText = "Correct";
+                    } else {
+                        statusClass = "wrong-ans";
+                        statusText = "Incorrect";
+                    }
+                }
+
+                let optionsHtml = "<ul style='list-style:none; padding:0; margin-top:8px;'>";
+                q.options.forEach((opt, oIdx) => {
+                    let style = "padding:6px 10px; border-radius:4px; margin-bottom:4px; font-size:13px;";
+                    if (oIdx === q.correct) style += " background:#dcfce7; color:#166534; font-weight:bold;";
+                    else if (oIdx === userAns && oIdx !== q.correct) style += " background:#fee2e2; color:#991b1b; text-decoration:line-through;";
+                    else style += " background:#f8fafc;";
+                    optionsHtml += `<li style="${style}">${opt}</li>`;
+                });
+                optionsHtml += "</ul>";
+
+                reviewList.innerHTML += `
+                    <div class="review-card ${statusClass}">
+                        <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700; margin-bottom:6px; color:#64748b;">
+                            <span>Q.${idx + 1} [${q.subject || 'General'}]</span>
+                            <span>Status: ${statusText}</span>
+                        </div>
+                        <div style="font-size:14px; font-weight:600; color:#0f172a; margin-bottom:8px;">${q.q}</div>
+                        ${optionsHtml}
+                        <div class="explanation-box">
+                            <strong>Explanation:</strong> ${q.explanation || 'No explanation provided.'}
+                        </div>
+                    </div>
+                `;
+            });
+
+            let pastResults = JSON.parse(localStorage.getItem('neetprep_results') || '{}');
+            pastResults[testKey] = { score, attempted, correctCount, wrongCount, date: new Date().toLocaleString() };
+            localStorage.setItem('neetprep_results', JSON.stringify(pastResults));
+
+            document.getElementById('scorecardContainer').style.display = 'block';
+        }
+
+        function toggleReviewMode() {
+            let rev = document.getElementById('reviewContainer');
+            rev.style.display = rev.style.display === 'block' ? 'none' : 'block';
         }
 
         loadTestQuestion();
