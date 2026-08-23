@@ -1,11 +1,7 @@
-// =========================================================================
-// NEETPREP ELITE - FULL-LENGTH MOCK TEST BANK (tests.js)
-// =========================================================================
-
 const fullLengthTests = {
     "test_re_neet_01": {
         title: "Re NEET AITS Test - 01 (Code - 41712)",
-        durationMinutes: 195, // 3 Hours 15 Mins
+        durationMinutes: 195,
         totalQuestions: 180,
         questions: [
             {
@@ -31,14 +27,8 @@ const fullLengthTests = {
             {
                 id: 2,
                 subject: "Biology",
-                q: "Here are few statement given below, Identify organism on basis of statement:<br>" +
-                   "i) Lack cell wall<br>ii) Smallest living cell known<br>iii) Can survive without oxygen<br>iv) Pathogenic in animal & plants.",
-                options: [
-                    "(1) Nostoc",
-                    "(2) Anabaena",
-                    "(3) Mycoplasma",
-                    "(4) Chlorella"
-                ],
+                q: "Here are few statement given below, Identify organism on basis of statement:<br>i) Lack cell wall<br>ii) Smallest living cell known<br>iii) Can survive without oxygen<br>iv) Pathogenic in animal & plants.",
+                options: ["(1) Nostoc", "(2) Anabaena", "(3) Mycoplasma", "(4) Chlorella"],
                 correct: 2,
                 explanation: "Mycoplasma lacks a cell wall, is the smallest known living cell, can survive without oxygen, and is pathogenic."
             },
@@ -54,12 +44,7 @@ const fullLengthTests = {
                    "<tr><td>(d) Growth Hormone</td><td>(iv) Goitre</td></tr>" +
                    "<tr><td></td><td>(v) Diabetes mellitus</td></tr>" +
                    "</table>",
-                options: [
-                    "(1) a-(v), b-(iv), c-(i), d-(iii)",
-                    "(2) a-(ii), b-(iv), c-(i), d-(iii)",
-                    "(3) a-(v), b-(i), c-(ii), d-(iii)",
-                    "(4) a-(ii), b-(iv), c-(iii), d-(i)"
-                ],
+                options: ["(a) a-(v), b-(iv), c-(i), d-(iii)", "(b) a-(ii), b-(iv), c-(i), d-(iii)", "(c) a-(v), b-(i), c-(ii), d-(iii)", "(d) a-(ii), b-(iv), c-(iii), d-(i)"],
                 correct: 0,
                 explanation: "Insulin -> Diabetes mellitus (v); Thyroxine -> Goitre (iv); Corticoids -> Addison's disease (i); Growth Hormone -> Acromegaly (iii)."
             }
