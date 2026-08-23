@@ -5,35 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neetprep Elite - Exam Instructions</title>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
         header { background: #ffffff; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 18px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px; }
         .logo span { color: #16a34a; }
         .container { max-width: 850px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        h2 { color: #0f172a; margin-top: 0; font-size: 22px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
-        .instruction-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.6; color: #334155; max-height: 350px; overflow-y: auto; margin-bottom: 25px; }
-        .instruction-box ul { padding-left: 20px; margin: 0; }
+        h2 { color: #0f172a; font-size: 22px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 20px; }
+        .instruction-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.6; color: #334155; max-height: 320px; overflow-y: auto; margin-bottom: 25px; }
+        .instruction-box ul { padding-left: 20px; }
         .instruction-box li { margin-bottom: 10px; }
         .footer-action { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; flex-wrap: wrap; gap: 15px; }
         .checkbox-label { font-size: 14px; font-weight: 600; color: #1e293b; display: flex; align-items: center; gap: 8px; cursor: pointer; }
         .btn-start { background: #16a34a; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
         .btn-start:disabled { background: #cbd5e1; cursor: not-allowed; }
+        
+        #countdownModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); z-index: 9999; justify-content: center; align-items: center; flex-direction: column; color: white; text-align: center; }
+        .countdown-number { font-size: 72px; font-weight: 800; color: #4ade80; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
+
     <header>
         <div class="logo">⚡ Neetprep <span>Elite CBT Portal</span></div>
         <div style="font-size: 13px; font-weight: 600; color: #64748b;">Re NEET AITS Test - 01 [CODE - 41712]</div>
     </header>
 
     <div class="container">
-        <h2>General Instructions</h2>
+        <h2>General Instructions / महत्वपूर्ण निर्देश</h2>
         <div class="instruction-box">
             <ul>
                 <li>The test is of 3 hrs 15 mins duration and contains 180 multiple-choice questions from Physics, Chemistry, and Biology.</li>
                 <li>Each question carries 4 marks. For each correct response, +4 marks will be given. For each incorrect response, -1 mark will be deducted.</li>
                 <li>The countdown timer in the top header will display the remaining time available for you to complete the exam.</li>
+                <li>Ensure you review your answers before final submission. Once submitted, your scorecard will be generated automatically.</li>
             </ul>
         </div>
         <div class="footer-action">
@@ -41,14 +47,35 @@
                 <input type="checkbox" id="agreeCheckbox" onchange="toggleStartButton()" style="width: 18px; height: 18px; accent-color: #16a34a;">
                 I have read and understood all instructions.
             </label>
-            <button id="startBtn" class="btn-start" onclick="window.location.href='test-interface.html'" disabled>Proceed to Test &rarr;</button>
+            <button id="startBtn" class="btn-start" onclick="triggerCountdown()" disabled>Proceed to Test &rarr;</button>
         </div>
+    </div>
+
+    <div id="countdownModal">
+        <p style="font-size: 18px; margin-bottom: 10px; font-weight: 600;">Your test is starting in...</p>
+        <div class="countdown-number" id="countdownDisplay">4</div>
     </div>
 
     <script>
         function toggleStartButton() {
             let isChecked = document.getElementById('agreeCheckbox').checked;
             document.getElementById('startBtn').disabled = !isChecked;
+        }
+
+        function triggerCountdown() {
+            let modal = document.getElementById('countdownModal');
+            let display = document.getElementById('countdownDisplay');
+            modal.style.display = 'flex';
+            
+            let count = 4;
+            let countdownInterval = setInterval(() => {
+                count--;
+                display.textContent = count;
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'test-interface.html';
+                }
+            }, 1000);
         }
     </script>
 </body>
