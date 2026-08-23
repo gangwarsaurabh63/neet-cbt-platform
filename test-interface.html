@@ -33,7 +33,7 @@
 <body>
 
     <header>
-        <div class="logo">⚡ Neetprep <span>Elite Exam Engine</span></div>
+        <div class="logo">⚡ Neetprep <span id="navTestTitle">Exam Engine</span></div>
         <div class="timer-box" id="timerDisplay">03:15:00</div>
         <button class="btn-nav" style="background:#e11d48;" onclick="submitTest()">Submit Test</button>
     </header>
@@ -41,8 +41,8 @@
     <div class="layout">
         <div class="content">
             <div class="q-header">
-                <span id="q-subject-label">Subject: Biology</span>
-                <span id="q-counter">Question 1 of 3</span>
+                <span id="q-subject-label">Subject: General</span>
+                <span id="q-counter">Question 1 of 1</span>
             </div>
             <div class="q-text" id="q-text">Loading question...</div>
             <ul class="options-list" id="options-container">
@@ -64,13 +64,19 @@
     </div>
 
     <script>
-        let testKey = "test_re_neet_01";
+        const urlParams = new URLSearchParams(window.location.search);
+        let testKey = urlParams.get('test') || 'test_re_neet_01';
+        
         let testData = (typeof fullLengthTests !== 'undefined' && fullLengthTests[testKey]) ? fullLengthTests[testKey] : { questions: [] };
         let questionsList = testData.questions;
         let currentIndex = 0;
         let userResponses = {};
 
-        let totalSeconds = 3 * 3600 + 15 * 60;
+        if (testData.title) {
+            document.getElementById('navTestTitle').textContent = testData.title;
+        }
+
+        let totalSeconds = (testData.durationMinutes || 195) * 60;
         let timerInterval = setInterval(() => {
             if (totalSeconds <= 0) {
                 clearInterval(timerInterval);
@@ -87,6 +93,7 @@
         function buildPalette() {
             let grid = document.getElementById('paletteGrid');
             grid.innerHTML = "";
+            if (questionsList.length === 0) return;
             questionsList.forEach((q, idx) => {
                 let btn = document.createElement('button');
                 btn.className = 'palette-btn';
@@ -99,7 +106,10 @@
         }
 
         function loadTestQuestion() {
-            if (questionsList.length === 0) return;
+            if (questionsList.length === 0) {
+                document.getElementById('q-text').textContent = "No questions found for this test session.";
+                return;
+            }
             let q = questionsList[currentIndex];
             document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${questionsList.length}`;
             document.getElementById('q-subject-label').textContent = `Subject: ${q.subject || 'General'}`;
@@ -107,10 +117,12 @@
 
             q.options.forEach((optText, i) => {
                 let li = document.getElementById(`opt${i}`);
-                li.textContent = optText;
-                li.className = "";
-                if (userResponses[currentIndex] === i) li.classList.add('selected');
-                li.onclick = () => selectOption(i);
+                if (li) {
+                    li.textContent = optText;
+                    li.className = "";
+                    if (userResponses[currentIndex] === i) li.classList.add('selected');
+                    li.onclick = () => selectOption(i);
+                }
             });
             buildPalette();
         }
