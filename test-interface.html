@@ -8,33 +8,24 @@
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
-
-        /* CBT Header */
         header { background: #ffffff; padding: 12px 25px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
         .logo { font-size: 16px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 6px; }
         .logo span { color: #16a34a; }
         .timer-box { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 14px; }
-
-        /* Main Layout */
         .layout { max-width: 900px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
         .content { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        
         .q-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
         .q-text { font-size: 16px; line-height: 1.6; color: #0f172a; margin-bottom: 20px; font-weight: 500; }
-
         .options-list { list-style: none; padding: 0; margin: 0 0 25px 0; }
         .options-list li { margin-bottom: 12px; padding: 14px; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; transition: background 0.2s; }
         .options-list li:hover { background: #f8fafc; }
         .options-list li.selected { background: #f0fdf4; border-color: #22c55e; color: #166534; font-weight: bold; }
-
         .footer-nav { display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; gap: 10px; }
         .btn-nav { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
-
-        /* Question Palette */
         .palette-container { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; padding-right: 4px; }
-        .palette-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; height: 38px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; }
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; }
+        .palette-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; height: 38px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .palette-btn.active { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); }
         .palette-btn.attempted { background: #dcfce7; border-color: #22c55e; color: #166534; }
     </style>
@@ -53,23 +44,19 @@
                 <span id="q-subject-label">Subject: Biology</span>
                 <span id="q-counter">Question 1 of 3</span>
             </div>
-
             <div class="q-text" id="q-text">Loading question...</div>
-
             <ul class="options-list" id="options-container">
                 <li id="opt0"></li>
                 <li id="opt1"></li>
                 <li id="opt2"></li>
                 <li id="opt3"></li>
             </ul>
-
             <div class="footer-nav">
                 <button class="btn-nav" style="background:#64748b;" onclick="prevQuestion()">◄ Previous</button>
                 <button class="btn-nav" onclick="nextQuestion()">Next ►</button>
             </div>
         </div>
 
-        <!-- Question Navigator Palette -->
         <div class="palette-container">
             <div class="palette-title">Question Navigator</div>
             <div class="palette-grid" id="paletteGrid"></div>
@@ -83,12 +70,10 @@
         let currentIndex = 0;
         let userResponses = {};
 
-        // Timer setup (3 hrs 15 mins)
         let totalSeconds = 3 * 3600 + 15 * 60;
         let timerInterval = setInterval(() => {
             if (totalSeconds <= 0) {
                 clearInterval(timerInterval);
-                alert("Time is up! Submitting test automatically.");
                 submitTest();
                 return;
             }
@@ -108,19 +93,13 @@
                 btn.textContent = idx + 1;
                 if (idx === currentIndex) btn.classList.add('active');
                 if (userResponses[idx] !== undefined) btn.classList.add('attempted');
-                btn.onclick = () => {
-                    currentIndex = idx;
-                    loadTestQuestion();
-                };
+                btn.onclick = () => { currentIndex = idx; loadTestQuestion(); };
                 grid.appendChild(btn);
             });
         }
 
         function loadTestQuestion() {
-            if (questionsList.length === 0) {
-                document.getElementById('q-text').textContent = "No questions loaded in this test.";
-                return;
-            }
+            if (questionsList.length === 0) return;
             let q = questionsList[currentIndex];
             document.getElementById('q-counter').textContent = `Question ${currentIndex + 1} of ${questionsList.length}`;
             document.getElementById('q-subject-label').textContent = `Subject: ${q.subject || 'General'}`;
@@ -130,9 +109,7 @@
                 let li = document.getElementById(`opt${i}`);
                 li.textContent = optText;
                 li.className = "";
-                if (userResponses[currentIndex] === i) {
-                    li.classList.add('selected');
-                }
+                if (userResponses[currentIndex] === i) li.classList.add('selected');
                 li.onclick = () => selectOption(i);
             });
             buildPalette();
@@ -144,34 +121,23 @@
         }
 
         function nextQuestion() {
-            if (currentIndex < questionsList.length - 1) {
-                currentIndex++;
-                loadTestQuestion();
-            }
+            if (currentIndex < questionsList.length - 1) { currentIndex++; loadTestQuestion(); }
         }
 
         function prevQuestion() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                loadTestQuestion();
-            }
+            if (currentIndex > 0) { currentIndex--; loadTestQuestion(); }
         }
 
         function submitTest() {
             clearInterval(timerInterval);
-            let score = 0;
-            let attempted = 0;
+            let score = 0, attempted = 0;
             questionsList.forEach((q, idx) => {
                 if (userResponses[idx] !== undefined) {
                     attempted++;
-                    if (userResponses[idx] === q.correct) {
-                        score += 4;
-                    } else {
-                        score -= 1;
-                    }
+                    if (userResponses[idx] === q.correct) score += 4; else score -= 1;
                 }
             });
-            alert(`Test Submitted Successfully!\nAttempted: ${attempted}/${questionsList.length}\nTotal Score: ${score} / ${questionsList.length * 4}`);
+            alert(`Test Submitted Successfully!\nAttempted: ${attempted}/${questionsList.length}\nTotal Score: ${score}`);
             window.location.href = 'index.html';
         }
 
