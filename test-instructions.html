@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neetprep Elite - Exam Instructions</title>
+    <script src="tests.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
@@ -29,7 +30,7 @@
 
     <header>
         <div class="logo">⚡ Neetprep <span>Elite CBT Portal</span></div>
-        <div style="font-size: 13px; font-weight: 600; color: #64748b;">Re NEET AITS Test - 01 [CODE - 41712]</div>
+        <div id="testTitleHeader" style="font-size: 13px; font-weight: 600; color: #64748b;">Loading Test...</div>
     </header>
 
     <div class="container">
@@ -57,6 +58,13 @@
     </div>
 
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const testKey = urlParams.get('test') || 'test_re_neet_01';
+
+        if (typeof fullLengthTests !== 'undefined' && fullLengthTests[testKey]) {
+            document.getElementById('testTitleHeader').textContent = fullLengthTests[testKey].title;
+        }
+
         function toggleStartButton() {
             let isChecked = document.getElementById('agreeCheckbox').checked;
             document.getElementById('startBtn').disabled = !isChecked;
@@ -73,7 +81,7 @@
                 display.textContent = count;
                 if (count <= 0) {
                     clearInterval(countdownInterval);
-                    window.location.href = 'test-interface.html';
+                    window.location.href = `test-interface.html?test=${testKey}`;
                 }
             }, 1000);
         }
