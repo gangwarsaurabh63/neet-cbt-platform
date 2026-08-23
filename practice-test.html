@@ -17,6 +17,7 @@
         .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: bold; }
         .btn-filter-inc { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
         .btn-filter-all { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        .btn-pyq { background: #fdf4ff; color: #701a75; border-color: #f5d0fe; }
         .btn-reset { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
@@ -56,6 +57,8 @@
         <div class="logo">⚡ Neetprep Elite: <span id="nav-chapter-title">Chapter</span></div>
         <div class="header-actions">
             <button class="btn-action btn-filter-all" onclick="filterMode('all')">All</button>
+            <button class="btn-action btn-pyq" onclick="filterMode('neet_pyq')">🎯 NEET PYQ</button>
+            <button class="btn-action btn-pyq" onclick="filterMode('jee_pyq')">🚀 JEE PYQ</button>
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
             <button class="btn-action btn-filter-inc" onclick="filterMode('incorrect')">❌ Incorrect</button>
             <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Save</button>
@@ -200,6 +203,12 @@
                     return att !== undefined && att.selectedIdx !== rawQuestions[idx].correct;
                 });
                 document.getElementById('filter-status').textContent = "[ Filter: Incorrect ]";
+            } else if (mode === 'neet_pyq') {
+                activeQuestionsList = rawQuestions.filter(q => q.examType === 'neet' || (q.pyqYear && !q.examType));
+                document.getElementById('filter-status').textContent = "[ Filter: NEET PYQ ]";
+            } else if (mode === 'jee_pyq') {
+                activeQuestionsList = rawQuestions.filter(q => q.examType === 'jee');
+                document.getElementById('filter-status').textContent = "[ Filter: JEE Main PYQ ]";
             } else {
                 activeQuestionsList = [...rawQuestions];
                 document.getElementById('filter-status').textContent = "";
