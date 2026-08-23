@@ -9,21 +9,31 @@
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 10px; }
-        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 35%; }
-        .header-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-        .btn-action { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; }
-        .btn-bookmark { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
-        .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: bold; }
-        .btn-filter-inc { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
-        .btn-filter-all { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        /* Clean, Organized Two-Tier Header */
+        header { background: #ffffff; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        
+        .header-top-row { display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 15px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 6px; }
+        .logo span { color: #16a34a; }
+
+        /* Organized Action Button Groups */
+        .header-actions-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; width: 100%; padding-top: 6px; border-top: 1px solid #f1f5f9; }
+        
+        .btn-action { background: #f8fafc; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; color: #334155; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px; }
+        .btn-action:hover { background: #f1f5f9; border-color: #94a3b8; }
+
+        /* Specific Button Accents */
+        .btn-all { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
         .btn-pyq { background: #fdf4ff; color: #701a75; border-color: #f5d0fe; }
+        .btn-bookmark { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+        .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: 700; }
+        .btn-filter-inc { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
         .btn-reset { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
         /* Question Container */
-        .content { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px rgba(0,0,0,0.02); word-break: break-word; }
+        .content { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px rgba(0,0,0,0.02); word-break: break-word; }
         
         .q-header { display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; gap: 10px; flex-wrap: wrap; }
         .pyq-badge { display: none; background: #fee2e2; color: #991b1b; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-top: 4px; width: fit-content; border: 1px solid #fca5a5; }
@@ -42,7 +52,7 @@
         .btn-nav { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; }
 
         /* Question Palette Grid */
-        .palette-container { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .palette-container { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .palette-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
         .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; padding-right: 4px; }
         .palette-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; height: 38px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
@@ -54,9 +64,15 @@
 <body>
 
     <header>
-        <div class="logo">⚡ Neetprep Elite: <span id="nav-chapter-title">Chapter</span></div>
-        <div class="header-actions">
-            <button class="btn-action btn-filter-all" onclick="filterMode('all')">All</button>
+        <!-- Top Row: Brand & Chapter Info -->
+        <div class="header-top-row">
+            <div class="logo">⚡ Neetprep <span>Elite</span></div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b;" id="nav-chapter-title">Chapter</div>
+        </div>
+
+        <!-- Bottom Row: Organized Filter & Action Buttons -->
+        <div class="header-actions-row">
+            <button class="btn-action btn-all" onclick="filterMode('all')">📂 All</button>
             <button class="btn-action btn-pyq" onclick="filterMode('neet_pyq')">🎯 NEET PYQ</button>
             <button class="btn-action btn-pyq" onclick="filterMode('jee_pyq')">🚀 JEE PYQ</button>
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
@@ -258,7 +274,7 @@
                 buildQuestionPalette();
                 return;
             } else {
-                document.getElementById('bookmarkBtn').style.display = 'block';
+                document.getElementById('bookmarkBtn').style.display = 'inline-flex';
             }
 
             if (currentIndex >= activeQuestionsList.length) currentIndex = 0;
@@ -313,6 +329,7 @@
         function applyAttemptState(selectedIdx, correctIdx) {
             for (let i = 0; i < 4; i++) {
                 let li = document.getElementById(`opt${i}`);
+                if (!li) continue;
                 if (i === correctIdx) li.classList.add('correct-ans');
                 else if (i === selectedIdx) li.classList.add('wrong-ans');
             }
