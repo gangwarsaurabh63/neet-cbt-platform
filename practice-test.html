@@ -21,10 +21,11 @@
         .dot-menu-btn { background: #f1f5f9; border: 1px solid #cbd5e1; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #334155; transition: background 0.2s; }
         .dot-menu-btn:hover { background: #e2e8f0; }
 
-        .dropdown-menu { display: none; position: absolute; right: 0; top: 40px; background: #ffffff; min-width: 170px; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 1000; overflow: hidden; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 40px; background: #ffffff; min-width: 180px; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 1000; overflow: hidden; }
         .dropdown-menu.show { display: block; }
-        .dropdown-item { padding: 10px 15px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; background: #fff; width: 100%; text-align: left; border: none; }
+        .dropdown-item { padding: 11px 15px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; background: #fff; width: 100%; text-align: left; border: none; }
         .dropdown-item:hover { background: #f8fafc; color: #0f172a; }
+        .dropdown-item.danger { color: #e11d48; }
 
         /* Filter & Action Buttons Bar */
         .header-actions-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; width: 100%; padding-top: 6px; border-top: 1px solid #f1f5f9; }
@@ -38,7 +39,6 @@
         .btn-bookmark { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
         .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: 700; }
         .btn-filter-inc { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
-        .btn-reset { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
         .btn-home { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
@@ -82,16 +82,17 @@
                 <div style="font-size: 11px; font-weight: 600; color: #64748b; margin-top: 2px;" id="nav-chapter-title">Chapter</div>
             </div>
 
-            <!-- 3-Dot System Container (Chapters inside) -->
+            <!-- 3-Dot System Container (Reattempt & Chapters inside) -->
             <div class="menu-container">
                 <button class="dot-menu-btn" onclick="toggleMenu(event)">&#8942;</button>
                 <div id="dropdownMenu" class="dropdown-menu">
+                    <button class="dropdown-item danger" onclick="clearChapterAttempts(); closeMenu();">🔄 Reattempt Chapter</button>
                     <button class="dropdown-item" onclick="window.location.href='practice.html'">📚 All Chapters</button>
                 </div>
             </div>
         </div>
 
-        <!-- Bottom Row: Primary Filters & Actions On Screen -->
+        <!-- Bottom Row: All Primary Actions & Filters On Screen -->
         <div class="header-actions-row">
             <button class="btn-action btn-all" onclick="filterMode('all')">📂 All</button>
             <button class="btn-action btn-pyq" onclick="filterMode('neet_pyq')">🎯 NEET PYQ</button>
@@ -99,7 +100,6 @@
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
             <button class="btn-action btn-filter-inc" onclick="filterMode('incorrect')">❌ Incorrect</button>
             <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Save</button>
-            <button class="btn-action btn-reset" onclick="clearChapterAttempts()">🔄 Reattempt</button>
             <button class="btn-action btn-home" onclick="window.location.href='index.html'">🏠 Home</button>
         </div>
     </header>
