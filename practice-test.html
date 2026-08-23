@@ -25,9 +25,8 @@
         .dropdown-menu.show { display: block; }
         .dropdown-item { padding: 10px 15px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; background: #fff; width: 100%; text-align: left; border: none; }
         .dropdown-item:hover { background: #f8fafc; color: #0f172a; }
-        .dropdown-item.danger { color: #e11d48; }
 
-        /* Filter Buttons Bar */
+        /* Filter & Action Buttons Bar */
         .header-actions-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; width: 100%; padding-top: 6px; border-top: 1px solid #f1f5f9; }
         
         .btn-action { background: #f8fafc; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; color: #334155; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px; }
@@ -39,6 +38,8 @@
         .btn-bookmark { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
         .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: 700; }
         .btn-filter-inc { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+        .btn-reset { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
+        .btn-home { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
@@ -81,25 +82,25 @@
                 <div style="font-size: 11px; font-weight: 600; color: #64748b; margin-top: 2px;" id="nav-chapter-title">Chapter</div>
             </div>
 
-            <!-- 3-Dot System Container -->
+            <!-- 3-Dot System Container (Chapters inside) -->
             <div class="menu-container">
                 <button class="dot-menu-btn" onclick="toggleMenu(event)">&#8942;</button>
                 <div id="dropdownMenu" class="dropdown-menu">
-                    <button id="bookmarkDropdownBtn" class="dropdown-item" onclick="toggleBookmark(); closeMenu();">🔖 Save Question</button>
-                    <button class="dropdown-item danger" onclick="clearChapterAttempts(); closeMenu();">🔄 Reattempt Chapter</button>
                     <button class="dropdown-item" onclick="window.location.href='practice.html'">📚 All Chapters</button>
-                    <button class="dropdown-item" onclick="window.location.href='index.html'">🏠 Home Hub</button>
                 </div>
             </div>
         </div>
 
-        <!-- Bottom Row: Filter Buttons Bar -->
+        <!-- Bottom Row: Primary Filters & Actions On Screen -->
         <div class="header-actions-row">
             <button class="btn-action btn-all" onclick="filterMode('all')">📂 All</button>
             <button class="btn-action btn-pyq" onclick="filterMode('neet_pyq')">🎯 NEET PYQ</button>
             <button class="btn-action btn-pyq" onclick="filterMode('jee_pyq')">🚀 JEE PYQ</button>
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
             <button class="btn-action btn-filter-inc" onclick="filterMode('incorrect')">❌ Incorrect</button>
+            <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Save</button>
+            <button class="btn-action btn-reset" onclick="clearChapterAttempts()">🔄 Reattempt</button>
+            <button class="btn-action btn-home" onclick="window.location.href='index.html'">🏠 Home</button>
         </div>
     </header>
 
@@ -156,7 +157,6 @@
             document.getElementById('dropdownMenu').classList.remove('show');
         }
 
-        // Close dropdown when clicking outside
         window.onclick = function(event) {
             if (!event.target.matches('.dot-menu-btn')) {
                 closeMenu();
@@ -231,11 +231,13 @@
             let origIndex = rawQuestions.indexOf(currentQ);
 
             let bookmarks = getBookmarks();
-            let dropdownBtn = document.getElementById('bookmarkDropdownBtn');
+            let btn = document.getElementById('bookmarkBtn');
             if (bookmarks.includes(origIndex)) {
-                dropdownBtn.innerHTML = "🔖 Unsave Question";
+                btn.classList.add('bookmarked');
+                btn.textContent = "🔖 Saved";
             } else {
-                dropdownBtn.innerHTML = "🔖 Save Question";
+                btn.classList.remove('bookmarked');
+                btn.textContent = "🔖 Save";
             }
         }
 
@@ -304,8 +306,11 @@
                 document.getElementById('q-text').textContent = "No questions match this filter view.";
                 document.getElementById('options-container').innerHTML = "";
                 document.getElementById('q-counter').textContent = "0 of 0";
+                document.getElementById('bookmarkBtn').style.display = 'none';
                 buildQuestionPalette();
                 return;
+            } else {
+                document.getElementById('bookmarkBtn').style.display = 'inline-flex';
             }
 
             if (currentIndex >= activeQuestionsList.length) currentIndex = 0;
