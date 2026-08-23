@@ -1,5 +1,5 @@
 // =========================================================================
-// NEETPREP ELITE - FULL-LENGTH MOCK TEST DATA (tests.js)
+// NEETPREP ELITE - FULL-LENGTH MOCK TEST BANK (tests.js)
 // =========================================================================
 
 const fullLengthTests = {
