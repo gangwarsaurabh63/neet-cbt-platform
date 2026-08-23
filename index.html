@@ -8,148 +8,115 @@
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Splash Screen / Intro Animation Overlay */
+        /* Splash Screen Animation */
         #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: fadeOut 0.8s ease 2.2s forwards;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; animation: fadeOut 0.8s ease 2s forwards;
         }
-
-        .splash-logo {
-            font-size: 32px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 1px;
-            animation: scaleUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .splash-logo { font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: 1px; animation: scaleUp 1s ease forwards; display: flex; gap: 8px; }
         .splash-logo span { color: #22c55e; }
-
-        .splash-tagline {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-top: 10px;
-            opacity: 0;
-            animation: fadeIn 0.8s ease 0.6s forwards;
-        }
-
-        .loader-bar {
-            width: 150px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin-top: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .loader-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #22c55e;
-            animation: loadProgress 1.5s ease 0.4s forwards;
-        }
-
-        @keyframes scaleUp {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes loadProgress {
-            0% { left: -100%; }
-            100% { left: 0; }
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; }
-        }
-
-        /* Original Home Page Layout */
-        header { background: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .logo-text { font-size: 18px; font-weight: bold; color: #16a34a; }
+        .splash-tagline { font-size: 13px; color: #94a3b8; margin-top: 8px; opacity: 0; animation: fadeIn 0.6s ease 0.4s forwards; }
         
-        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; flex: 1; }
-        h1 { color: #0f172a; font-size: 26px; margin-bottom: 10px; }
-        p { color: #64748b; font-size: 15px; margin-bottom: 30px; }
+        @keyframes scaleUp { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .option-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .option-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        /* Modern Header */
+        header { background: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+        .logo-text { font-size: 18px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; }
+        .logo-text span { color: #16a34a; }
+        .header-badge { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Main Container */
+        .main-container { max-width: 750px; margin: 40px auto; padding: 0 20px; text-align: center; flex: 1; width: 100%; }
         
-        .option-card h3 { margin-top: 0; color: #0f172a; font-size: 18px; }
-        .option-card p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+        .welcome-title { color: #0f172a; font-size: 30px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .welcome-subtitle { color: #64748b; font-size: 15px; margin-bottom: 40px; line-height: 1.5; }
+
+        /* Card Layout */
+        .card-stack { display: flex; flex-direction: column; gap: 20px; text-align: left; }
         
-        .btn-card { background: #16a34a; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; width: fit-content; transition: background 0.2s; }
+        .option-card { 
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 25px; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01); 
+            transition: all 0.25s ease; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .option-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03); border-color: #86efac; }
+        
+        .card-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+        .card-icon { font-size: 32px; background: #f0fdf4; padding: 12px; border-radius: 12px; border: 1px solid #dcfce7; display: flex; align-items: center; justify-content: center; }
+        
+        .card-info h3 { margin: 0 0 6px 0; color: #0f172a; font-size: 18px; font-weight: 700; }
+        .card-info p { margin: 0; font-size: 14px; color: #64748b; line-height: 1.5; }
+        
+        .btn-card { 
+            background: #16a34a; color: white; border: none; padding: 12px 20px; border-radius: 8px; 
+            font-weight: 600; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: background 0.2s, transform 0.1s; width: fit-content; text-decoration: none;
+        }
         .btn-card:hover { background: #15803d; }
+        .btn-card:active { transform: scale(0.98); }
+
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; background: #ffffff; margin-top: auto; }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen Animation Overlay -->
+    <!-- Splash Screen Animation -->
     <div id="splash-screen">
         <div class="splash-logo">⚡ Neetprep <span>Elite</span></div>
-        <div class="splash-tagline">Your Ultimate NEET Preparation Portal</div>
-        <div class="loader-bar"></div>
+        <div class="splash-tagline">Target NEET UG 2026</div>
     </div>
 
     <!-- Header -->
     <header>
-        <div class="logo-text">⚡ Neetprep Elite</div>
+        <div class="logo-text">⚡ Neetprep <span>Elite</span></div>
+        <div class="header-badge">NTA Pattern</div>
     </header>
 
-    <!-- Original Home Page Content & Navigation Options -->
+    <!-- Main Dashboard -->
     <div class="main-container">
-        <h1>Welcome, Aspirant!</h1>
-        <p>Choose your preparation mode to get started with physics, chemistry, botany, and zoology.</p>
+        <h1 class="welcome-title">Welcome, Aspirant!</h1>
+        <p class="welcome-subtitle">Master your NEET preparation with NTA-style computer-based tests and smart chapter-wise question practice.</p>
 
-        <div class="card-grid">
-            <!-- Chapter-wise Practice Hub Option -->
+        <div class="card-stack">
+            <!-- Practice Hub Card -->
             <div class="option-card">
-                <div>
-                    <h3>📚 Chapter-wise Practice Hub</h3>
-                    <p>Practice chapter-wise questions with crystal-clear explanations, bookmarks, incorrect question filters, and reattempt options.</p>
+                <div class="card-top">
+                    <div class="card-icon">📚</div>
+                    <div class="card-info">
+                        <h3>Chapter-wise Practice Hub</h3>
+                        <p>Practice chapter-wise Physics, Chemistry, Botany, and Zoology questions with custom filters for NEET PYQs, JEE PYQs, Bookmarks, and Incorrect attempts.</p>
+                    </div>
                 </div>
-                <button class="btn-card" onclick="window.location.href='practice.html'">Open Practice Hub ➔</button>
+                <button class="btn-card" onclick="window.location.href='practice.html'">Open Practice Hub &rarr;</button>
             </div>
 
-            <!-- Full-Length Mock Test Option -->
+            <!-- Full Length Mock Test Card -->
             <div class="option-card">
-                <div>
-                    <h3>📝 Full-Length CBT Mock Tests</h3>
-                    <p>Take official NTA-style computer-based test papers featuring full 180-question exams across all subjects with live score tracking.</p>
+                <div class="card-top">
+                    <div class="card-icon">📝</div>
+                    <div class="card-info">
+                        <h3>Full-Length CBT Mock Tests</h3>
+                        <p>Experience the actual NTA computer-based exam environment with 180-question full-length papers, question palettes, and live scorecard tracking.</p>
+                    </div>
                 </div>
-                <button class="btn-card" onclick="window.location.href='test-interface.html'">Start Mock Test ➔</button>
+                <button class="btn-card" onclick="window.location.href='test-interface.html'">Start Mock Test &rarr;</button>
             </div>
         </div>
     </div>
 
+    <footer>
+        &copy; 2026 Neetprep Elite. Built for NEET Aspirants.
+    </footer>
+
     <script>
-        // Automatically hide splash screen layer completely after animation completes
         setTimeout(() => {
             document.getElementById('splash-screen').style.display = 'none';
-        }, 3000);
+        }, 2200);
     </script>
 </body>
 </html>
