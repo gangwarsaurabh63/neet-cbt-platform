@@ -10,13 +10,14 @@
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
         header { background: #ffffff; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 10px; }
-        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40%; }
+        .logo { font-size: 15px; font-weight: bold; color: #16a34a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 35%; }
         .header-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
         .btn-action { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; }
         .btn-bookmark { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
         .btn-bookmark.bookmarked { background: #dbeafe; color: #1e3a8a; border-color: #3b82f6; font-weight: bold; }
         .btn-filter-inc { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
         .btn-filter-all { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        .btn-reset { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
 
         .layout { max-width: 800px; margin: 25px auto; width: 100%; padding: 0 15px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
@@ -58,6 +59,7 @@
             <button class="btn-action btn-bookmark" onclick="filterMode('bookmarks')">🔖 Bookmarks</button>
             <button class="btn-action btn-filter-inc" onclick="filterMode('incorrect')">❌ Incorrect</button>
             <button id="bookmarkBtn" class="btn-action btn-bookmark" onclick="toggleBookmark()">🔖 Save</button>
+            <button class="btn-action btn-reset" onclick="clearChapterAttempts()">🔄 Reattempt</button>
             <button class="btn-action" onclick="window.location.href='practice.html'">⬅ Chapters</button>
             <button class="btn-action" onclick="window.location.href='index.html'">🏠 Home</button>
         </div>
@@ -132,6 +134,17 @@
             attempts[origIndex] = { selectedIdx: selectedIdx };
             localStorage.setItem(attemptsStorageKey, JSON.stringify(attempts));
             buildQuestionPalette();
+        }
+
+        function clearChapterAttempts() {
+            if (confirm("Are you sure you want to clear all your saved answers and reattempt this chapter?")) {
+                localStorage.removeItem(attemptsStorageKey);
+                currentFilter = 'all';
+                activeQuestionsList = [...rawQuestions];
+                currentIndex = 0;
+                loadPracticeQuestion();
+                alert("Chapter progress reset successfully. You can now reattempt all questions!");
+            }
         }
 
         function getBookmarks() {
