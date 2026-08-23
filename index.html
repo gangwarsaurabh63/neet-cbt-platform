@@ -6,7 +6,7 @@
     <title>Neetprep Elite - NEET CBT & Practice Portal</title>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
         /* Splash Screen / Intro Animation Overlay */
         #splash-screen {
@@ -35,9 +35,7 @@
             gap: 10px;
         }
 
-        .splash-logo span {
-            color: #22c55e;
-        }
+        .splash-logo span { color: #22c55e; }
 
         .splash-tagline {
             font-size: 14px;
@@ -88,49 +86,67 @@
             100% { opacity: 0; visibility: hidden; }
         }
 
-        /* Main Website Dashboard Styles */
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
+        /* Original Home Page Layout */
+        header { background: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo-text { font-size: 18px; font-weight: bold; color: #16a34a; }
+        
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; flex: 1; }
+        h1 { color: #0f172a; font-size: 26px; margin-bottom: 10px; }
+        p { color: #64748b; font-size: 15px; margin-bottom: 30px; }
 
-        h1 { color: #0f172a; font-size: 28px; }
-        p { color: #64748b; }
-        .btn-start {
-            background: #16a34a;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.2s;
-        }
-        .btn-start:hover { background: #15803d; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .option-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .option-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        
+        .option-card h3 { margin-top: 0; color: #0f172a; font-size: 18px; }
+        .option-card p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+        
+        .btn-card { background: #16a34a; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; width: fit-content; transition: background 0.2s; }
+        .btn-card:hover { background: #15803d; }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen Animation -->
+    <!-- Splash Screen Animation Overlay -->
     <div id="splash-screen">
         <div class="splash-logo">⚡ Neetprep <span>Elite</span></div>
         <div class="splash-tagline">Your Ultimate NEET Preparation Portal</div>
         <div class="loader-bar"></div>
     </div>
 
-    <!-- Main Home Page Content -->
-    <div class="container">
-        <h1>Welcome to Neetprep Elite</h1>
-        <p>Master your NEET UG preparation with NTA-style CBT mock tests and smart chapter-wise practice.</p>
-        <button class="btn-start" onclick="window.location.href='practice.html'">🚀 Start Practicing Now</button>
+    <!-- Header -->
+    <header>
+        <div class="logo-text">⚡ Neetprep Elite</div>
+    </header>
+
+    <!-- Original Home Page Content & Navigation Options -->
+    <div class="main-container">
+        <h1>Welcome, Aspirant!</h1>
+        <p>Choose your preparation mode to get started with physics, chemistry, botany, and zoology.</p>
+
+        <div class="card-grid">
+            <!-- Chapter-wise Practice Hub Option -->
+            <div class="option-card">
+                <div>
+                    <h3>📚 Chapter-wise Practice Hub</h3>
+                    <p>Practice chapter-wise questions with crystal-clear explanations, bookmarks, incorrect question filters, and reattempt options.</p>
+                </div>
+                <button class="btn-card" onclick="window.location.href='practice.html'">Open Practice Hub ➔</button>
+            </div>
+
+            <!-- Full-Length Mock Test Option -->
+            <div class="option-card">
+                <div>
+                    <h3>📝 Full-Length CBT Mock Tests</h3>
+                    <p>Take official NTA-style computer-based test papers featuring full 180-question exams across all subjects with live score tracking.</p>
+                </div>
+                <button class="btn-card" onclick="window.location.href='test-interface.html'">Start Mock Test ➔</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Automatically hide splash screen layer completely after animation finishes
+        // Automatically hide splash screen layer completely after animation completes
         setTimeout(() => {
             document.getElementById('splash-screen').style.display = 'none';
         }, 3000);
