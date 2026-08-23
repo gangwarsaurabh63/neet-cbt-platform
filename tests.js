@@ -1,7 +1,11 @@
+// =========================================================================
+// NEETPREP ELITE - MULTI-TEST SERIES CATALOG (tests.js)
+// =========================================================================
+
 const fullLengthTests = {
     "test_re_neet_01": {
         title: "Re NEET AITS Test - 01 (Code - 41712)",
-        durationMinutes: 195,
+        durationMinutes: 195, // 3 Hours 15 Mins
         totalQuestions: 180,
         questions: [
             {
@@ -22,7 +26,7 @@ const fullLengthTests = {
                     "(4) A=(iii), B=(iv), C=(ii), D=(i)"
                 ],
                 correct: 2, 
-                explanation: "Amoeboid -> Entamoeba (iii); Flagellated -> Trypanosoma (iv); Ciliated -> Paramecium (i); Sporozoans -> Plasmodium (ii)."
+                explanation: "Amoeboid -> Entamoeba (iii); Flagellated -> Trypanosoma (iv); Ciliated -> Paramecium (i); Sporozoans -> Plasmodium (ii)[span_0](start_span)[span_0](end_span)."
             },
             {
                 id: 2,
@@ -30,7 +34,7 @@ const fullLengthTests = {
                 q: "Here are few statement given below, Identify organism on basis of statement:<br>i) Lack cell wall<br>ii) Smallest living cell known<br>iii) Can survive without oxygen<br>iv) Pathogenic in animal & plants.",
                 options: ["(1) Nostoc", "(2) Anabaena", "(3) Mycoplasma", "(4) Chlorella"],
                 correct: 2,
-                explanation: "Mycoplasma lacks a cell wall, is the smallest known living cell, can survive without oxygen, and is pathogenic."
+                explanation: "Mycoplasma lacks a cell wall, is the smallest known living cell, can survive without oxygen, and is pathogenic[span_1](start_span)[span_1](end_span)."
             },
             {
                 id: 7,
@@ -46,7 +50,22 @@ const fullLengthTests = {
                    "</table>",
                 options: ["(a) a-(v), b-(iv), c-(i), d-(iii)", "(b) a-(ii), b-(iv), c-(i), d-(iii)", "(c) a-(v), b-(i), c-(ii), d-(iii)", "(d) a-(ii), b-(iv), c-(iii), d-(i)"],
                 correct: 0,
-                explanation: "Insulin -> Diabetes mellitus (v); Thyroxine -> Goitre (iv); Corticoids -> Addison's disease (i); Growth Hormone -> Acromegaly (iii)."
+                explanation: "Insulin -> Diabetes mellitus (v); Thyroxine -> Goitre (iv); Corticoids -> Addison's disease (i); Growth Hormone -> Acromegaly (iii)[span_2](start_span)[span_2](end_span)."
+            }
+        ]
+    },
+    "test_re_neet_02": {
+        title: "Re NEET AITS Test - 02 (Code - 41713)",
+        durationMinutes: 195,
+        totalQuestions: 180,
+        questions: [
+            {
+                id: 1,
+                subject: "Physics",
+                q: "Which of the following physical quantities has the same dimensions as Planck's constant?",
+                options: ["(1) Torque", "(2) Angular momentum", "(3) Linear momentum", "(4) Surface tension"],
+                correct: 1,
+                explanation: "Both Planck's constant and angular momentum have dimensions of [ML²T⁻¹]."
             }
         ]
     }
