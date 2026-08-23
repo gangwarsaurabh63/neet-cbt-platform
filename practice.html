@@ -3,94 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Chapter - Practice Hub</title>
+    <title>Neetprep Elite - Practice Hub</title>
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
 
-        header { background: #ffffff; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .logo { font-size: 16px; font-weight: bold; color: #16a34a; }
-        .btn-home { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
-
-        .layout { max-width: 600px; margin: 50px auto; width: 100%; padding: 0 20px; flex: 1; }
-
-        .selector-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-        .selector-card h2 { margin-top: 0; font-size: 20px; color: #0f172a; margin-bottom: 8px; }
-        .selector-card p { color: #64748b; font-size: 14px; margin-bottom: 25px; }
+        header { background: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo-text { font-size: 18px; font-weight: bold; color: #16a34a; cursor: pointer; }
         
-        .select-group { margin-bottom: 20px; }
-        .select-group label { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 8px; }
-        .select-group select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff; font-weight: 600; outline: none; }
+        .main-container { max-width: 900px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; }
+        h1 { color: #0f172a; font-size: 24px; margin-bottom: 5px; }
+        p { color: #64748b; font-size: 14px; margin-bottom: 25px; }
 
-        .btn-start { background: #16a34a; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; transition: background 0.2s; text-align: center; }
-        .btn-start:hover { background: #15803d; }
+        /* Subject Selection Tabs */
+        .subject-tabs { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .tab-btn { background: #e2e8f0; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; color: #475569; transition: all 0.2s; }
+        .tab-btn.active { background: #16a34a; color: white; box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2); }
+
+        /* Chapter List Grid */
+        .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
+        .chapter-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .chapter-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-color: #cbd5e1; }
+        
+        .chapter-title { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 10px; }
+        .chapter-meta { font-size: 12px; color: #64748b; display: flex; justify-content: space-between; align-items: center; }
+        .badge { background: #f0fdf4; color: #166534; padding: 3px 8px; border-radius: 4px; font-weight: 600; border: 1px solid #bbf7d0; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">📖 Subject: <span id="active-sub-label">Physics</span></div>
-        <button class="btn-home" onclick="window.location.href='index.html'">🏠 Dashboard</button>
+        <div class="logo-text" onclick="window.location.href='index.html'">⚡ Neetprep Elite</div>
+        <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:600; font-size:12px;" onclick="window.location.href='index.html'">🏠 Home</button>
     </header>
 
-    <div class="layout">
-        <div class="selector-card">
-            <h2>Select Chapter</h2>
-            <p>Choose a specific chapter from the syllabus below to launch your interactive practice session.</p>
-            
-            <div class="select-group">
-                <label for="chapterDropdown">Available Chapters:</label>
-                <select id="chapterDropdown">
-                    <!-- Populated dynamically -->
-                </select>
-            </div>
+    <div class="main-container">
+        <h1>Practice Hub</h1>
+        <p>Select a subject below to browse chapters and start practicing questions.</p>
 
-            <button class="btn-start" onclick="launchPracticeTest()">Start Chapter Practice ➔</button>
+        <!-- Subject Tabs -->
+        <div class="subject-tabs">
+            <button class="tab-btn active" onclick="switchSubject('Physics', this)">Physics</button>
+            <button class="tab-btn" onclick="switchSubject('Chemistry', this)">Chemistry</button>
+            <button class="tab-btn" onclick="switchSubject('Botany', this)">Botany</button>
+            <button class="tab-btn" onclick="switchSubject('Zoology', this)">Zoology</button>
         </div>
+
+        <!-- Chapters Display Grid -->
+        <div class="chapter-grid" id="chapterGrid"></div>
     </div>
 
     <script>
-        const selectedSubject = localStorage.getItem('active_practice_subject') || 'Physics';
-        document.getElementById('active-sub-label').textContent = selectedSubject;
+        let currentSubject = 'Physics';
 
-        let chaptersData = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[selectedSubject]) ? chapterwisePracticeBank[selectedSubject] : {};
-        let chapterNames = Object.keys(chaptersData);
+        function switchSubject(subject, btnElement) {
+            currentSubject = subject;
+            
+            // Update active styling on tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
 
-        function initDropdown() {
-            let dropdown = document.getElementById('chapterDropdown');
-            dropdown.innerHTML = "";
+            loadChapters();
+        }
+
+        function loadChapters() {
+            let grid = document.getElementById('chapterGrid');
+            grid.innerHTML = "";
+
+            let subjectChapters = (typeof chapterwisePracticeBank !== 'undefined' && chapterwisePracticeBank[currentSubject]) ? chapterwisePracticeBank[currentSubject] : {};
+            let chapterNames = Object.keys(subjectChapters);
 
             if (chapterNames.length === 0) {
-                let opt = document.createElement('option');
-                opt.text = "No chapters found for this subject";
-                dropdown.add(opt);
+                grid.innerHTML = `<p style="color:#64748b; grid-column: 1/-1;">No chapters available for ${currentSubject} yet.</p>`;
                 return;
             }
 
             chapterNames.forEach(chapName => {
-                let opt = document.createElement('option');
-                opt.value = chapName;
-                opt.textContent = `${chapName} (${chaptersData[chapName].length} Questions)`;
-                dropdown.add(opt);
+                let qCount = subjectChapters[chapName].length;
+
+                let card = document.createElement('div');
+                card.className = 'chapter-card';
+                card.innerHTML = `
+                    <div class="chapter-title">📖 ${chapName}</div>
+                    <div class="chapter-meta">
+                        <span>${qCount} Questions</span>
+                        <span class="badge">Practice ➔</span>
+                    </div>
+                `;
+
+                card.onclick = () => {
+                    localStorage.setItem('active_practice_subject', currentSubject);
+                    localStorage.setItem('active_practice_chapter', chapName);
+                    window.location.href = 'practice-test.html';
+                };
+
+                grid.appendChild(card);
             });
         }
 
-        function launchPracticeTest() {
-            let dropdown = document.getElementById('chapterDropdown');
-            let selectedChapter = dropdown.value;
-            
-            if (!selectedChapter) {
-                alert("Please select a valid chapter.");
-                return;
-            }
-
-            // Save active chapter and go to the question player page
-            localStorage.setItem('active_practice_chapter', selectedChapter);
-            window.location.href = 'practice-test.html';
-        }
-
-        initDropdown();
+        // Initialize on page load
+        loadChapters();
     </script>
 </body>
 </html>
