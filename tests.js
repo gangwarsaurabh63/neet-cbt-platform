@@ -1,13 +1,16 @@
 // =========================================================================
-// NEETPREP ELITE - FULL-LENGTH MOCK TEST CATALOG (tests.js)
+// NEETPREP ELITE - FULL-LENGTH 180-QUESTION TEST CATALOG (tests.js)
 // =========================================================================
 
 const fullLengthTests = {
     "test_full_length_01": {
         title: "Careerwill - Pre-Medical Major Test - 01 (14.03.2026)",
-        durationMinutes: 195, // Set to 195 Minutes (3 Hours 15 Mins)
+        durationMinutes: 195, // Official NEET Timing: 3 Hours 15 Mins
         totalQuestions: 180,
         questions: [
+            // ==========================================
+            // PHYSICS (Questions 1 to 45)
+            // ==========================================
             {
                 id: 1,
                 subject: "Physics",
@@ -34,8 +37,26 @@ const fullLengthTests = {
                 correct: 2,
                 explanation: "Maximum frictional force provides the necessary centripetal force: mω²r ≤ μmg, determining the threshold radius for coin B."
             },
+            // ... [Continue adding Physics questions up to id: 45] ...
+
+            // ==========================================
+            // CHEMISTRY (Questions 46 to 90)
+            // ==========================================
             {
-                id: 3,
+                id: 46,
+                subject: "Chemistry",
+                q: "Which of the following atom or ion has the smallest size?",
+                options: [
+                    "(1) F",
+                    "(2) F⁻",
+                    "(3) O",
+                    "(4) N"
+                ],
+                correct: 0,
+                explanation: "Neutral fluorine atom (F) has a smaller size than F⁻ anion due to lesser electron-electron repulsion, and smaller than O and N across the period."
+            },
+            {
+                id: 54,
                 subject: "Chemistry",
                 q: "<b>Match Column-I with Column-II:</b><br><br>" +
                    "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
@@ -55,8 +76,13 @@ const fullLengthTests = {
                 correct: 0,
                 explanation: "Atomic number 52 is Tellurium (p-block). 56 is Barium (s-block). 57 is Lanthanum (d-block). 60 is Neodymium (f-block)."
             },
+            // ... [Continue adding Chemistry questions up to id: 90] ...
+
+            // ==========================================
+            // BIOLOGY / BOTANY / ZOOLOGY (Questions 91 to 180)
+            // ==========================================
             {
-                id: 4,
+                id: 91,
                 subject: "Biology",
                 q: "<b>Match the following columns and choose the correct option:</b><br><br>" +
                    "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
@@ -73,8 +99,9 @@ const fullLengthTests = {
                     "(4) i-c, ii-a, iii-d, iv-b"
                 ],
                 correct: 0,
-                explanation: "Glutamic acid is acidic (b), Valine is neutral (a), Lysine is basic (d), and Tryptophan is aromatic/neutral structure (c). Thus i-b, ii-a, iii-d, iv-c."
+                explanation: "Glutamic acid is acidic (b), Valine is neutral (a), Lysine is basic (d), and Tryptophan is aromatic/neutral structure (c)."
             }
+            // ... [Continue adding Biology questions up to id: 180] ...
         ]
     }
 };
