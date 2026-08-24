@@ -5,7 +5,7 @@
 const fullLengthTests = {
     "test_full_length_01": {
         title: "Careerwill - Pre-Medical Major Test - 01 (14.03.2026)",
-        durationMinutes: 180, // 3 Hours
+        durationMinutes: 195, // Set to 195 Minutes (3 Hours 15 Mins)
         totalQuestions: 180,
         questions: [
             {
@@ -74,21 +74,6 @@ const fullLengthTests = {
                 ],
                 correct: 0,
                 explanation: "Glutamic acid is acidic (b), Valine is neutral (a), Lysine is basic (d), and Tryptophan is aromatic/neutral structure (c). Thus i-b, ii-a, iii-d, iv-c."
-            }
-        ]
-    },
-    "test_re_neet_02": {
-        title: "Re NEET AITS Test - 02 (Code - 41713)",
-        durationMinutes: 195,
-        totalQuestions: 180,
-        questions: [
-            {
-                id: 1,
-                subject: "Physics",
-                q: "Which of the following physical quantities has the same dimensions as Planck's constant?",
-                options: ["(1) Torque", "(2) Angular momentum", "(3) Linear momentum", "(4) Surface tension"],
-                correct: 1,
-                explanation: "Both Planck's constant and angular momentum have dimensions of [ML²T⁻¹]."
             }
         ]
     }
