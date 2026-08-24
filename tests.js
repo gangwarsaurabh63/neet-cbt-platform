@@ -1,92 +1,79 @@
 // =========================================================================
-// NEETPREP ELITE - MULTI-TEST SERIES CATALOG (tests.js)
+// NEETPREP ELITE - FULL-LENGTH MOCK TEST CATALOG (tests.js)
 // =========================================================================
 
 const fullLengthTests = {
-    "test_re_neet_01": {
-        title: "Re NEET AITS Test - 01 (Code - 41712)",
-        durationMinutes: 195, // 3 Hours 15 Mins
+    "test_full_length_01": {
+        title: "Careerwill - Pre-Medical Major Test - 01 (14.03.2026)",
+        durationMinutes: 180, // 3 Hours
         totalQuestions: 180,
         questions: [
             {
                 id: 1,
-                subject: "Biology",
-                q: "<b>Match the columns :</b><br><br>" +
-                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
-                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px; border:1px solid #cbd5e1;'>Column-I</th><th style='padding:8px; border:1px solid #cbd5e1;'>Column-II</th></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>A. Amoeboid protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(i) Paramecium</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>B. Flagellated protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(ii) Plasmodium</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>C. Ciliated protozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(iii) Entamoeba</td></tr>" +
-                   "<tr><td style='padding:7px; border:1px solid #cbd5e1;'>D. Sporozoans</td><td style='padding:7px; border:1px solid #cbd5e1;'>(iv) Trypanosoma</td></tr>" +
-                   "</table>",
+                subject: "Physics",
+                q: "An explosion breaks a rock into three equal parts in a horizontal plane. Two of them go off at right angles to each other with speed of $6\\text{ m/s}$ and $8\\text{ m/s}$ respectively. Then find the speed of third part and also its angle of motion with that part having lesser speed:",
                 options: [
-                    "(1) A=(ii), B=(iv), C=(iii), D=(i)",
-                    "(2) A=(i), B=(ii), C=(iii), D=(iv)",
-                    "(3) A=(iii), B=(iv), C=(i), D=(ii)",
-                    "(4) A=(iii), B=(iv), C=(ii), D=(i)"
+                    "(1) $5\\text{ m/s}, 127^{\\circ}$",
+                    "(2) $10\\text{ m/s}, 127^{\\circ}$",
+                    "(3) $10\\text{ m/s}, 143^{\\circ}$",
+                    "(4) $5\\text{ m/s}, 147^{\\circ}$"
                 ],
-                correct: 2, 
-                explanation: "Amoeboid -> Entamoeba (iii); Flagellated -> Trypanosoma (iv); Ciliated -> Paramecium (i); Sporozoans -> Plasmodium (ii)[span_0](start_span)[span_0](end_span)."
+                correct: 1,
+                explanation: "Using conservation of momentum, the two perpendicular momenta are $p_1 = m(6)$ and $p_2 = m(8)$. Their resultant is $\\sqrt{6^2 + 8^2} = 10m$. The third part must have equal and opposite momentum $10m$, giving a speed of $10\\text{ m/s}$. Angle calculations yield $127^{\\circ}$."
             },
             {
                 id: 2,
-                subject: "Botany",
-                q: "Here are few statements given below, Identify organism on basis of statements:<br>i) Lack cell wall<br>ii) Smallest living cell known<br>iii) Can survive without oxygen<br>iv) Pathogenic in animal & plants.",
-                options: ["(1) Nostoc", "(2) Anabaena", "(3) Mycoplasma", "(4) Chlorella"],
-                correct: 2,
-                explanation: "Mycoplasma lacks a cell wall, is the smallest known living cell, can survive without oxygen, and is pathogenic[span_1](start_span)[span_1](end_span)."
-            },
-            {
-                id: 3,
-                subject: "Zoology",
-                q: "<b>Match the following hormones with the respective disease:</b><br><br>" +
-                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
-                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px;'>Column-I</th><th style='padding:8px;'>Column-II</th></tr>" +
-                   "<tr><td>(a) Insulin</td><td>(i) Addison's disease</td></tr>" +
-                   "<tr><td>(b) Thyroxine</td><td>(ii) Diabetes insipidus</td></tr>" +
-                   "<tr><td>(c) Corticoids</td><td>(iii) Acromegaly</td></tr>" +
-                   "<tr><td>(d) Growth Hormone</td><td>(iv) Goitre</td></tr>" +
-                   "<tr><td></td><td>(v) Diabetes mellitus</td></tr>" +
-                   "</table>",
-                options: ["(a) a-(v), b-(iv), c-(i), d-(iii)", "(b) a-(ii), b-(iv), c-(i), d-(iii)", "(c) a-(v), b-(i), c-(ii), d-(iii)", "(d) a-(ii), b-(iv), c-(iii), d-(i)"],
-                correct: 0,
-                explanation: "Insulin -> Diabetes mellitus (v); Thyroxine -> Goitre (iv); Corticoids -> Addison's disease (i); Growth Hormone -> Acromegaly (iii)[span_2](start_span)[span_2](end_span)."
-            },
-            {
-                id: 4,
                 subject: "Physics",
-                q: "Let $x = \\frac{a^2 b^2}{c}$ be a physical quantity. If percentage errors in $a, b, c$ are 2%, 3%, and 4% respectively, find the percentage error in $x$.",
-                options: ["(1) 7%", "(2) 14%", "(3) 21%", "(4) 28%"],
-                correct: 1,
-                explanation: "Using error propagation: $\\frac{\\Delta x}{x} = 2\\frac{\\Delta a}{a} + 2\\frac{\\Delta b}{b} + \\frac{\\Delta c}{c} = 2(2\\%) + 2(3\\%) + 4\\% = 14\\%$."
-            },
-            {
-                id: 5,
-                subject: "Chemistry",
-                q: "In which of the following reactions does hydrogen peroxide ($H_2O_2$) act as a reducing agent?",
+                q: "A disc revolves with a speed of $\\frac{1}{\\pi} \\text{ rev/sec}$ and has a radius of $30\\text{ cm}$. Two coins A and B are placed at $10\\text{ cm}$ and $20\\text{ cm}$ away from the centre of the record. If the coefficient of friction between the coins and the record is $0.1$, which of the coins will revolve with the record?",
                 options: [
-                    "(1) $PbS + 4H_2O_2 \\rightarrow PbSO_4 + 4H_2O$",
-                    "(2) $Mn^{2+} + H_2O_2 \\rightarrow Mn^{4+} + 2OH^{-}$",
-                    "(3) $HOCl + H_2O_2 \\rightarrow H_3O^+ + Cl^- + O_2$",
-                    "(4) $2Fe^{2+} + H_2O_2 \\rightarrow 2Fe^{3+} + 2OH^-$"
+                    "(1) Only A",
+                    "(2) Only B",
+                    "(3) Both A and B",
+                    "(4) None of the coin will revolve with record."
                 ],
                 correct: 2,
-                explanation: "In reaction (3), $H_2O_2$ reduces $HOCl$ to $Cl^-$ while being oxidized to $O_2$, functioning as a reducing agent."
-            }
-        ]
-    },
-    "test_re_neet_02": {
-        title: "Re NEET AITS Test - 02 (Code - 41713)",
-        durationMinutes: 195,
-        totalQuestions: 180,
-        questions: [
+                explanation: "Maximum frictional force provides the necessary centripetal force: $m\\omega^2 r \\le \\mu mg \\implies r \\le \\frac{\\mu g}{\\omega^2}$. Calculating maximum allowable radius gives the threshold for coin B."
+            },
             {
-                id: 1,
-                subject: "Physics",
-                q: "Which of the following physical quantities has the same dimensions as Planck's constant?",
-                options: ["(1) Torque", "(2) Angular momentum", "(3) Linear momentum", "(4) Surface tension"],
-                correct: 1,
-                explanation: "Both Planck's constant and angular momentum have dimensions of [ML²T⁻¹]."
+                id: 54,
+                subject: "Chemistry",
+                q: "<b>Match Column-I with Column-II:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px;'>Column-I (Atomic Number)</th><th style='padding:8px;'>Position in the Periodic Table</th></tr>" +
+                   "<tr><td>(A) 52</td><td>(P) s-block</td></tr>" +
+                   "<tr><td>(B) 56</td><td>(Q) p-block</td></tr>" +
+                   "<tr><td>(C) 57</td><td>(R) d-block</td></tr>" +
+                   "<tr><td>(D) 60</td><td>(S) f-block</td></tr>" +
+                   "</table>" +
+                   "Choose the correct option:",
+                options: [
+                    "(1) A-Q, B-P, C-R, D-S",
+                    "(2) A-Q, B-R, C-S, D-P",
+                    "(3) A-R, B-S, C-Q, D-P",
+                    "(4) A-S, B-P, C-R, D-Q"
+                ],
+                correct: 0,
+                explanation: "Atomic number 52 is Tellurium (p-block). 56 is Barium (s-block). 57 is Lanthanum (d-block). 60 is Neodymium (f-block)."
+            },
+            {
+                id: 91,
+                subject: "Biology",
+                q: "<b>Match the following columns and choose the correct option:</b><br><br>" +
+                   "<table border='1' style='border-collapse:collapse; width:100%; text-align:left; margin-bottom:12px; font-size:13px; border-color:#cbd5e1;'>" +
+                   "<tr style='background:#e0f2fe; color:#0369a1;'><th style='padding:8px;'>Column-I</th><th style='padding:8px;'>Column-II</th></tr>" +
+                   "<tr><td>i. Glutamic acid</td><td>a. Neutral amino acid</td></tr>" +
+                   "<tr><td>ii. Valine</td><td>b. Acidic amino acid</td></tr>" +
+                   "<tr><td>iii. Lysine</td><td>c. Aromatic amino acid</td></tr>" +
+                   "<tr><td>iv. Tryptophan</td><td>d. Basic amino acid</td></tr>" +
+                   "</table>",
+                options: [
+                    "(1) i-b, ii-a, iii-d, iv-c",
+                    "(2) i-b, ii-d, iii-a, iv-c",
+                    "(3) i-d, ii-a, iii-b, iv-c",
+                    "(4) i-c, ii-a, iii-d, iv-b"
+                ],
+                correct: 0,
+                explanation: "Glutamic acid is acidic (b), Valine is neutral (a), Lysine is basic (d), and Tryptophan is aromatic/neutral structure (c). Thus i-b, ii-a, iii-d, iv-c."
             }
         ]
     }
